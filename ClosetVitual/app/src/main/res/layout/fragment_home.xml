@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".ui.home.HomeFragment">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/mostaza"
+        >
+
+        <Button
+            android:layout_width="60dp"
+            android:layout_height="65dp"
+            android:backgroundTint="@color/mostaza"
+            android:text="0"
+            app:icon="@drawable/leftarrow"
+            app:iconTint="#324A6C"
+            android:outlineSpotShadowColor="@color/mostaza"/>
+
+        <TextView
+            android:layout_marginTop="6dp"
+            android:layout_width="290dp"
+            android:layout_height="match_parent"
+            android:text="@string/bienvenidoUsuario"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textColor="@color/white"
+            android:fontFamily="sans-serif-medium"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:backgroundTint="@color/mostaza"
+            android:text="0"
+            app:icon="@drawable/usssss"
+            app:iconTint="#324A6C"
+            android:outlineSpotShadowColor="@color/mostaza"
+            />
+
+    </LinearLayout>
+    
+    
+</LinearLayout>
