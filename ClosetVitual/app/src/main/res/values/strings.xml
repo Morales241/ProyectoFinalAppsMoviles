@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">ClosetVitual</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Inicio</string>
+    <string name="title_RegistroPrenda">Nueva prenda</string>
+    <string name="title_Ropero">Ropero</string>
+    <string name="title_Outfits">Outfits</string>
+    <string name="title_Calendario">Calendario</string>
     <string name="bienvenidoUsuario">¡Bienvenido!\nNombre del usuario</string>
 </resources>
