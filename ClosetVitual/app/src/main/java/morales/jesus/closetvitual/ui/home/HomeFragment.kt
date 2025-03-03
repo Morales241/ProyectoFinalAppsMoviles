@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
+import android.text.BoringLayout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,7 +25,14 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
 
     private lateinit var homeViewModel: HomeViewModel
-    private lateinit var gridView: GridView
+    private var adaptador: conjuntoAdapter? = null
+
+    companion object{
+
+        var Conjuntos = ArrayList<Conjunto>()
+
+        var llave: Boolean = true
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,16 +46,36 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
         })
 
-        
+        if (llave){
+            cargarConjuntos()
+            llave=false
 
+        }
+
+        adaptador = conjuntoAdapter(root.context, Conjuntos)
+
+        val gridView: GridView = root.findViewById(R.id.gridview)
+
+        gridView.adapter = adaptador
 
         return root
     }
 
-    private class conjuntoAdapter: BaseAdapter() {
+    fun cargarConjuntos(){
+
+        //ps aquí van a estar los conjuntos jsjs
+    }
+
+    private class conjuntoAdapter: BaseAdapter {
 
         var Conjuntos = ArrayList<Conjunto>()
         var contexto: Context? =null
+
+        constructor(contextoP:Context, conjuntosP:ArrayList<Conjunto>){
+            this.Conjuntos = conjuntosP
+            this.contexto = contextoP
+
+        }
 
         override fun getCount(): Int {
             return Conjuntos.size
