@@ -3,17 +3,23 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_black_24dp"
-        android:title="@string/title_home" />
+        android:icon="@drawable/baseline_home_24"
+        android:title="@string/title_home"
+        android:iconTint="@color/mostaza"/>
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:id="@+id/navigation_NuevaPrenda"
+        android:icon="@drawable/baseline_add_circle_outline_24"
         android:title="@string/title_RegistroPrenda" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:id="@+id/navigation_Ropero"
+        android:icon="@drawable/baseline_checkroom_24"
         android:title="@string/title_Ropero" />
+
+    <item
+        android:id="@+id/navigation_Outfits"
+        android:icon="@drawable/baseline_assignment_add_24"
+        android:title="@string/title_Outfits" />
 
 </menu>

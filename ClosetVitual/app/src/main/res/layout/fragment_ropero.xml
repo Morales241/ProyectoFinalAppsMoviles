@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/grisClaro"
+    tools:context=".ui.Ropero.Ropero">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:text="@string/tusOutfits"
+        android:paddingTop="20dp"
+        android:textColor="@color/grisClaro"
+        android:textSize="40dp"
+        android:textAlignment="center"
+        android:background="@color/mostaza"/>
+
+    <GridView
+        android:id="@+id/gridview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="15dp"
+        android:numColumns="1"
+        android:paddingTop="5dp"
+        android:layout_marginBottom="75dp"/>
+
+</LinearLayout>
