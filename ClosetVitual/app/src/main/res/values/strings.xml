@@ -8,4 +8,5 @@
     <string name="bienvenidoUsuario">¡Bienvenido!\nNombre del usuario</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notificaciones</string>
+    <string name="tusOutfits">Tus outfits</string>
 </resources>

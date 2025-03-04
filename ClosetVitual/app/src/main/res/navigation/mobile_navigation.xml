@@ -8,18 +8,26 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="morales.jesus.closetvitual.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home"
+        android:label="@string/title_home"/>
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="morales.jesus.closetvitual.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_Ropero"
+        android:name="morales.jesus.closetvitual.ui.Ropero.Ropero"
+        android:label="fragment_ropero"
+        tools:layout="@layout/fragment_ropero" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="morales.jesus.closetvitual.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_Outfits"
+        android:name="morales.jesus.closetvitual.ui.Outfits.Outfits"
+        android:label="fragment_outfits"
+        tools:layout="@layout/fragment_outfits" />
+
+    <fragment
+        android:id="@+id/navigation_NuevaPrenda"
+        android:name="morales.jesus.closetvitual.ui.NuevaPrenda.NuevaPrenda"
+        android:label="fragment_nueva_prenda"
+        tools:layout="@layout/fragment_nueva_prenda" />
+
+
 </navigation>
