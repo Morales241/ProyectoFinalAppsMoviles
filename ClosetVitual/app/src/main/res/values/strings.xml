@@ -6,4 +6,6 @@
     <string name="title_Outfits">Outfits</string>
     <string name="title_Calendario">Calendario</string>
     <string name="bienvenidoUsuario">¡Bienvenido!\nNombre del usuario</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notificaciones</string>
 </resources>
