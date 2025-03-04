@@ -20,14 +20,14 @@ class IniciarSesion : AppCompatActivity() {
             insets
         }
 
-        // redirije a la pantalla de registro
+        // redirige a la pantalla de registro
         val tvRegistrarse = findViewById<TextView>(R.id.tv_registrarse)
         tvRegistrarse.setOnClickListener {
             val intent = Intent(this, registrarse::class.java)
             startActivity(intent)
         }
 
-        // redirije a la pagina de inicio
+        // redirige a la pagina de inicio
         val btnIniciarSesion = findViewById<Button>(R.id.btn_iniciar_sesion)
         btnIniciarSesion.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
