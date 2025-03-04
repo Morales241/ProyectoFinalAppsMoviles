@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ClosetVitual"
         tools:targetApi="31">
         <activity
+            android:name=".UserConfig"
+            android:exported="false" />
+        <activity
             android:name=".registrarse"
             android:exported="false" />
         <activity
