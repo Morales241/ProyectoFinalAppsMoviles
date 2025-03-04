@@ -7,4 +7,97 @@
     android:layout_height="match_parent"
     tools:context=".registrarse">
 
+    <!-- Campo Nombre -->
+
+    <!-- Campo Correo -->
+
+    <EditText
+        android:id="@+id/et_nombre"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="252dp"
+        android:background="@color/grisClaro"
+        android:hint="Nombre"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_correo"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/grisClaro"
+        android:hint="Correo electrónico"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_nombre" />
+
+    <!-- Campo Contraseña -->
+    <EditText
+        android:id="@+id/et_contrasena"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/grisClaro"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_correo" />
+
+    <!-- Campo Confirmar Contraseña -->
+
+    <!-- Botón de Registro -->
+
+    <EditText
+        android:id="@+id/et_confirmar_contrasena"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"
+        android:background="@color/grisClaro"
+        android:hint="Confirmar contraseña"
+        android:inputType="textPassword"
+        android:padding="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_registrarse"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_contrasena" />
+
+    <!-- Texto para ir a la pantalla de inicio de sesión -->
+
+    <Button
+        android:id="@+id/btn_registrarse"
+        android:layout_width="238dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="68dp"
+        android:backgroundTint="@color/azulOscuro"
+        android:padding="12dp"
+        android:text="Registrarse"
+        android:textColor="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_confirmar_contrasena" />
+
+    <TextView
+        android:id="@+id/tv_ir_a_inicio_sesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="¿Ya tienes cuenta? Inicia sesión"
+        android:textColor="@color/mostaza"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_registrarse" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

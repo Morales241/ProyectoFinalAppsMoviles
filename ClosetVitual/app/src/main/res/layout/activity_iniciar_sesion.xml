@@ -9,41 +9,41 @@
 
     <EditText
         android:id="@+id/et_nombre"
-        android:layout_width="299dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="428dp"
+        android:layout_width="298dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="336dp"
         android:background="@color/grisClaro"
         android:hint="Nombre"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_contrasena"
         android:layout_width="298dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="36dp"
         android:background="@color/grisClaro"
         android:hint="Contraseña"
         android:inputType="textPassword"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_nombre" />
 
     <Button
         android:id="@+id/btn_iniciar_sesion"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
+        android:layout_width="238dp"
+        android:layout_height="78dp"
+        android:layout_marginTop="100dp"
         android:backgroundTint="@color/azulOscuro"
         android:text="Iniciar Sesión"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_contrasena" />
 
@@ -51,7 +51,7 @@
         android:id="@+id/tv_registrarse"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:clickable="true"
         android:focusable="true"
         android:text="Registrarse"
