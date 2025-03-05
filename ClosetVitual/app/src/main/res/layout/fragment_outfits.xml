@@ -43,18 +43,38 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="150dp"
+                android:layout_width="100dp"
+                android:layout_marginTop="100dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/outfit_base"
+                android:src="@drawable/ic_prenda1"
                 android:contentDescription="Outfit Base"/>
 
             <!-- Botones de agregar en cada parte del outfit -->
             <ImageView
                 android:layout_width="24dp"
                 android:layout_height="24dp"
-                android:src="@drawable/ic_add"
-                android:layout_marginTop="-220dp"
+                android:src="@drawable/baseline_add_circle_outline_24"
+                android:layout_marginTop="-240dp"
                 android:layout_gravity="center"/>
+
+            <ImageView
+                android:layout_width="230dp"
+                android:layout_height="130dp"
+                android:src="@drawable/ic_prenda2"
+                android:layout_marginBottom="0dp"
+                android:layout_marginTop="50dp"/>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/baseline_add_circle_outline_24"
+                android:layout_marginTop="-100dp"
+                android:layout_gravity="center"/>
+
+            <ImageView
+                android:layout_width="300dp"
+                android:layout_marginTop="00dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_prenda2"
         </LinearLayout>
 
         <!-- Miniaturas -->
@@ -70,6 +90,13 @@
                 android:layout_height="50dp"
                 android:src="@drawable/ic_prenda1"
                 android:layout_marginBottom="8dp"/>
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/ic_prenda1" />
 
             <ImageView
                 android:layout_width="50dp"
