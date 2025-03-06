@@ -6,12 +6,14 @@ import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.text.BoringLayout
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
 import android.widget.Button
 import android.widget.GridView
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -65,7 +67,40 @@ class HomeFragment : Fragment() {
 
         }
 
+        val btnFiltro = root.findViewById<Button>(R.id.btnFiltro)
+        btnFiltro.setOnClickListener{
+            showPopupMenu(it, root.context)
+        }
+
         return root
+    }
+
+    private fun showPopupMenu(view: View, contexto: Context) {
+        val popup = PopupMenu(contexto ,view)
+        popup.menuInflater.inflate(R.menu.menu_filtros, popup.menu)
+
+        popup.setOnMenuItemClickListener { item: MenuItem ->
+            when (item.itemId) {
+                R.id.filtro_top -> {
+                    true
+                }
+                R.id.filtro_bottom -> {
+                    true
+                }
+                R.id.filtro_bodysuit -> {
+                    true
+                }
+                R.id.filtro_shoes -> {
+                    true
+                }
+                R.id.filtro_accessory -> {
+                    true
+                }
+                else -> false
+            }
+        }
+
+        popup.show() // Muestra el menú emergente
     }
 
     fun cargarConjuntos() {

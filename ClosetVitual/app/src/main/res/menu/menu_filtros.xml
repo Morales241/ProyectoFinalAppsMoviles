@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/filtro_top"
+        android:layout_marginEnd="411dp"
+        android:layout_marginBottom="731dp"
+        android:title="Top"
+        />
+
+    <item
+        android:id="@+id/filtro_bottom"
+        android:layout_marginEnd="411dp"
+        android:layout_marginBottom="731dp"
+        android:title="Bottom"
+        />
+
+    <item
+        android:id="@+id/filtro_bodysuit"
+        android:layout_marginEnd="411dp"
+        android:title="Bodysuit"
+        />
+
+    <item
+        android:id="@+id/filtro_shoes"
+        android:layout_marginEnd="411dp"
+        android:title="Shoes"
+        />
+
+    <item
+        android:id="@+id/filtro_accessory"
+        android:layout_marginEnd="411dp"
+        android:title="Accessory"
+        />
+
+
+</menu>
