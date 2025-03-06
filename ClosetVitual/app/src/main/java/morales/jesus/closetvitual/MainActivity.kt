@@ -1,6 +1,8 @@
 package morales.jesus.closetvitual
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
@@ -20,6 +22,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
+
+        // boton para cerrar sesion y regresar al login
+        val btnRegresar = findViewById<Button>(R.id.btnRegresar)
+        btnRegresar.setOnClickListener {
+            val intent = Intent(this, IniciarSesion::class.java)
+            startActivity(intent)
+        }
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
         // Passing each menu ID as a set of Ids because each
