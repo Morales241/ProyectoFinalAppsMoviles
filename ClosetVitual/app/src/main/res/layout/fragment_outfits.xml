@@ -74,7 +74,7 @@
                 android:layout_width="300dp"
                 android:layout_marginTop="00dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_prenda2"
+                android:src="@drawable/ic_prenda2"/>
         </LinearLayout>
 
         <!-- Miniaturas -->
@@ -107,7 +107,7 @@
             <ImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:src="@drawable/ic_prenda3"/>
+                android:src="@drawable/ic_prenda2"/>
         </LinearLayout>
     </LinearLayout>
 
