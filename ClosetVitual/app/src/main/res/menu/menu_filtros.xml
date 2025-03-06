@@ -33,5 +33,11 @@
         android:title="Accessory"
         />
 
+    <item
+        android:id="@+id/filtro_tagPersonalizado"
+        android:layout_marginEnd="411dp"
+        android:title="@string/tags"
+        />
+
 
 </menu>
