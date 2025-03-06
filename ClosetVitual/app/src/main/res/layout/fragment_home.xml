@@ -66,7 +66,7 @@
             android:layout_marginTop="13dp"
             android:layout_marginBottom="27dp"
             android:background="@drawable/bonton_obalado"
-            android:text=" s"
+            android:hint=" ¡Busca una prenda!"
             android:textAlignment="viewStart"
             android:importantForAccessibility="no"
             />
@@ -88,11 +88,12 @@
     </LinearLayout>
 
     <GridView
-        android:id="@+id/gridview"
+        android:id="@+id/ContenedorConjuntos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="15dp"
         android:numColumns="1"
-        android:paddingTop="5dp"
+        android:layout_marginHorizontal="10dp"
+        android:verticalSpacing="15dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="75dp"/>
 </LinearLayout>

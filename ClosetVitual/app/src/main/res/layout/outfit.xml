@@ -4,12 +4,14 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="120dp"
+        android:orientation="vertical"
         android:background="@drawable/fondo_conjunto">
 
         <GridView
-            android:id="@+id/gridOutfits"
+            android:id="@+id/gridView"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_margin="4dp"
@@ -22,8 +24,7 @@
             android:scrollbars="horizontal"
             android:stretchMode="none"
             android:verticalSpacing="1dp"
-            android:paddingTop="30dp">
+            android:paddingTop="30dp"/>
 
-        </GridView>
     </LinearLayout>
 </LinearLayout>
