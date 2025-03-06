@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.BaseAdapter
+import android.widget.Button
 import android.widget.GridView
 import android.widget.ImageView
 import android.widget.ProgressBar
@@ -16,6 +17,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import morales.jesus.closetvitual.Conjunto
 import morales.jesus.closetvitual.R
 import morales.jesus.closetvitual.databinding.FragmentHomeBinding
@@ -48,12 +50,20 @@ class HomeFragment : Fragment() {
             llave = false
 
         }
+        val navController = findNavController()
 
         adaptador = AdaptadorConjunto(root.context, Conjuntos)
 
         val gridView: GridView = root.findViewById(R.id.ContenedorConjuntos)
 
         gridView.adapter = adaptador
+
+        val btnConfig:Button = root.findViewById(R.id.btnUsuario)
+
+        btnConfig.setOnClickListener {
+            navController.navigate(R.id.navigation_configUsuario)
+
+        }
 
         return root
     }

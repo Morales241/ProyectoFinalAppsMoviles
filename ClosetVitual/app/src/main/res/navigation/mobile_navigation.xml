@@ -28,6 +28,23 @@
         android:name="morales.jesus.closetvitual.ui.NuevaPrenda.NuevaPrenda"
         android:label="fragment_nueva_prenda"
         tools:layout="@layout/fragment_nueva_prenda" />
+    <fragment
+        android:id="@+id/navigation_configUsuario"
+        android:name="morales.jesus.closetvitual.ui.UC.UserConfig"
+        android:label="fragment_config_usuario"
+        tools:layout="@layout/fragment_user_config" />
+
+    <fragment
+        android:id="@+id/detallePrenda"
+        android:name="morales.jesus.closetvitual.ui.DetallePrenda.DetallePrenda"
+        android:label="fragment_detalle_prenda"
+        tools:layout="@layout/fragment_detalle_prenda" />
+
+    <activity
+        android:id="@+id/mainActivity"
+        android:name="morales.jesus.closetvitual.MainActivity"
+        android:label="fragment_outfits"
+        tools:layout="@layout/fragment_outfits" />
 
 
 </navigation>

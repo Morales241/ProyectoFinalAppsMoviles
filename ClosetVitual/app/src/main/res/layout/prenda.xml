@@ -4,14 +4,16 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="100dp"
-        android:layout_height="100dp">
+        android:layout_width="120dp"
+        android:layout_height="120dp">
 
         <ImageView
             android:id="@+id/imgPrenda"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@color/grisMasClaro"
+            android:layout_gravity="center"
+            android:layout_marginLeft="10dp"
             />
     </LinearLayout>
 </LinearLayout>

@@ -16,10 +16,14 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import morales.jesus.closetvitual.Conjunto
 import morales.jesus.closetvitual.Outfit
 import morales.jesus.closetvitual.Prenda
 import morales.jesus.closetvitual.R
+import morales.jesus.closetvitual.ui.DetallePrenda.DetallePrenda
 
 class Ropero : Fragment() {
 
@@ -54,9 +58,13 @@ class Ropero : Fragment() {
 
         }
 
-        adaptador =  OutfitAdapter(root.context, Outfits)
 
-        val gridPrincipal:GridView = root.findViewById(R.id.GridView)
+        val navController = findNavController()
+
+
+        adaptador = OutfitAdapter(root.context, Outfits, navController)
+
+        val gridPrincipal: GridView = root.findViewById(R.id.GridView)
 
         gridPrincipal.adapter = adaptador
 
@@ -88,7 +96,11 @@ class Ropero : Fragment() {
     }
 
 
-    class PrendaAdapter( val context: Context,  val prendas: List<Prenda>) :
+    class PrendaAdapter(
+        val context: Context,
+        val prendas: List<Prenda>,
+        val listener: (Prenda) -> Unit
+    ) :
         BaseAdapter() {
 
         override fun getCount(): Int = prendas.size
@@ -105,11 +117,15 @@ class Ropero : Fragment() {
             var imgPrenda: ImageView = view.findViewById(R.id.imgPrenda)
             imgPrenda.setImageResource(prenda.imagen)
 
+            imgPrenda.setOnClickListener {
+                listener(prenda)
+            }
+
             return view
         }
     }
 
-    class OutfitAdapter( val context: Context,  val outfits: List<Outfit>) : BaseAdapter() {
+    class OutfitAdapter(val context: Context, val outfits: List<Outfit>, val navController: NavController) : BaseAdapter() {
 
         override fun getCount(): Int {
             return outfits.size
@@ -130,7 +146,11 @@ class Ropero : Fragment() {
 
             val gridItemOutfits: GridView = view.findViewById(R.id.gridView)
 
-            var prendaAdapter = PrendaAdapter(context, outfit.items)
+            var prendaAdapter = PrendaAdapter(context, outfit.items) {
+
+                navController.navigate(R.id.detallePrenda)
+
+            }
 
             gridItemOutfits.adapter = prendaAdapter
 
