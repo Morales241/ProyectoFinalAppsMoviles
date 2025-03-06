@@ -26,6 +26,6 @@ class NuevaPrenda : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_nueva_prenda, container, false)
+        return inflater.inflate(R.layout.fragment_new_prenda, container, false)
     }
 }

@@ -1,138 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:background="#F5F5F5"
-    tools:context=".MainActivity">
-
-    <!-- Encabezado -->
-    <LinearLayout
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#E8AD57"
-        android:padding="16dp"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:gravity="center">
+        android:background="#F5F5F5"
+        tools:context=".MainActivity">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registra tu outfit"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"/>
-    </LinearLayout>
-
-    <!-- Contenedor de Outfit -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:padding="16dp">
-
-        <!-- Outfit -->
+        <!-- Barra superior negra -->
         <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:orientation="vertical"
-            android:gravity="center">
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="#000000"
+            android:gravity="center_vertical"
+            android:paddingStart="16dp">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_marginTop="100dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_prenda1"
-                android:contentDescription="Outfit Base"/>
-
-            <!-- Botones de agregar en cada parte del outfit -->
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_add_circle_outline_24"
-                android:layout_marginTop="-240dp"
-                android:layout_gravity="center"/>
-
-            <ImageView
-                android:layout_width="230dp"
-                android:layout_height="130dp"
-                android:src="@drawable/ic_prenda2"
-                android:layout_marginBottom="0dp"
-                android:layout_marginTop="50dp"/>
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_add_circle_outline_24"
-                android:layout_marginTop="-100dp"
-                android:layout_gravity="center"/>
-
-            <ImageView
-                android:layout_width="300dp"
-                android:layout_marginTop="00dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_prenda2"/>
+                android:text="Outfits"
+                android:textSize="16sp"
+                android:textColor="@android:color/white"/>
         </LinearLayout>
 
-        <!-- Miniaturas -->
+        <!-- Contenedor principal -->
         <LinearLayout
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:orientation="vertical"
-            android:gravity="center">
+            android:background="#D9A05B"
+            android:padding="16dp">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_prenda1"
-                android:layout_marginBottom="8dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registra tu outfit"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="@android:color/white"
+                android:gravity="center"
+                android:layout_gravity="center"/>
 
-            <ImageView
-                android:id="@+id/imageView3"
+            <!-- Imagen del outfit -->
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_prenda1" />
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="horizontal">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_prenda2"
-                android:layout_marginBottom="8dp"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="443dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_prenda2"/>
+                    <!-- Prenda 1 -->
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                       />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/baseline_add_circle_outline_24" />
+
+                    <!-- Prenda 2 -->
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_prenda1" />
+
+                    <!-- Prenda 3 -->
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/baseline_add_circle_outline_24" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_prenda2" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/baseline_add_circle_outline_24" />
+
+                    <!-- Prenda 4 -->
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_prenda3" />
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/baseline_add_circle_outline_24" />
+                </LinearLayout>
+
+                <!-- Miniaturas -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginBottom="8dp"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_prenda1"
+                        android:layout_marginBottom="8dp"/>
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/ic_prenda2"
+                        android:layout_marginBottom="8dp"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Botones -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrar uso de hoy"
+                    android:backgroundTint="#203F74"
+                    android:textColor="@android:color/white"
+                    android:layout_marginEnd="8dp"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Registrar Outfit"
+                    android:backgroundTint="#203F74"
+                    android:textColor="@android:color/white"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-
-    <!-- Botones de Acción -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingBottom="16dp">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registrar uso de hoy"
-            android:backgroundTint="#203F74"
-            android:textColor="@android:color/white"
-            android:layout_marginEnd="8dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registrar Outfit"
-            android:backgroundTint="#203F74"
-            android:textColor="@android:color/white"/>
-    </LinearLayout>
-
-</LinearLayout>

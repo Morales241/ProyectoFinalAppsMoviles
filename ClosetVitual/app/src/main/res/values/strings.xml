@@ -11,4 +11,27 @@
     <string name="tusOutfits">Tus outfits</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="color">color:</string>
+    <string name="seleccionar_color">seleccionar color:</string>
+    <string name="estampada_s_no">Estampado:</string>
+    <string name="registra_una_prenda">Registra una prenda:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="ingrese_nombre_de_su_prenda">Ingrese nombre de la prenda...</string>
+    <string name="foto">Foto:</string>
+    <string name="editar_foto">editar foto:</string>
+    <string name="tipo_de_prenda">Tipo de prenda:</string>
+    <string name="tags">Tags:</string>
+    <string name="s">Si</string>
+    <string name="no">No</string>
+    <string name="registrar_prenda">Registrar Prenda</string>
+    <string-array name="tipo_de_prenda_array">
+        <item>Accesorio</item>
+        <item>Pantalón</item>
+        <item>Camisa</item>
+        <item>Camiseta</item>
+        <item>Suéter</item>
+        <item>Chamarra</item>
+        <item>Zapatos</item>
+        <item>Tenis</item>
+    </string-array>
 </resources>

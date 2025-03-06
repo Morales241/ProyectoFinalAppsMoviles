@@ -24,11 +24,6 @@
         tools:layout="@layout/fragment_outfits" />
 
     <fragment
-        android:id="@+id/navigation_NuevaPrenda"
-        android:name="morales.jesus.closetvitual.ui.NuevaPrenda.NuevaPrenda"
-        android:label="fragment_nueva_prenda"
-        tools:layout="@layout/fragment_nueva_prenda" />
-    <fragment
         android:id="@+id/navigation_configUsuario"
         android:name="morales.jesus.closetvitual.ui.UC.UserConfig"
         android:label="fragment_config_usuario"
@@ -46,5 +41,10 @@
         android:label="fragment_outfits"
         tools:layout="@layout/fragment_outfits" />
 
+    <fragment
+        android:id="@+id/fragment_new_prenda"
+        android:label="fragment_new_prenda"
+        android:name="morales.jesus.closetvitual.ui.NuevaPrenda.NuevaPrenda"
+        tools:layout="@layout/fragment_new_prenda"/>
 
 </navigation>
