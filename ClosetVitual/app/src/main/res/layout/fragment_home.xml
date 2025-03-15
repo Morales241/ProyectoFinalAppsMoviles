@@ -11,28 +11,14 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:background="@color/black"/>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/mostaza"
         android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnRegresar"
-            android:layout_width="50dp"
-            android:layout_height="65dp"
-            android:backgroundTint="@color/mostaza"
-            android:outlineSpotShadowColor="@color/mostaza"
-            android:text="0"
-            app:icon="@drawable/leftarrow"
-            app:iconTint="#324A6C" />
 
         <TextView
             android:id="@+id/txtNombreUsuario"
-            android:layout_width="260dp"
+            android:layout_width="292dp"
             android:layout_height="80dp"
             android:layout_marginTop="-12dp"
             android:fontFamily="sans-serif-medium"
@@ -47,29 +33,32 @@
             android:layout_height="70dp"
             android:backgroundTint="@color/mostaza"
             android:outlineSpotShadowColor="@color/mostaza"
-            android:text="0"
+            android:outlineAmbientShadowColor="@color/mostaza"
             app:icon="@drawable/user"
-            app:iconTint="#324A6C" />
+            app:iconTint="#324A6C"
+            android:shadowColor="@color/mostaza"/>
 
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/mostaza"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/txtBuscarPrenda"
-            android:layout_width="300dp"
-            android:layout_height="25dp"
+            android:layout_width="279dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="13dp"
             android:layout_marginBottom="27dp"
             android:background="@drawable/bonton_obalado"
-            android:hint=" ¡Busca una prenda!"
-            android:textAlignment="viewStart"
+            android:hint="\tBusca una prenda"
+            android:textColorHint="@color/black"
             android:importantForAccessibility="no"
+            android:textAlignment="viewStart"
+            android:textColor="@color/black"
             />
 
         <Button
@@ -77,11 +66,12 @@
             android:layout_width="70dp"
             android:layout_height="48dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="20dp"
             android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
             android:backgroundTint="@color/mostaza"
             android:outlineSpotShadowColor="@color/mostaza"
-            android:text="w"
+            android:outlineAmbientShadowColor="@color/mostaza"
+            android:shadowColor="@color/mostaza"
             app:icon="@drawable/filter"
             app:iconTint="#324A6C" />
 

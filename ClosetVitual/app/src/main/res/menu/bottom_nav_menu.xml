@@ -22,4 +22,9 @@
         android:icon="@drawable/baseline_assignment_add_24"
         android:title="@string/title_Outfits" />
 
+    <item
+        android:id="@+id/navigation_Calendar"
+        android:icon="@drawable/baseline_calendar_today_24"
+        android:title="@string/title_Calendario" />
+
 </menu>
