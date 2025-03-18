@@ -9,7 +9,8 @@
         android:id="@+id/navigation_home"
         android:name="morales.jesus.closetvitual.ui.home.HomeFragment"
         tools:layout="@layout/fragment_home"
-        android:label="@string/title_home"/>
+        android:label="@string/title_home">
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_Ropero"
@@ -41,15 +42,7 @@
         android:label="fragment_outfits"
         tools:layout="@layout/fragment_outfits" />
 
-    <fragment
-        android:id="@+id/fragment_new_prenda"
-        android:label="fragment_new_prenda"
-        android:name="morales.jesus.closetvitual.ui.NuevaPrenda.NuevaPrenda"
-        tools:layout="@layout/fragment_new_prenda"/>
-    <fragment
-        android:id="@+id/fragmentNewPrenda"
-        android:name="morales.jesus.closetvitual.FragmentNewPrenda"
-        android:label="FragmentNewPrenda" />
+
     <fragment
         android:id="@+id/fragment_registrar_outfit"
         android:name="morales.jesus.closetvitual.fragment_registrar_outfit"
