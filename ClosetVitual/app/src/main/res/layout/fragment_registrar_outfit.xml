@@ -4,19 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-
     android:background="#F5F5F5"
     tools:context=".MainActivity">
 
-
-    <!-- Barra de título mostaza -->
+    <!-- Barra de título -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:background="@color/mostaza"
         android:orientation="horizontal"
         android:gravity="center">
-
 
         <TextView
             android:layout_width="wrap_content"
@@ -43,39 +40,107 @@
             android:orientation="vertical"
             android:gravity="center">
 
-            <ImageView
-                android:layout_width="100dp"
-                android:layout_marginTop="100dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_prenda1"
-                android:contentDescription="Outfit Base"/>
+            <!-- Contenedor Overol -->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-            <!-- Botones de agregar en cada parte del outfit -->
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_add_circle_outline_24"
-                android:layout_marginTop="-240dp"
-                android:layout_gravity="center"/>
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/overoll"
+                    android:contentDescription="Overol"
+                    android:layout_marginBottom="16dp"
+                    android:layout_alignParentStart="true"/>
 
-            <ImageView
-                android:layout_width="230dp"
-                android:layout_height="130dp"
-                android:src="@drawable/ic_prenda2"
-                android:layout_marginBottom="0dp"
-                android:layout_marginTop="50dp"/>
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/baseline_add_circle_outline_24"
-                android:layout_marginTop="-100dp"
-                android:layout_gravity="center"/>
+                <!-- Botón "+" centrado sobre el overol -->
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_add_circle_outline_24"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
 
-            <ImageView
-                android:layout_width="300dp"
-                android:layout_marginTop="00dp"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_prenda2"/>
+            <!-- Contenedor Collar -->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/collar"
+                    android:contentDescription="Collar"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Botón "+" centrado sobre el collar -->
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_add_circle_outline_24"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <!-- Contenedor Prenda 1 -->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/ic_prenda1"
+                    android:contentDescription="Prenda 1"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Botón "+" centrado sobre prenda 1 -->
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_add_circle_outline_24"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <!-- Contenedor Prenda 2 -->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="160dp"
+                    android:layout_height="120dp"
+                    android:src="@drawable/ic_prenda2"
+                    android:contentDescription="Prenda 2"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Botón "+" centrado sobre prenda 2 -->
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_add_circle_outline_24"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+            <!-- Contenedor Prenda 3 -->
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="120dp"
+                    android:layout_height="130dp"
+                    android:src="@drawable/ic_prenda3"
+                    android:contentDescription="Prenda 3"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- Botón "+" centrado sobre prenda 3 -->
+                <ImageView
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/baseline_add_circle_outline_24"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
         </LinearLayout>
 
         <!-- Miniaturas -->
@@ -93,11 +158,10 @@
                 android:layout_marginBottom="8dp"/>
 
             <ImageView
-                android:id="@+id/imageView3"
-                android:layout_width="match_parent"
+                android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginBottom="8dp"
-                android:src="@drawable/ic_prenda1" />
+                android:src="@drawable/ic_prenda1"
+                android:layout_marginBottom="8dp" />
 
             <ImageView
                 android:layout_width="50dp"

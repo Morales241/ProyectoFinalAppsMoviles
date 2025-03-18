@@ -26,6 +26,6 @@ class Outfits : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_outfits, container, false)
+        return inflater.inflate(R.layout.fragment_registrar_outfit, container, false)
     }
 }
