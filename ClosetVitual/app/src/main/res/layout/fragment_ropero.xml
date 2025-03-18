@@ -25,14 +25,12 @@
 
     </LinearLayout>
 
-    <GridView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/GridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="15dp"
-        android:numColumns="1"
-        android:verticalSpacing="10dp"
-        android:layout_marginBottom="75dp"/>
-
+        android:layout_marginBottom="75dp"
+        android:orientation="vertical" />
 
 </LinearLayout>
