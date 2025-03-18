@@ -11,9 +11,8 @@
             android:id="@+id/imgPrenda"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@color/grisMasClaro"
+            android:background="@drawable/imagenfondo"
             android:layout_gravity="center"
-            android:layout_marginLeft="10dp"
-            />
+            android:layout_marginLeft="10dp" />
     </LinearLayout>
 </LinearLayout>
