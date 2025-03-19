@@ -1,21 +1,29 @@
 package morales.jesus.closetvitual.ui.Ropero
 
+import android.annotation.SuppressLint
 import android.content.Context
+import android.database.Observable
+import androidx.fragment.app.viewModels
 import android.os.Bundle
+import android.provider.DocumentsContract.Root
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.BaseAdapter
+import android.widget.GridView
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import morales.jesus.closetvitual.Conjunto
 import morales.jesus.closetvitual.Outfit
 import morales.jesus.closetvitual.Prenda
 import morales.jesus.closetvitual.R
+import morales.jesus.closetvitual.ui.DetallePrenda.DetallePrenda
 
 class Ropero : Fragment() {
 
@@ -35,7 +43,11 @@ class Ropero : Fragment() {
     ): View {
         roperoViewModel = ViewModelProvider(this).get(RoperoViewModel::class.java)
 
-        val root = inflater.inflate(R.layout.fragment_ropero, container, false)
+
+        val root =
+            inflater.inflate(R.layout.fragment_ropero, container, false)
+
+
 
         roperoViewModel.text.observe(viewLifecycleOwner, Observer {
         })
@@ -43,20 +55,25 @@ class Ropero : Fragment() {
         if (llave) {
             cargarOutfits()
             llave = false
+
         }
+
 
         val navController = findNavController()
 
-        adaptador = OutfitAdapter(Outfits, navController)
 
-        val recyclerView: RecyclerView = root.findViewById(R.id.GridView)
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.adapter = adaptador
+        adaptador = OutfitAdapter(root.context, Outfits, navController)
+
+        val gridPrincipal: GridView = root.findViewById(R.id.GridView)
+
+        gridPrincipal.adapter = adaptador
 
         return root
     }
 
-    private fun cargarOutfits() {
+
+    fun cargarOutfits() {
+
         Outfits.add(
             Outfit(
                 listOf(
@@ -78,57 +95,67 @@ class Ropero : Fragment() {
         )
     }
 
+
     class PrendaAdapter(
         val context: Context,
         val prendas: List<Prenda>,
         val listener: (Prenda) -> Unit
-    ) : RecyclerView.Adapter<PrendaAdapter.PrendaViewHolder>() {
+    ) :
+        BaseAdapter() {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PrendaViewHolder {
-            val view = LayoutInflater.from(context).inflate(R.layout.prenda, parent, false)
-            return PrendaViewHolder(view)
-        }
+        override fun getCount(): Int = prendas.size
 
-        override fun onBindViewHolder(holder: PrendaViewHolder, position: Int) {
-            val prenda = prendas[position]
-            holder.imgPrenda.setImageResource(prenda.imagen)
+        override fun getItem(position: Int): Any = prendas[position]
 
-            holder.imgPrenda.setOnClickListener {
+        override fun getItemId(position: Int): Long = position.toLong()
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+            var prenda = prendas[position]
+            var inflater = LayoutInflater.from(context)
+            var view = convertView ?: inflater.inflate(R.layout.prenda, parent, false)
+
+            var imgPrenda: ImageView = view.findViewById(R.id.imgPrenda)
+            imgPrenda.setImageResource(prenda.imagen)
+
+            imgPrenda.setOnClickListener {
                 listener(prenda)
             }
-        }
 
-        override fun getItemCount(): Int = prendas.size
-
-        class PrendaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val imgPrenda: ImageView = view.findViewById(R.id.imgPrenda)
+            return view
         }
     }
 
-    class OutfitAdapter(
-        val outfits: List<Outfit>,
-        val navController: NavController
-    ) : RecyclerView.Adapter<OutfitAdapter.OutfitViewHolder>() {
+    class OutfitAdapter(val context: Context, val outfits: List<Outfit>, val navController: NavController) : BaseAdapter() {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OutfitViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.outfit, parent, false)
-            return OutfitViewHolder(view)
+        override fun getCount(): Int {
+            return outfits.size
         }
 
-        override fun onBindViewHolder(holder: OutfitViewHolder, position: Int) {
-            val outfit = outfits[position]
+        override fun getItem(position: Int): Any {
+            return outfits[position]
+        }
 
-            val prendaAdapter = PrendaAdapter(holder.itemView.context, outfit.items) {
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+            var outfit = outfits[position]
+            var inflater = LayoutInflater.from(context)
+            var view = convertView ?: inflater.inflate(R.layout.outfit, parent, false)
+
+            val gridItemOutfits: GridView = view.findViewById(R.id.gridView)
+
+            var prendaAdapter = PrendaAdapter(context, outfit.items) {
+
                 navController.navigate(R.id.detallePrenda)
+
             }
 
-            holder.recyclerView.adapter = prendaAdapter
-        }
+            gridItemOutfits.adapter = prendaAdapter
 
-        override fun getItemCount(): Int = outfits.size
-
-        class OutfitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val recyclerView: RecyclerView = view.findViewById(R.id.gridView)
+            return view
         }
     }
+
 }

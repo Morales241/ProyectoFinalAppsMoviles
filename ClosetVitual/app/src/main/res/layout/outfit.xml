@@ -10,16 +10,20 @@
         android:orientation="vertical"
         android:background="@drawable/fondo_conjunto">
 
-
-        <androidx.recyclerview.widget.RecyclerView
+        <GridView
             android:id="@+id/gridView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:layout_margin="4dp"
-            android:layout_marginLeft="25dp"
-            android:orientation="horizontal"
+            android:columnWidth="100dp"
+            android:gravity="center"
+            android:numColumns="50"
+            android:scrollbarAlwaysDrawHorizontalTrack="true"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
             android:scrollbars="horizontal"
-            android:importantForAccessibility="no"/>
+            android:stretchMode="none"
+            android:horizontalSpacing="10dp"
+            android:layout_marginLeft="25dp"/>
 
     </LinearLayout>
 </LinearLayout>

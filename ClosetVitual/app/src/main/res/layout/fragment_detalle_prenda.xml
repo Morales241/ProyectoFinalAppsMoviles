@@ -1,213 +1,184 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutPrincipal"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grisClaro"
+    android:background="@drawable/fondoetalleprenda"
+    android:orientation="vertical"
     tools:context=".ui.DetallePrenda.DetallePrenda">
 
-    <LinearLayout
-        android:id="@+id/fondoColores"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/grisClaro" />
-
-        <!-- Parte inferior de otro color -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="450dp"
-            android:layout_marginHorizontal="20dp"
-            android:layout_weight="1"
-            android:background="@color/mostaza" />
-    </LinearLayout>
+    <Button
+        android:id="@+id/btnRegresarAropero"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:backgroundTint="@color/grisClaro"
+        android:outlineSpotShadowColor="@color/mostaza"
+        android:text="0"
+        app:icon="@drawable/leftarrow"
+        app:iconTint="#324A6C" />
 
     <LinearLayout
-        android:id="@+id/layoutPrincipal"
+        android:id="@+id/layoutSuperior"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnRegresarAropero"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:backgroundTint="@color/grisClaro"
-            android:outlineSpotShadowColor="@color/mostaza"
-            android:text="0"
-            app:icon="@drawable/leftarrow"
-            app:iconTint="#324A6C" />
+            android:id="@+id/btnIzquierdo"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/bonton_obalado"
+            android:backgroundTint="@color/azulOscuro"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="38dp"
+            android:importantForAccessibility="no" />
 
-        <LinearLayout
-            android:id="@+id/layoutSuperior"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/imagenPrenda"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/bonton_obalado"
+            android:src="@drawable/camisa_roja"
+            android:layout_marginLeft="20dp" />
 
-            <Button
-                android:id="@+id/btnIzquierdo"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/bonton_obalado"
-                android:backgroundTint="@color/azulOscuro"
-                android:importantForAccessibility="no" />
+        <Button
+            android:id="@+id/btnDerecho"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/bonton_obalado"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="20dp"
+            android:importantForAccessibility="no" />
+    </LinearLayout>
 
-            <ImageView
-                android:id="@+id/imagenPrenda"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:layout_marginHorizontal="10dp"
-                android:layout_gravity="center"
-                android:src="@drawable/camisa_roja"
-                android:scaleType="centerCrop"
-                android:clipToOutline="true"
-                android:background="@drawable/imagenfondo"/>
+    <TextView
+        android:id="@+id/txtNombrePrenda"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="NombrePrenda"
+        android:textAlignment="center"
+        android:layout_marginTop="15dp"
+        android:textSize="24dp"
+        android:textColor="@color/azulOscuro"
+        android:fontFamily="sans-serif-medium" />
 
+    <LinearLayout
+        android:id="@+id/layoutProgreso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
 
-
-            <Button
-                android:id="@+id/btnDerecho"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:background="@drawable/bonton_obalado"
-                android:importantForAccessibility="no" />
-        </LinearLayout>
+        <ProgressBar
+            android:id="@+id/barraDeProgreso"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="300dp"
+            android:layout_height="14dp"
+            android:max="100"
+            android:progress="30"
+            android:progressDrawable="@drawable/barra_de_progreso"
+            android:importantForAccessibility="no"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
 
         <TextView
-            android:id="@+id/txtNombrePrenda"
+            android:id="@+id/txtProgreso"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:fontFamily="sans-serif-medium"
-            android:text="NombrePrenda"
+            android:layout_height="30dp"
+            android:text="30"
             android:textAlignment="center"
+            android:textSize="24dp"
             android:textColor="@color/azulOscuro"
-            android:textSize="24sp" />
+            android:fontFamily="sans-serif-medium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutProgresoMes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/barraDeProgresoMes"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="300dp"
+            android:layout_height="14dp"
+            android:max="30"
+            android:progress="10"
+            android:progressDrawable="@drawable/barra_de_progreso"
+            android:importantForAccessibility="no"
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp" />
+
+        <TextView
+            android:id="@+id/txtProgresoMes"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="10"
+            android:textAlignment="center"
+            android:textSize="24dp"
+            android:textColor="@color/azulOscuro"
+            android:fontFamily="sans-serif-medium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layoutTagsCategorias"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:id="@+id/layoutProgreso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <ProgressBar
-                android:id="@+id/barraDeProgreso"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="300dp"
-                android:layout_height="14dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
-                android:importantForAccessibility="no"
-                android:max="100"
-                android:progress="30"
-                android:progressDrawable="@drawable/barra_de_progreso" />
+            android:id="@+id/layoutTags"
+            android:layout_width="165dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="25dp">
 
             <TextView
-                android:id="@+id/txtProgreso"
+                android:id="@+id/txtTags"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="30"
+                android:text="Tags"
                 android:textAlignment="center"
+                android:background="@color/grisClaro"
                 android:textColor="@color/azulOscuro"
                 android:textSize="24dp" />
+
+            <GridView
+                android:id="@+id/gridTags"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/grisClaro" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layoutProgresoMes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
-
-            <ProgressBar
-                android:id="@+id/barraDeProgresoMes"
-                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-                android:layout_width="300dp"
-                android:layout_height="14dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="10dp"
-                android:importantForAccessibility="no"
-                android:max="30"
-                android:progress="10"
-                android:progressDrawable="@drawable/barra_de_progreso" />
+            android:id="@+id/layoutCategorias"
+            android:layout_width="165dp"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="28dp">
 
             <TextView
-                android:id="@+id/txtProgresoMes"
+                android:id="@+id/txtCategorias"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="10"
+                android:text="Categorías"
                 android:textAlignment="center"
+                android:background="@color/grisClaro"
                 android:textColor="@color/azulOscuro"
                 android:textSize="24dp" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layoutTagsCategorias"
-            android:layout_width="395dp"
-            android:layout_height="250dp"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:id="@+id/layoutTags"
-                android:layout_width="150dp"
+            <GridView
+                android:id="@+id/gridCategorias"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="23dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txtTags"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="@color/grisClaro"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Tags"
-                    android:textAlignment="center"
-                    android:textColor="@color/azulOscuro"
-                    android:textSize="24dp" />
-
-                <GridView
-                    android:id="@+id/gridTags"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/grisClaro" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutCategorias"
-                android:layout_width="150dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="32dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/txtCategorias"
-                    android:layout_width="match_parent"
-                    android:layout_height="30dp"
-                    android:background="@color/grisClaro"
-                    android:fontFamily="sans-serif-medium"
-                    android:text="Categorías"
-                    android:textAlignment="center"
-                    android:textColor="@color/azulOscuro"
-                    android:textSize="24dp" />
-
-                <GridView
-                    android:id="@+id/gridCategorias"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/grisClaro" />
-            </LinearLayout>
+                android:background="@color/grisClaro" />
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>
