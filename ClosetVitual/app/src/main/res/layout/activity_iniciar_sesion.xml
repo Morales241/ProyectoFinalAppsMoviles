@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".IniciarSesion">
 
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="498dp"
+        android:layout_height="656dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_iniciar_sesion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ellipse_1" />
+
     <EditText
         android:id="@+id/txtCorreo"
         android:layout_width="298dp"
@@ -40,6 +51,7 @@
         android:layout_height="78dp"
         android:layout_marginTop="100dp"
         android:backgroundTint="@color/azulOscuro"
+        android:background="@drawable/fondo2detalleprenda"
         android:text="Iniciar Sesión"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,7 +75,7 @@
         app:layout_constraintTop_toBottomOf="@id/btn_iniciar_sesion" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imgInicioSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"

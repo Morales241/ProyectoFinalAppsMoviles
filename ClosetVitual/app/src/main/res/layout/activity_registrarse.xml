@@ -7,6 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".registrarse">
 
+
+    <ImageView
+        android:id="@+id/imgRegistro"
+        android:layout_width="426dp"
+        android:layout_height="637dp"
+        android:layout_marginTop="121dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ellipse_2" />
+
     <EditText
         android:id="@+id/et_nombre"
         android:layout_width="298dp"
@@ -68,6 +80,7 @@
         android:layout_height="78dp"
         android:layout_marginTop="68dp"
         android:backgroundTint="@color/azulOscuro"
+        android:background="@drawable/bonton_obalado"
         android:padding="12dp"
         android:text="Registrarse"
         android:textColor="@android:color/white"
