@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -22,25 +21,18 @@
             android:layout_height="match_parent"
             android:importantForAccessibility="no"
             app:icon="@drawable/leftarrow"
-            app:iconTint="#324A6C"
-            />
+            app:iconTint="#324A6C" />
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/mostaza"
             android:gravity="center"
             android:padding="16dp"
             android:text="Configuración de la cuenta"
             android:textColor="@color/azulOscuro"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            android:textSize="20sp" />
     </LinearLayout>
-
 
     <ImageView
         android:id="@+id/ivProfilePic"
@@ -49,55 +41,73 @@
         android:src="@drawable/user"
         android:scaleType="centerCrop"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutTitulo"
         android:layout_gravity="center"/>
 
-    <LinearLayout
-        android:id="@+id/llUserInfo"
+    <GridLayout
+        android:id="@+id/gridUserInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp"
+        android:columnCount="2"
+        android:rowCount="4"
         android:padding="16dp"
-        app:layout_constraintTop_toBottomOf="@id/ivProfilePic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        android:layout_marginTop="16dp">
 
         <TextView
-            android:id="@+id/tvName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Nombre: Beatriz Pinzón"
+            android:text="Nombre:"
             android:textSize="16sp"
             android:textColor="@color/azulOscuro" />
 
-        <TextView
-            android:id="@+id/tvUsername"
-            android:layout_width="wrap_content"
+        <EditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Usuario: secretariaEcoModa"
+            android:text="Beatriz Pinzón"
             android:textSize="16sp"
             android:textColor="@color/azulOscuro"
-            android:layout_marginTop="8dp" />
+            android:enabled="false" />
 
         <TextView
-            android:id="@+id/tvEmail"
-            android:layout_width="wrap_content"
+            android:text="Usuario:"
+            android:textSize="16sp"
+            android:textColor="@color/azulOscuro" />
+
+        <EditText
+            android:id="@+id/etUsername"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Correo: betty@gmail.com"
+            android:text="secretariaEcoModa"
             android:textSize="16sp"
             android:textColor="@color/azulOscuro"
-            android:layout_marginTop="8dp" />
+            android:enabled="false" />
 
         <TextView
-            android:id="@+id/tvPassword"
-            android:layout_width="wrap_content"
+            android:text="Correo:"
+            android:textSize="16sp"
+            android:textColor="@color/azulOscuro" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Contraseña: *******"
+            android:text="betty@gmail.com"
             android:textSize="16sp"
             android:textColor="@color/azulOscuro"
-            android:layout_marginTop="8dp" />
-    </LinearLayout>
+            android:enabled="false" />
+
+        <TextView
+            android:text="Contraseña:"
+            android:textSize="16sp"
+            android:textColor="@color/azulOscuro" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="*******"
+            android:textSize="16sp"
+            android:textColor="@color/azulOscuro"
+            android:enabled="false" />
+    </GridLayout>
 
     <Button
         android:id="@+id/btnEditProfile"
@@ -108,9 +118,5 @@
         android:backgroundTint="@color/azulOscuro"
         android:padding="16dp"
         android:layout_marginTop="24dp"
-        app:layout_constraintTop_toBottomOf="@id/llUserInfo"
         android:layout_gravity="center"/>
-
-
-
 </LinearLayout>
