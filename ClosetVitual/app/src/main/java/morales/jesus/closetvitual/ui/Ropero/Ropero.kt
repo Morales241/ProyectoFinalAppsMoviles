@@ -49,7 +49,7 @@ class Ropero : Fragment() {
 
         adaptador = OutfitAdapter(Outfits, navController)
 
-        val recyclerView: RecyclerView = root.findViewById(R.id.GridView)
+        val recyclerView: RecyclerView = root.findViewById(R.id.recyclerOutfits)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adaptador
 
@@ -122,13 +122,14 @@ class Ropero : Fragment() {
                 navController.navigate(R.id.detallePrenda)
             }
 
+            holder.recyclerView.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
             holder.recyclerView.adapter = prendaAdapter
         }
 
         override fun getItemCount(): Int = outfits.size
 
         class OutfitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val recyclerView: RecyclerView = view.findViewById(R.id.gridView)
+            val recyclerView: RecyclerView = view.findViewById(R.id.recyclePrendas)
         }
     }
 }

@@ -1,6 +1,7 @@
 package morales.jesus.closetvitual.ui.home
 
 import android.content.Context
+import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.Bundle
@@ -16,13 +17,17 @@ import android.widget.ImageView
 import android.widget.PopupMenu
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import morales.jesus.closetvitual.Conjunto
+import morales.jesus.closetvitual.MainActivity
 import morales.jesus.closetvitual.R
 import morales.jesus.closetvitual.databinding.FragmentHomeBinding
+import morales.jesus.closetvitual.ui.DetallePrenda.DetallePrenda
 
 class HomeFragment : Fragment() {
 
@@ -60,7 +65,7 @@ class HomeFragment : Fragment() {
 
         gridView.adapter = adaptador
 
-        val btnConfig:Button = root.findViewById(R.id.btnUsuario)
+        val btnConfig: Button = root.findViewById(R.id.btnUsuario)
 
         btnConfig.setOnClickListener {
             navController.navigate(R.id.navigation_configUsuario)
@@ -68,7 +73,7 @@ class HomeFragment : Fragment() {
         }
 
         val btnFiltro = root.findViewById<Button>(R.id.btnFiltro)
-        btnFiltro.setOnClickListener{
+        btnFiltro.setOnClickListener {
             showPopupMenu(it, root.context)
         }
 
@@ -76,7 +81,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showPopupMenu(view: View, contexto: Context) {
-        val popup = PopupMenu(contexto ,view)
+        val popup = PopupMenu(contexto, view)
         popup.menuInflater.inflate(R.menu.menu_filtros, popup.menu)
 
         popup.setOnMenuItemClickListener { item: MenuItem ->
@@ -84,18 +89,23 @@ class HomeFragment : Fragment() {
                 R.id.filtro_top -> {
                     true
                 }
+
                 R.id.filtro_bottom -> {
                     true
                 }
+
                 R.id.filtro_bodysuit -> {
                     true
                 }
+
                 R.id.filtro_shoes -> {
                     true
                 }
+
                 R.id.filtro_accessory -> {
                     true
                 }
+
                 else -> false
             }
         }
@@ -143,6 +153,10 @@ class HomeFragment : Fragment() {
             barraDeProgreso.progress = Conjunto.numeroUsos
             txtNumeroDeUsos.text = Conjunto.numeroUsos.toString()
 
+            imgPrenda.setOnClickListener {
+                val navController = (contexto as AppCompatActivity).findNavController(R.id.nav_host_fragment_activity_main)
+                navController.navigate(R.id.detallePrenda)
+            }
             return vista
         }
     }

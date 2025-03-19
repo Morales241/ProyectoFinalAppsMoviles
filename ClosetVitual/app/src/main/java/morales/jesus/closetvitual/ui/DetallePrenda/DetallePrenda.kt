@@ -1,37 +1,30 @@
 package morales.jesus.closetvitual.ui.DetallePrenda
 
 import android.content.Context
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.BaseAdapter
 import android.widget.Button
-import android.widget.GridView
+import android.widget.ListView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import morales.jesus.closetvitual.Conjunto
-import morales.jesus.closetvitual.ItemGridDetallePrenda
-import morales.jesus.closetvitual.Prenda
 import morales.jesus.closetvitual.R
 import morales.jesus.closetvitual.ui.home.HomeFragment
-import morales.jesus.closetvitual.ui.home.HomeFragment.AdaptadorConjunto
-import morales.jesus.closetvitual.ui.home.HomeFragment.Companion
-import morales.jesus.closetvitual.ui.home.HomeFragment.Companion.Conjuntos
-import morales.jesus.closetvitual.ui.home.HomeViewModel
+
 
 class DetallePrenda : Fragment() {
 
     private lateinit var detallePrendaViewModel: DetallePrendaViewModel
-    private var adaptadorCateforias: GridAdapter? = null
-    private var adaptadorTags: GridAdapter? = null
 
     companion object {
-        var categorias = ArrayList<ItemGridDetallePrenda>()
-        var tags = ArrayList<ItemGridDetallePrenda>()
+        var categorias = ArrayList<String>()
+        var tags = ArrayList<String>()
 
         var llave: Boolean = true
 
@@ -55,56 +48,51 @@ class DetallePrenda : Fragment() {
             inflater.inflate(R.layout.fragment_detalle_prenda, container, false)
         detallePrendaViewModel.text.observe(viewLifecycleOwner, Observer {
         })
-
-        if (HomeFragment.llave) {
+        if (llave) {
             cargarInfo()
-            HomeFragment.llave = false
 
+            llave = false
         }
+        val listVtags: ListView = root.findViewById(R.id.listViewTags)
+        val adapterTags = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, tags)
 
-        adaptadorCateforias = GridAdapter(root.context, categorias)
+        val listVcategorias: ListView = root.findViewById(R.id.listViewCategorias)
+        val adapterCategorias = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, categorias)
 
-        adaptadorTags = GridAdapter(root.context, tags)
+        listVtags.adapter = adapterTags
+        listVcategorias.adapter = adapterCategorias
 
-        val gridView: GridView = root.findViewById(R.id.gridCategorias)
+        Log.d("DetallePrenda", "Tags: $tags")
+        Log.d("DetallePrenda", "Categorias: $categorias")
+        Log.d("DetallePrenda", "ListView Tags Adapter Count: ${listVtags.adapter.count}")
+        Log.d(
+            "DetallePrenda",
+            "ListView Categorias Adapter Count: ${listVcategorias.adapter.count}"
+        )
 
-        val gridView2: GridView = root.findViewById(R.id.gridTags)
 
-        gridView.adapter = adaptadorCateforias
-
-        gridView2.adapter = adaptadorTags
-
-        val btnRegresar:Button = root.findViewById(R.id.btnRegresarAropero)
+        val btnRegresar: Button = root.findViewById(R.id.btnRegresarAropero)
 
         btnRegresar.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
-
 
         return root
     }
 
     fun cargarInfo() {
         categorias.addAll(
-            listOf(
-                ItemGridDetallePrenda("Casual"),
-                ItemGridDetallePrenda("Deportivo"),
-                ItemGridDetallePrenda("Formal")
-            )
+            listOf("Casual", "Deportivo", "Formal")
         )
 
         tags.addAll(
-            listOf(
-                ItemGridDetallePrenda("chido"),
-                ItemGridDetallePrenda("Pa fiesta"),
-                ItemGridDetallePrenda("Navidad")
-            )
+            listOf("chido", "Pa fiesta", "Navidad")
         )
 
     }
 
 
-    class GridAdapter(val context: Context, val items: List<ItemGridDetallePrenda>) :
+    class GridAdapter(val context: Context, val items: List<itemDetallePrenda>) :
         BaseAdapter() {
 
         override fun getCount(): Int = items.size

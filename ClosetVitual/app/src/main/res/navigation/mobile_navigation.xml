@@ -18,11 +18,6 @@
         android:label="fragment_ropero"
         tools:layout="@layout/fragment_ropero" />
 
-    <fragment
-        android:id="@+id/navigation_Outfits"
-        android:name="morales.jesus.closetvitual.ui.Outfits.Outfits"
-        android:label="fragment_outfits"
-        tools:layout="@layout/fragment_outfits" />
 
     <fragment
         android:id="@+id/navigation_configUsuario"
@@ -36,17 +31,12 @@
         android:label="fragment_detalle_prenda"
         tools:layout="@layout/fragment_detalle_prenda" />
 
-    <activity
-        android:id="@+id/mainActivity"
-        android:name="morales.jesus.closetvitual.MainActivity"
-        android:label="fragment_outfits"
-        tools:layout="@layout/fragment_outfits" />
-
-
     <fragment
-        android:id="@+id/fragment_registrar_outfit"
+        android:id="@+id/navigation_Outfits"
         android:name="morales.jesus.closetvitual.fragment_registrar_outfit"
-        android:label="fragment_registrar_outfit" />
+        android:label="fragment_registrar_outfit"
+        tools:layout="@layout/fragment_registrar_outfit"/>
+
     <fragment
         android:id="@+id/navigation_NuevaPrenda"
         android:name="morales.jesus.closetvitual.ui.NewPrenda.fragment_newPrenda"

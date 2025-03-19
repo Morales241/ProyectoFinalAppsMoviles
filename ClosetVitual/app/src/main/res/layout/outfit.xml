@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="160dp">
 
     <LinearLayout
         android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:orientation="vertical"
-        android:background="@drawable/fondo_conjunto">
-
+        android:background="@drawable/fondo_conjunto"
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/gridView"
+            android:id="@+id/recyclePrendas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="4dp"
-            android:layout_marginLeft="25dp"
+            android:importantForAccessibility="no"
             android:orientation="horizontal"
-            android:scrollbars="horizontal"
-            android:importantForAccessibility="no"/>
+            android:scrollbars="horizontal" />
 
     </LinearLayout>
 </LinearLayout>

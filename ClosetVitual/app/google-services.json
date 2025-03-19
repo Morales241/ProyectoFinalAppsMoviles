@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "88564109410",
+    "project_id": "closetvirtual-bd934",
+    "storage_bucket": "closetvirtual-bd934.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:88564109410:android:bdef23485766a59184013b",
+        "android_client_info": {
+          "package_name": "morales.jesus.closetvitual"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBwLw4t4l2gZy2Rsq6MB5LlF9c5jgdu_Ng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

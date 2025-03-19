@@ -20,7 +20,7 @@
             android:id="@+id/txtNombreUsuario"
             android:layout_width="292dp"
             android:layout_height="80dp"
-            android:layout_marginTop="-12dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/bienvenidoUsuario"
             android:textAlignment="center"
@@ -31,6 +31,8 @@
             android:id="@+id/btnUsuario"
             android:layout_width="match_parent"
             android:layout_height="70dp"
+
+            android:layout_marginTop="25dp"
             android:backgroundTint="@color/mostaza"
             android:outlineSpotShadowColor="@color/mostaza"
             android:outlineAmbientShadowColor="@color/mostaza"

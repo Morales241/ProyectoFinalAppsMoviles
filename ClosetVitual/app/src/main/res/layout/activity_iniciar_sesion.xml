@@ -8,12 +8,12 @@
     tools:context=".IniciarSesion">
 
     <EditText
-        android:id="@+id/et_nombre"
+        android:id="@+id/txtCorreo"
         android:layout_width="298dp"
         android:layout_height="54dp"
         android:layout_marginTop="336dp"
         android:background="@drawable/bonton_obalado"
-        android:hint="Nombre"
+        android:hint="Correo"
         android:padding="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_nombre" />
+        app:layout_constraintTop_toBottomOf="@id/txtCorreo" />
 
     <Button
         android:id="@+id/btn_iniciar_sesion"

@@ -27,9 +27,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
 
-
-
-
         val navView: BottomNavigationView = binding.navView
 
 
