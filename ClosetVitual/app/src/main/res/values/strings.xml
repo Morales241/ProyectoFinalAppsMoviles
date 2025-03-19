@@ -23,6 +23,7 @@
     <string name="s">Si</string>
     <string name="no">No</string>
     <string name="registrar_prenda">Registrar Prenda</string>
+    <string name="registra_tu_outfit">registra tu outfit</string>
     <string-array name="tipo_de_prenda_array">
         <item>Accesorio</item>
         <item>Pantalón</item>
