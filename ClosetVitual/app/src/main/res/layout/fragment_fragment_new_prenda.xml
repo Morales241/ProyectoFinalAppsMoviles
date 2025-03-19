@@ -13,8 +13,7 @@
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="20dp"
-        android:elevation="6dp"
-        android:paddingTop="200dp">
+        android:elevation="6dp">
 
         <ImageView
             android:layout_width="32dp"
@@ -32,134 +31,145 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-
-    <GridLayout
-        android:id="@+id/fragment_new_prenda"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="686dp"
-        android:layout_marginTop="32dp"
-        android:background="@color/grisClaro"
-        android:columnCount="2"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            android:layout_columnSpan="2"
-            android:text="Nombre:"
-            android:textStyle="bold"
-            android:layout_marginTop="50dp"/>
-
-        <EditText
-            android:id="@+id/editTextNombre"
+        <GridLayout
+            android:id="@+id/fragment_new_prenda"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:layout_columnSpan="2"
-            android:layout_marginTop="4dp"
-            android:background="@color/white"
-            android:hint="Ingresa el nombre" />
-
-        <TextView
             android:layout_height="wrap_content"
-            android:layout_columnSpan="2"
-            android:layout_gravity="end"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="175dp"
-            android:text="Foto:"
-            android:textStyle="bold" />
+            android:layout_marginTop="32dp"
+            android:columnCount="2"
+            android:padding="16dp"
+            android:background="@drawable/ropero"
+          >
 
-        <ImageButton
-            android:id="@+id/btn_editar_foto"
-            android:layout_width="50dp"
-            android:layout_height="46dp"
-            android:layout_columnSpan="2"
-            android:layout_gravity="center"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Editar foto"
-            android:scaleType="centerInside"
-            android:src="@drawable/baseline_add_circle_outline_24" />
+            <TextView
+                android:layout_columnSpan="2"
+                android:textSize="20dp"
+                android:text="Nombre:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="50dp"/>
 
-        <TextView
-            android:layout_columnSpan="2"
-            android:layout_marginTop="10dp"
-            android:text="Tipo de prenda:"
-            android:textStyle="bold" />
+            <EditText
+                android:id="@+id/editTextNombre"
+                android:layout_width="match_parent"
+                android:layout_height="49dp"
+                android:layout_columnSpan="2"
+                android:layout_marginTop="4dp"
+                android:background="@color/white"
+                android:hint="Ingresa el nombre" />
 
-        <Spinner
-            android:id="@+id/spinner_tipo_prenda"
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_columnSpan="2"
-            android:layout_marginTop="4dp"
-            android:entries="@array/tipo_de_prenda_array" />
+            <TextView
+                android:layout_columnSpan="2"
+                android:textSize="20dp"
+                android:text="Foto:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:layout_columnSpan="2"
-            android:layout_marginTop="10dp"
-            android:text="Tags:"
-            android:textStyle="bold" />
+            <ImageButton
+                android:id="@+id/btn_editar_foto"
+                android:layout_width="50dp"
+                android:layout_height="46dp"
+                android:layout_columnSpan="2"
+                android:layout_gravity="center"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Editar foto"
+                android:scaleType="centerInside"
+                android:src="@drawable/baseline_add_circle_outline_24" />
 
-        <Spinner
-            android:id="@+id/spinner_tags"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:layout_columnSpan="2"
-            android:layout_marginTop="4dp" />
+            <TextView
+                android:textSize="20dp"
+                android:text="Tipo de prenda:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_columnSpan="2"/>
 
-        <TextView
-            android:layout_columnSpan="2"
-            android:text="Color:"
-            android:textStyle="bold" />
+            <Spinner
+                android:id="@+id/spinner_tipo_prenda"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_columnSpan="2"
+                android:background="@color/white"
+                android:entries="@array/tipo_de_prenda_array" />
 
-        <ImageButton
-            android:id="@+id/btn_editar_color"
-            android:layout_width="103dp"
-            android:layout_height="71dp"
-            android:layout_columnSpan="2"
-            android:layout_gravity="center"
-            android:layout_marginTop="4dp"
-            android:background="@null"
-            android:contentDescription="Seleccionar color"
-            android:scaleType="fitCenter"
-            android:src="@drawable/circulo" />
+            <TextView
+                android:textSize="20dp"
+                android:text="Tags:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_columnSpan="2"
+                android:layout_marginTop="10dp"/>
 
+            <Spinner
+                android:id="@+id/spinner_tags"
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:layout_columnSpan="2"
+                android:background="@color/white" />
 
-        <TextView
-            android:layout_columnSpan="2"
-            android:layout_marginTop="10dp"
-            android:text="Estampada (Sí/No):"
-            android:textStyle="bold" />
+            <TextView
+                android:textSize="20dp"
+                android:text="Color:"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_columnSpan="2"/>
 
-        <RadioGroup
-            android:id="@+id/radioGroupEstampado"
-            android:layout_columnSpan="2"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/btn_editar_color"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_columnSpan="2"
+                android:layout_gravity="center"
+                android:background="@null"
+                android:contentDescription="Seleccionar color"
+                android:scaleType="centerCrop"
+                android:src="@drawable/circulo" />
 
-            <RadioButton
-                android:id="@+id/radio_si"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:text="Sí" />
+            <TextView
+                android:textSize="20dp"
+                android:text="Estampada (Sí/No):"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_columnSpan="2"/>
 
-            <RadioButton
-                android:id="@+id/radio_no"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="No" />
-        </RadioGroup>
+            <RadioGroup
+                android:id="@+id/radioGroupEstampado"
+                android:layout_columnSpan="2"
+                android:layout_gravity="center"
+                android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/btnRegistarPrenda"
-            android:layout_width="250dp"
-            android:layout_height="60dp"
-            android:layout_columnSpan="2"
-            android:layout_marginTop="28dp"
-            android:layout_gravity="center"
-            android:background="@color/azulOscuro"
-            android:text="Registrar Prenda"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-    </GridLayout>
+                <RadioButton
+                    android:id="@+id/radio_si"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sí" />
+
+                <RadioButton
+                    android:id="@+id/radio_no"
+                    android:textColor="@color/white"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No" />
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btnRegistarPrenda"
+                android:layout_width="250dp"
+                android:layout_height="60dp"
+                android:layout_columnSpan="2"
+                android:layout_gravity="center"
+                android:background="@color/azulOscuro"
+                android:text="Registrar Prenda"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </GridLayout>
+    </ScrollView>
+
 </FrameLayout>
