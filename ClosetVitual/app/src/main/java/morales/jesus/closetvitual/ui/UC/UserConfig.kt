@@ -21,60 +21,39 @@ import morales.jesus.closetvitual.ui.Ropero.RoperoViewModel
 class UserConfig : Fragment() {
 
     private lateinit var userConfigViewModel: UserConfigViewModel
-    private lateinit var etName: EditText
-    private lateinit var etUsername: EditText
-    private lateinit var etEmail: EditText
-    private lateinit var etPassword: EditText
-    private lateinit var btnEditProfile: Button
-    private var isEditable = false
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        // TODO: Use the ViewModel
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View {
         userConfigViewModel = ViewModelProvider(this).get(UserConfigViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_user_config, container, false)
 
-        // Mock usuario
-        val usuarioMock = Usuario(R.drawable.user, "Beatriz Pinzón", "betty@gmail.com", "secretariaEcoModa", "*******")
+        val root =
+            inflater.inflate(R.layout.fragment_user_config, container, false)
 
-        // Referencias
-        etName = root.findViewById(R.id.etName)
-        etUsername = root.findViewById(R.id.etUsername)
-        etEmail = root.findViewById(R.id.etEmail)
-        etPassword = root.findViewById(R.id.etPassword)
-        btnEditProfile = root.findViewById(R.id.btnEditProfile)
-        val btnRegresar: Button = root.findViewById(R.id.btnRegresarHome)
+        userConfigViewModel.text.observe(viewLifecycleOwner, Observer {
+        })
 
-        // Setear datos en los EditText
-        etName.setText(usuarioMock.nombre)
-        etUsername.setText(usuarioMock.useraName)
-        etEmail.setText(usuarioMock.email)
-        etPassword.setText(usuarioMock.pass)
+        val navController = findNavController()
 
-        // Deshabilitar los campos al inicio
-        setEditable(false)
+        var btnRegresar:Button = root.findViewById(R.id.btnRegresarHome)
 
-        // Acción del botón Editar
-        btnEditProfile.setOnClickListener {
-            isEditable = !isEditable
-            setEditable(isEditable)
-            btnEditProfile.text = if (isEditable) "Guardar" else "Editar datos"
-        }
 
-        // Botón de regreso a Home
         btnRegresar.setOnClickListener {
-            findNavController().navigate(R.id.navigation_home)
+
+            navController.navigate(R.id.navigation_home)
         }
 
         return root
     }
-
-    private fun setEditable(enabled: Boolean) {
-        etName.isEnabled = enabled
-        etUsername.isEnabled = enabled
-        etEmail.isEnabled = enabled
-        etPassword.isEnabled = enabled
-    }
 }
+
 
 
