@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="#F5F5F5"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent"
+    tools:context=".ui.NewPrenda.fragment_newPrenda">
 
+    <!-- Encabezado -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="95dp"
@@ -20,175 +18,152 @@
             android:text="Registra tu outfit"
             android:fontFamily="sans-serif-medium"
             android:textColor="#FFFF"
-            android:textSize="26sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
 
+    <!-- Contenedor principal -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:orientation="horizontal"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
         android:padding="16dp">
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:orientation="vertical"
-            android:gravity="center">
+        <!-- Grid con 3 columnas -->
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:columnCount="3"
+            android:alignmentMode="alignMargins"
+            android:padding="8dp">
 
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
+            <!-- Primera columna (1 prenda grande) -->
+            <ImageButton
+                android:id="@+id/btnprenda1"
+                android:layout_width="100dp"
+                android:layout_height="140dp"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
+                android:src="@drawable/overoll"
+                android:contentDescription="Mono"
+                android:background="?attr/selectableItemBackground"
+                android:layout_column="0"
+                android:layout_rowSpan="2"
+                android:layout_gravity="center" />
 
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:src="@drawable/overoll"
-                    android:contentDescription="Overol"
-                    android:layout_marginBottom="16dp"
-                    android:layout_alignParentStart="true"/>
+            <!-- Segunda columna (4 prendas más pequeñas) -->
+            <ImageButton
+                android:id="@+id/btnprenda2"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
+                android:src="@drawable/gorra"
+                android:contentDescription="Gorra"
+                android:background="?attr/selectableItemBackground"
+                android:layout_column="1"
+                android:layout_row="0"
+                android:layout_gravity="center" />
 
-                <ImageButton
-                    android:id="@+id/btnprenda1"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/baseline_add_circle_outline_24"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@drawable/collar"
-                    android:contentDescription="Collar"
-                    android:layout_marginBottom="16dp"/>
-
-                <ImageButton
-                    android:id="@+id/btnprenda2"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/baseline_add_circle_outline_24"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/ic_prenda1"
-                    android:contentDescription="Prenda 1"
-                    android:layout_marginBottom="16dp"/>
-
-                <ImageButton
-                    android:id="@+id/btnprenda3"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/baseline_add_circle_outline_24"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="160dp"
-                    android:layout_height="120dp"
-                    android:src="@drawable/ic_prenda2"
-                    android:contentDescription="Prenda 2"
-                    android:layout_marginBottom="16dp"/>
-
-                <ImageButton
-                    android:id="@+id/btnprenda4"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/baseline_add_circle_outline_24"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="120dp"
-                    android:layout_height="130dp"
-                    android:src="@drawable/ic_prenda3"
-                    android:contentDescription="Prenda 3"
-                    android:layout_marginBottom="16dp"/>
-
-                <ImageButton
-                    android:id="@+id/btnprenda5"
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/baseline_add_circle_outline_24"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <ImageButton
+                android:id="@+id/btnprenda3"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
                 android:src="@drawable/ic_prenda1"
-                android:layout_marginBottom="8dp"/>
+                android:contentDescription="Suéter"
+                android:background="?attr/selectableItemBackground"
+                android:layout_column="1"
+                android:layout_row="1"
+                android:layout_gravity="center" />
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_prenda1"
-                android:layout_marginBottom="8dp" />
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+            <ImageButton
+                android:id="@+id/btnprenda4"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
                 android:src="@drawable/ic_prenda2"
-                android:layout_marginBottom="8dp"/>
+                android:contentDescription="Pantalón"
+                android:background="?attr/selectableItemBackground"
+                android:layout_column="1"
+                android:layout_row="2"
+                android:layout_gravity="center" />
 
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/ic_prenda2"/>
+            <ImageButton
+                android:id="@+id/btnprenda5"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
+                android:src="@drawable/ic_prenda3"
+                android:contentDescription="Zapatos"
+                android:background="?attr/selectableItemBackground"
+                android:layout_column="1"
+                android:layout_row="3"
+                android:layout_gravity="center" />
+
+            <!-- Tercera columna (2 prendas medianas) -->
+            <ImageButton
+                android:id="@+id/btnCollar"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
+                android:src="@drawable/collar"
+                android:contentDescription="Collar"
+                android:background="?attr/selectableItemBackground"
+                android:layout_column="2"
+                android:layout_row="0"
+                android:layout_gravity="center" />
+
+            <ImageButton
+                android:id="@+id/btnChamarra"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:scaleType="fitCenter"
+                android:padding="8dp"
+                android:src="@drawable/chamarraicono"
+                android:contentDescription="Chamarra"
+                android:background="?attr/selectableItemBackground"
+                android:layout_column="2"
+                android:layout_row="1"
+                android:layout_gravity="center" />
+
+        </GridLayout>
+
+        <!-- Botones -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="24dp">
+
+            <Button
+                android:id="@+id/btnRegistrarUso"
+                android:layout_width="0dp"
+                android:layout_height="78dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@color/azulOscuro"
+                android:text="REGISTRAR USO DE HOY"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnElegirOutfit"
+                android:layout_width="0dp"
+                android:layout_height="78dp"
+                android:layout_weight="1"
+                android:background="@color/azulOscuro"
+                android:text="ELEGIR OUTFIT"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingBottom="16dp">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registrar uso de hoy"
-            android:backgroundTint="#203F74"
-            android:textColor="@android:color/white"
-            android:layout_marginEnd="8dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Registrar Outfit"
-            android:backgroundTint="#203F74"
-            android:textColor="@android:color/white"/>
-    </LinearLayout>
-
-</LinearLayout>
+</FrameLayout>
