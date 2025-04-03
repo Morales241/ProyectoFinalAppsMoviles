@@ -35,7 +35,9 @@ class fragment_registrar_outfit : Fragment() {
             view.findViewById<ImageButton>(R.id.btnprenda2),
             view.findViewById<ImageButton>(R.id.btnprenda3),
             view.findViewById<ImageButton>(R.id.btnprenda4),
-            view.findViewById<ImageButton>(R.id.btnprenda5)
+            view.findViewById<ImageButton>(R.id.btnprenda5),
+            view.findViewById<ImageButton>(R.id.btnprenda6),
+            view.findViewById<ImageButton>(R.id.btnprenda7)
         )
 
         buttons.forEach { button ->

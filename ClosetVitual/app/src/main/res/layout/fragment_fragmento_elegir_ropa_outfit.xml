@@ -31,7 +31,7 @@
             android:gravity="center"
             android:fontFamily="sans-serif-medium"
             android:padding="16dp"
-            android:text="Tus Outfits"
+            android:text="Tus prendas"
             android:textColor="@color/white"
             android:textSize="26sp" />
     </LinearLayout>
