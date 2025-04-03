@@ -1,15 +1,18 @@
 package morales.jesus.closetvitual.ui.NewPrenda
 
-import android.app.AlertDialog
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
-import android.widget.GridLayout
-import android.widget.ImageButton
+import android.widget.*
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import morales.jesus.closetvitual.R
+import android.app.AlertDialog
 
 class fragment_newPrenda : Fragment() {
 
@@ -20,15 +23,23 @@ class fragment_newPrenda : Fragment() {
     private val viewModel: FragmentNewPrendaViewModel by viewModels()
 
     private lateinit var btnEditarColor: ImageButton
+    private lateinit var btnEditarFoto: ImageButton
 
     private val colores = listOf(
         Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW,
         Color.CYAN, Color.MAGENTA, Color.BLACK, Color.DKGRAY
     )
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    private val seleccionarImagen =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val data: Intent? = result.data
+                val imagenUri: Uri? = data?.data
+                imagenUri?.let {
+                    btnEditarFoto.setImageURI(it)
+                }
+            }
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,12 +48,17 @@ class fragment_newPrenda : Fragment() {
         val view = inflater.inflate(R.layout.fragment_fragment_new_prenda, container, false)
 
         btnEditarColor = view.findViewById(R.id.btn_editar_color)
+        btnEditarFoto = view.findViewById(R.id.btn_editar_foto)
 
-        btnEditarColor.setOnClickListener {
-            mostrarSelectorDeColor()
-        }
+        btnEditarColor.setOnClickListener { mostrarSelectorDeColor() }
+        btnEditarFoto.setOnClickListener { abrirGaleria() }
 
         return view
+    }
+    private fun abrirGaleria() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        seleccionarImagen.launch(intent)
     }
 
     private fun mostrarSelectorDeColor() {

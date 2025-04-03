@@ -5,170 +5,178 @@
     tools:context=".ui.NewPrenda.fragment_newPrenda">
 
     <LinearLayout
-        android:id="@+id/header_titulo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/bg_header_rounded"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="20dp"
-        android:elevation="6dp">
-
-        <ImageView
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:src="@drawable/ic_prenda1"
-            android:contentDescription="Ícono de prenda"
-            android:layout_marginEnd="12dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/registra_una_prenda"
-            android:textColor="#FFFFFF"
-            android:textSize="22sp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:orientation="vertical"
+        android:padding="16dp">
 
-        <GridLayout
-            android:id="@+id/fragment_new_prenda"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:columnCount="2"
-            android:padding="16dp"
-          >
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true">
 
-            <TextView
-                android:layout_columnSpan="2"
-                android:textSize="20dp"
-                android:text="Nombre:"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginTop="50dp"/>
-
-            <EditText
-                android:id="@+id/editTextNombre"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="49dp"
-                android:layout_columnSpan="2"
-                android:layout_marginTop="4dp"
-                android:background="@color/white"
-                android:hint="Ingresa el nombre" />
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_columnSpan="2"
-                android:textSize="20dp"
-                android:text="Foto:"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_marginTop="10dp"/>
-
-            <ImageButton
-                android:id="@+id/btn_editar_foto"
-                android:layout_width="50dp"
-                android:layout_height="46dp"
-                android:layout_columnSpan="2"
-                android:layout_gravity="center"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Editar foto"
-                android:scaleType="centerInside"
-                android:src="@drawable/baseline_add_circle_outline_24" />
-
-            <TextView
-                android:textSize="20dp"
-                android:text="Tipo de prenda:"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:layout_columnSpan="2"/>
-
-            <Spinner
-                android:id="@+id/spinner_tipo_prenda"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_columnSpan="2"
-                android:background="@color/white"
-                android:entries="@array/tipo_de_prenda_array" />
-
-            <TextView
-                android:textSize="20dp"
-                android:text="Tags:"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_columnSpan="2"
-                android:layout_marginTop="10dp"/>
-
-            <Spinner
-                android:id="@+id/spinner_tags"
-                android:layout_width="match_parent"
-                android:layout_height="41dp"
-                android:layout_columnSpan="2"
-                android:background="@color/white" />
-
-            <TextView
-                android:textSize="20dp"
-                android:text="Color:"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_columnSpan="2"/>
-
-            <ImageButton
-                android:id="@+id/btn_editar_color"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_columnSpan="2"
-                android:layout_gravity="center"
-                android:background="@null"
-                android:contentDescription="Seleccionar color"
-                android:scaleType="centerCrop"
-                android:src="@drawable/circulo" />
-
-            <TextView
-                android:textSize="20dp"
-                android:text="Estampada (Sí/No):"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:layout_columnSpan="2"/>
-
-            <RadioGroup
-                android:id="@+id/radioGroupEstampado"
-                android:layout_columnSpan="2"
-                android:layout_gravity="center"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_si"
-                    android:textColor="@color/white"
-                    android:layout_width="wrap_content"
+                <TextView
+                    android:id="@+id/textViewNombre"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sí" />
+                    android:text="Nombre:"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="8dp"/>
 
-                <RadioButton
-                    android:id="@+id/radio_no"
-                    android:textColor="@color/white"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editTextNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:hint="Ingresa el nombre"
+                    android:padding="10dp"/>
+
+                <TextView
+                    android:id="@+id/textViewFoto"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No" />
-            </RadioGroup>
+                    android:text="Foto:"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp"/>
 
-            <Button
-                android:id="@+id/btnRegistarPrenda"
-                android:layout_width="250dp"
-                android:layout_height="60dp"
-                android:layout_columnSpan="2"
-                android:layout_gravity="center"
-                android:background="@color/azulOscuro"
-                android:text="Registrar Prenda"
-                android:textColor="@android:color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </GridLayout>
-    </ScrollView>
+                <ImageButton
+                    android:id="@+id/btn_editar_foto"
+                    android:layout_width="120dp"
+                    android:layout_height="120dp"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Editar foto"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baseline_add_circle_outline_24" />
 
+                <TextView
+                    android:id="@+id/textViewTipoPrenda"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tipo de prenda:"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_tipo_prenda"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white"
+                    android:entries="@array/tipo_de_prenda_array" />
+
+                <TextView
+                    android:id="@+id/textViewTags"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tags:"
+                    android:textSize="18sp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    android:layout_marginTop="12dp"/>
+
+                <Spinner
+                    android:id="@+id/spinner_tags"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="12dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                        <TextView
+                            android:id="@+id/textViewColor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Color:"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"/>
+
+                        <ImageButton
+                            android:id="@+id/btn_editar_color"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:background="@null"
+                            android:contentDescription="Seleccionar color"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/circulo" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center_horizontal">
+
+                        <TextView
+                            android:id="@+id/textViewEstampado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Estampado:"
+                            android:textSize="18sp"
+                            android:textColor="@color/black"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp"/>
+
+                        <RadioGroup
+                            android:id="@+id/radioGroupEstampado"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/radio_si"
+                                android:textColor="@color/black"
+                                android:text="Sí" />
+
+                            <RadioButton
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:id="@+id/radio_no"
+                                android:textColor="@color/black"
+                                android:text="No" />
+                        </RadioGroup>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnRegistarPrenda"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@color/azulOscuro"
+            android:text="Registrar Prenda"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="88dp" />
+    </LinearLayout>
 </FrameLayout>
