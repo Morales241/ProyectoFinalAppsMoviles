@@ -53,7 +53,7 @@ class fragmento_elegir_ropa_outfit : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adaptador
 
-        val btnRegresar: Button = root.findViewById(R.id.btnRegresar)
+        val btnRegresar: Button = root.findViewById(R.id.btnRegresarHome)
 
         btnRegresar.setOnClickListener {
             requireActivity().onBackPressedDispatcher.onBackPressed()
