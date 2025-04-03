@@ -10,14 +10,11 @@
 
     <ImageView
         android:id="@+id/imgRegistro"
-        android:layout_width="426dp"
-        android:layout_height="637dp"
-        android:layout_marginTop="121dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ellipse_2" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/ellipse_2"
+        tools:layout_editor_absoluteX="39dp"
+        tools:layout_editor_absoluteY="125dp" />
 
     <EditText
         android:id="@+id/et_nombre"
@@ -88,6 +85,15 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/et_confirmar_contrasena" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="340dp"
+        android:background="@color/azulOscuro"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_confirmar_contrasena"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/tv_ir_a_inicio_sesion"

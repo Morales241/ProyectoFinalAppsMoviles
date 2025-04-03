@@ -10,7 +10,7 @@
         android:layout_height="match_parent"
         android:text="Tag o categoría"
         android:textSize="20dp"
-        android:textColor="@color/azulOscuro"
+        android:textColor="@color/black"
         android:fontFamily="sans-serif-medium"
         android:textAlignment="center"/>
 
