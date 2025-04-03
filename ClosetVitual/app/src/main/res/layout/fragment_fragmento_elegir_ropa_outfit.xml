@@ -9,34 +9,32 @@
     android:background="@color/grisClaro"
     tools:context=".ui.Ropero.Ropero">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/layoutTitulo"
         android:layout_width="match_parent"
-        android:layout_height="165dp"
-        android:background="@color/mostaza">
-
-        <TextView
-            android:id="@+id/txtTitulo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/tusOutfits"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="32sp"
-            android:paddingTop="30dp"
-            android:gravity="center" />
+        android:layout_height="95dp"
+        android:background="@color/mostaza"
+        android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnRegresar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="50dp"
-            android:backgroundTint="@color/grisClaro"
-
+            android:id="@+id/btnRegresarHome"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:importantForAccessibility="no"
             app:icon="@drawable/leftarrow"
             app:iconTint="#324A6C" />
-    </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="sans-serif-medium"
+            android:padding="16dp"
+            android:text="Tus Outfits"
+            android:textColor="@color/white"
+            android:textSize="26sp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerOutfits"
