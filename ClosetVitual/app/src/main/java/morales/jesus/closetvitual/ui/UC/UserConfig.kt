@@ -1,6 +1,7 @@
 package morales.jesus.closetvitual.ui.UC
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,6 +14,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
+import morales.jesus.closetvitual.IniciarSesion
 import morales.jesus.closetvitual.R
 import morales.jesus.closetvitual.Usuario
 import morales.jesus.closetvitual.ui.Ropero.Ropero.Companion.Outfits
@@ -28,6 +31,7 @@ class UserConfig : Fragment() {
     private lateinit var etEmail: EditText
     private lateinit var etPassword: EditText
     private lateinit var btnEditProfile: Button
+    private lateinit var btnLogout: Button
     private var isEditable = false
 
     override fun onCreateView(
@@ -46,6 +50,7 @@ class UserConfig : Fragment() {
         etPassword = root.findViewById(R.id.etPassword)
         btnEditProfile = root.findViewById(R.id.btnEditProfile)
         val btnRegresar: Button = root.findViewById(R.id.btnRegresarHome)
+        btnLogout = root.findViewById(R.id.btnLogout)
 
         // Setear datos en los EditText
         etName.setText(usuarioMock.nombre)
@@ -61,6 +66,16 @@ class UserConfig : Fragment() {
             isEditable = !isEditable
             setEditable(isEditable)
             btnEditProfile.text = if (isEditable) "Guardar" else "Editar datos"
+        }
+
+
+        // Acción del botón Cerrar sesión
+        btnLogout.setOnClickListener {
+            FirebaseAuth.getInstance().signOut() // Cierra sesión en Firebase
+            val intent = Intent(requireActivity(), IniciarSesion::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // Limpia el back stack
+            startActivity(intent)
+            requireActivity().finish() // Cierra la actividad actual
         }
 
         // Botón de regreso a Home
