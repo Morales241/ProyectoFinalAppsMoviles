@@ -60,9 +60,9 @@ class Ropero : Fragment() {
         Outfits.add(
             Outfit(
                 listOf(
-                    Prenda(R.drawable.camisa_roja),
-                    Prenda(R.drawable.pans_negro),
-                    Prenda(R.drawable.zapatos_cafes)
+               //     Prenda(R.drawable.camisa_roja),
+                //    Prenda(R.drawable.pans_negro),
+                 //   Prenda(R.drawable.zapatos_cafes)
                 )
             )
         )
@@ -70,9 +70,9 @@ class Ropero : Fragment() {
         Outfits.add(
             Outfit(
                 listOf(
-                    Prenda(R.drawable.gorro_rosa),
-                    Prenda(R.drawable.camisa_roja),
-                    Prenda(R.drawable.pans_negro)
+             //       Prenda(R.drawable.gorro_rosa),
+              //      Prenda(R.drawable.camisa_roja),
+               //     Prenda(R.drawable.pans_negro)
                 )
             )
         )
@@ -91,7 +91,7 @@ class Ropero : Fragment() {
 
         override fun onBindViewHolder(holder: PrendaViewHolder, position: Int) {
             val prenda = prendas[position]
-            holder.imgPrenda.setImageResource(prenda.imagen)
+          //  holder.imgPrenda.setImageResource(prenda.imagen)
 
             holder.imgPrenda.setOnClickListener {
                 listener(prenda)

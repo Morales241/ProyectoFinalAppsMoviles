@@ -46,19 +46,19 @@ class calendario_visuall : Fragment() {
     }
 
     private fun mockPrendas() {
-        val prendasDia1 = listOf(
-            Prenda(R.drawable.camisa_roja),
-            Prenda(R.drawable.pans_negro)
-        )
+      //  val prendasDia1 = listOf(
+           // Prenda(R.drawable.camisa_roja),
+            //Prenda(R.drawable.pans_negro)
+       // )
 
-        val prendasDia2 = listOf(
-            Prenda(R.drawable.zapatos_cafes),
-            Prenda(R.drawable.gorro_rosa)
-        )
+        //val prendasDia2 = listOf(
+          //  Prenda(R.drawable.zapatos_cafes),
+           // Prenda(R.drawable.gorro_rosa)
+       // )
 
         // Simular prendas por fecha (en formato timestamp)
-        prendasMap[convertirFecha(2025, 2, 6)] = prendasDia1 // 6 de marzo de 2025
-        prendasMap[convertirFecha(2025, 2, 7)] = prendasDia2 // 7 de marzo de 2025
+       // prendasMap[convertirFecha(2025, 2, 6)] = prendasDia1 // 6 de marzo de 2025
+        //prendasMap[convertirFecha(2025, 2, 7)] = prendasDia2 // 7 de marzo de 2025
     }
 
     private fun convertirFecha(year: Int, month: Int, day: Int): Long {
@@ -89,8 +89,8 @@ class calendario_visuall : Fragment() {
 
         override fun onBindViewHolder(holder: PrendaViewHolder, position: Int) {
             val prenda = listaPrendas[position]
-            holder.imgPrenda.setImageResource(prenda.imagen)
-            holder.txtNombrePrenda.text = nombresPrendas[prenda.imagen] ?: "Prenda Desconocida"
+          //  holder.imgPrenda.setImageResource(prenda.imagen)
+        //    holder.txtNombrePrenda.text = nombresPrendas[prenda.imagen] ?: "Prenda Desconocida"
         }
 
         override fun getItemCount(): Int = listaPrendas.size
