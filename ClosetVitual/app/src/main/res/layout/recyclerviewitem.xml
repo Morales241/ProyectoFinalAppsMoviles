@@ -29,8 +29,8 @@
             app:shapeAppearanceOverlay="@style/roundedImageView" />
 
         <TextView
-            android:layout_width="120dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/recTitle"
             android:text="Title"
             android:textColor="@color/azulOscuro"
@@ -40,28 +40,37 @@
             android:layout_toEndOf="@+id/recImage" />
 
         <TextView
-            android:layout_width="80dp"
-            android:layout_height="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:id="@+id/recPriority"
             android:text="tipoPrenda"
             android:textColor="@color/azulOscuro"
-            android:textSize="20sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="20dp"
-            android:layout_toEndOf="@+id/recTitle" />
-
-        <TextView
-            android:layout_width="140dp"
-            android:layout_height="30dp"
-            android:id="@+id/recDesc"
-            android:text="Tag"
-            android:textColor="@color/azulOscuro"
             android:textSize="14sp"
-            android:layout_toEndOf="@id/recImage"
             android:layout_below="@id/recTitle"
+            android:layout_alignStart="@id/recTitle"
+            android:layout_marginTop="4dp"/>
+
+        <!-- Para que se vean los tags -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/recPriority"
+            android:layout_toEndOf="@id/recImage"
             android:layout_marginStart="20dp"
-            android:maxLines="1"
-            android:layout_marginBottom="12dp" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="12dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/tagsContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Aquí se acomodan los tags -->
+
+            </LinearLayout>
+        </HorizontalScrollView>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

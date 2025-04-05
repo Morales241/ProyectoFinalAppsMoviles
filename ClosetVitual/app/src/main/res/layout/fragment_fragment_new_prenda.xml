@@ -172,6 +172,7 @@
                                 android:layout_height="match_parent"
                                 android:id="@+id/radio_si"
                                 android:textColor="@color/black"
+                                android:buttonTint="@color/mostaza"
                                 android:text="Sí" />
 
                             <RadioButton
@@ -179,6 +180,7 @@
                                 android:layout_height="match_parent"
                                 android:id="@+id/radio_no"
                                 android:textColor="@color/black"
+                                android:buttonTint="@color/mostaza"
                                 android:text="No" />
                         </RadioGroup>
                     </LinearLayout>
