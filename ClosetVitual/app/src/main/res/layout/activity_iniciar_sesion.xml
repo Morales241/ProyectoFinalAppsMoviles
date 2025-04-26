@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
@@ -11,12 +12,33 @@
         android:id="@+id/imageView4"
         android:layout_width="498dp"
         android:layout_height="656dp"
-        android:layout_marginBottom="24dp"
         app:layout_constraintBottom_toTopOf="@+id/btn_iniciar_sesion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/ellipse_1" />
+
+    <ImageView
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-230dp"
+        android:src="@drawable/wearitletras"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+    <ImageView
+        android:id="@+id/imgInicioSesion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:src="@drawable/imageniniciosesion"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
 
     <EditText
         android:id="@+id/txtCorreo"
@@ -26,6 +48,7 @@
         android:background="@drawable/bonton_obalado"
         android:hint="Correo"
         android:padding="12dp"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,8 +73,8 @@
         android:layout_width="238dp"
         android:layout_height="78dp"
         android:layout_marginTop="100dp"
-        android:backgroundTint="@color/azulOscuro"
         android:background="@drawable/fondo2detalleprenda"
+        android:backgroundTint="@color/azulOscuro"
         android:text="Iniciar Sesión"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,14 +96,5 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/btn_iniciar_sesion" />
-
-    <ImageView
-        android:id="@+id/imgInicioSesion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/imageniniciosesion" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

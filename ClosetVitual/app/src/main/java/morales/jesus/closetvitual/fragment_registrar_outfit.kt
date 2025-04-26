@@ -5,24 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageButton
 import androidx.navigation.fragment.findNavController
-
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+import androidx.fragment.app.setFragmentResultListener
 
 class fragment_registrar_outfit : Fragment() {
 
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private val selectedPrendas = mutableMapOf<Int, String>()
+    private var currentBtnId: Int = -1
+    private lateinit var buttonIds: List<Int>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,33 +22,51 @@ class fragment_registrar_outfit : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_registrar_outfit, container, false)
 
-        val buttons = listOf(
-            view.findViewById<ImageButton>(R.id.btnprenda1),
-            view.findViewById<ImageButton>(R.id.btnprenda2),
-            view.findViewById<ImageButton>(R.id.btnprenda3),
-            view.findViewById<ImageButton>(R.id.btnprenda4),
-            view.findViewById<ImageButton>(R.id.btnprenda5),
-            view.findViewById<ImageButton>(R.id.btnprenda6),
-            view.findViewById<ImageButton>(R.id.btnprenda7)
+        buttonIds = listOf(
+            R.id.btnprenda1, R.id.btnprenda2, R.id.btnprenda3,
+            R.id.btnprenda4, R.id.btnprenda5, R.id.btnprenda6, R.id.btnprenda7
         )
 
-        buttons.forEach { button ->
+        buttonIds.forEach { id ->
+            val button = view.findViewById<ImageButton>(id)
             button.setOnClickListener {
+                currentBtnId = id
+                val bundle = Bundle().apply {
+                    putInt("btnPrendaId", id)
+                }
+                parentFragmentManager.setFragmentResult("solicitudSeleccionPrenda", bundle)
                 findNavController().navigate(R.id.action_registrarOutfit_to_elegirRopaOutfit)
             }
         }
 
-        return view
-    }
+        parentFragmentManager.setFragmentResultListener("resultadoSeleccionPrenda", this) { _, bundle ->
+            val nombre = bundle.getString("nombrePrenda")
+            val imageResId = bundle.getInt("imagenDrawableRes")
 
-    companion object {
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            fragment_registrar_outfit().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+            if (nombre != null) {
+                selectedPrendas[currentBtnId] = nombre
+            }
+
+            buttonIds.forEach { id ->
+                val button = view.findViewById<ImageButton>(id)
+                if (selectedPrendas.containsKey(id)) {
+                    button.setImageResource(R.drawable.logoseleccionado)
                 }
             }
+        }
+
+        val btnRegistrarUso = view.findViewById<Button>(R.id.btnRegistrarUso)
+        btnRegistrarUso.setOnClickListener {
+            if (selectedPrendas.isNotEmpty()) {
+                val resumenDialog = ResumenOutfitDialogFragment()
+                val bundle = Bundle().apply {
+                    putSerializable("prendasSeleccionadas", HashMap(selectedPrendas))
+                }
+                resumenDialog.arguments = bundle
+                resumenDialog.show(parentFragmentManager, "ResumenOutfit")
+            }
+        }
+
+        return view
     }
 }

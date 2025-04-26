@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,38 +12,43 @@
         android:id="@+id/layoutTitulo"
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:background="@color/mostaza"
-        android:orientation="horizontal">
+        android:background="@color/purpura"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
 
-        <Button
-            android:id="@+id/btnRegresarHome"
-            android:layout_width="60dp"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRegresarOutfit"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:importantForAccessibility="no"
-            app:icon="@drawable/leftarrow"
-            app:iconTint="#324A6C" />
+            android:backgroundTint="@color/purpura"
+            android:icon="@drawable/leftarrow"
+            android:text="regresar"
+            android:textColor="@color/purpuraClaro"
+            android:textSize="20dp"
+            app:iconGravity="textStart"
+            app:iconPadding="0dp" />
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:fontFamily="sans-serif-medium"
             android:padding="16dp"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"
             android:text="Tus prendas"
             android:textColor="@color/white"
-            android:textSize="26sp" />
+            android:textSize="24sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:scrollbars="vertical"
         android:layout_marginHorizontal="15dp"
         android:layout_marginBottom="75dp"
-        android:orientation="vertical"
-        android:importantForAccessibility="no" />
-
+        android:scrollbars="vertical"
+        android:orientation="vertical" />
 </LinearLayout>

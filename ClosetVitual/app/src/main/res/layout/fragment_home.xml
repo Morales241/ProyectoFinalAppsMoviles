@@ -5,35 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:background="@color/grisClaro"
+    android:background="@color/crema"
     tools:context=".ui.home.HomeFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/mostaza"
-        android:orientation="horizontal">
+        android:background="@color/crema"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:gravity="center_vertical">
 
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/logo"
+            android:layout_marginEnd="12dp"
+            android:contentDescription="@string/logo" />
 
         <TextView
             android:id="@+id/txtNombreUsuario"
-            android:layout_width="292dp"
-            android:layout_height="80dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:fontFamily="sans-serif-medium"
             android:text="@string/bienvenidoUsuario"
             android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="26dp" />
+            android:textColor="@color/black"
+            android:textSize="26sp" />
 
         <Button
             android:id="@+id/btnUsuario"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-
-            android:layout_marginTop="25dp"
-            android:backgroundTint="@color/mostaza"
+            android:backgroundTint="@color/crema"
             android:outlineSpotShadowColor="@color/mostaza"
             android:outlineAmbientShadowColor="@color/mostaza"
             app:icon="@drawable/user"
@@ -45,7 +50,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/mostaza"
+        android:background="@color/crema"
         android:orientation="horizontal">
 
         <EditText
@@ -70,10 +75,10 @@
             android:layout_marginLeft="8dp"
             android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@color/mostaza"
-            android:outlineSpotShadowColor="@color/mostaza"
-            android:outlineAmbientShadowColor="@color/mostaza"
-            android:shadowColor="@color/mostaza"
+            android:backgroundTint="@color/crema"
+            android:outlineSpotShadowColor="@color/purpuraClaro"
+            android:outlineAmbientShadowColor="@color/purpuraClaro"
+            android:shadowColor="@color/purpuraClaro"
             app:icon="@drawable/filter"
             app:iconTint="#324A6C" />
 

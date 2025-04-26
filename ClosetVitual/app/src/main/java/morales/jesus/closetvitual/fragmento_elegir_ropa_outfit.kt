@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import morales.jesus.closetvitual.ui.Ropero.RoperoViewModel
 import java.util.*
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 
 class fragmento_elegir_ropa_outfit(private val prendasSeleccionadas: List<String> = listOf()) : Fragment() {
     private lateinit var roperoViewModel: RoperoViewModel

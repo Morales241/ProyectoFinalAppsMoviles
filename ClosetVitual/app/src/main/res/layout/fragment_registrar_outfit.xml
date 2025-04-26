@@ -2,13 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.NewPrenda.fragment_newPrenda">
+    tools:context="morales.jesus.closetvitual.fragment_registrar_outfit">
 
     <!-- Encabezado -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:background="@color/mostaza"
+        android:background="@color/purpura"
         android:orientation="horizontal"
         android:gravity="center">
 
@@ -27,7 +27,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="16dp">
+        android:padding="16dp"
+        android:layout_marginTop="95dp">
 
         <GridLayout
             android:layout_width="wrap_content"
@@ -39,20 +40,20 @@
             <ImageButton
                 android:id="@+id/btnprenda1"
                 android:layout_width="100dp"
-                android:layout_height="140dp"
+                android:layout_height="150dp"
                 android:scaleType="fitCenter"
                 android:padding="8dp"
                 android:src="@drawable/overoll"
                 android:contentDescription="Mono"
                 android:background="?attr/selectableItemBackground"
                 android:layout_column="0"
-                android:layout_rowSpan="2"
+                android:layout_rowSpan="4"
                 android:layout_gravity="center" />
 
             <ImageButton
                 android:id="@+id/btnprenda2"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 android:padding="8dp"
                 android:src="@drawable/gorra"
@@ -64,8 +65,8 @@
 
             <ImageButton
                 android:id="@+id/btnprenda3"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 android:padding="8dp"
                 android:src="@drawable/ic_prenda1"
@@ -77,8 +78,8 @@
 
             <ImageButton
                 android:id="@+id/btnprenda4"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 android:padding="8dp"
                 android:src="@drawable/ic_prenda2"
@@ -90,8 +91,8 @@
 
             <ImageButton
                 android:id="@+id/btnprenda5"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 android:padding="8dp"
                 android:src="@drawable/ic_prenda3"
@@ -101,11 +102,10 @@
                 android:layout_row="3"
                 android:layout_gravity="center" />
 
-
             <ImageButton
                 android:id="@+id/btnprenda6"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 android:padding="8dp"
                 android:src="@drawable/collar"
@@ -117,8 +117,8 @@
 
             <ImageButton
                 android:id="@+id/btnprenda7"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:scaleType="fitCenter"
                 android:padding="8dp"
                 android:src="@drawable/chamarraicono"
@@ -127,7 +127,6 @@
                 android:layout_column="2"
                 android:layout_row="1"
                 android:layout_gravity="center" />
-
         </GridLayout>
 
         <LinearLayout
@@ -135,7 +134,8 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="24dp">
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp">
 
             <Button
                 android:id="@+id/btnRegistrarUso"
@@ -143,7 +143,6 @@
                 android:layout_height="78dp"
                 android:layout_marginEnd="8dp"
                 android:layout_weight="1"
-                android:background="@color/azulOscuro"
                 android:text="REGISTRAR USO DE HOY"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
@@ -154,7 +153,6 @@
                 android:layout_width="0dp"
                 android:layout_height="78dp"
                 android:layout_weight="1"
-                android:background="@color/azulOscuro"
                 android:text="ELEGIR OUTFIT"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"

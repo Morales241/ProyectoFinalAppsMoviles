@@ -18,9 +18,6 @@ import com.google.firebase.auth.FirebaseAuth
 import morales.jesus.closetvitual.IniciarSesion
 import morales.jesus.closetvitual.R
 import morales.jesus.closetvitual.Usuario
-import morales.jesus.closetvitual.ui.Ropero.Ropero.Companion.Outfits
-import morales.jesus.closetvitual.ui.Ropero.Ropero.Companion.llave
-import morales.jesus.closetvitual.ui.Ropero.Ropero.OutfitAdapter
 import morales.jesus.closetvitual.ui.Ropero.RoperoViewModel
 
 class UserConfig : Fragment() {

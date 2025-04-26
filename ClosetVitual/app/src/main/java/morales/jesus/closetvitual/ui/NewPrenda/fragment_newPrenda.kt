@@ -179,7 +179,7 @@ class fragment_newPrenda : Fragment() {
                 }
                 setOnClickListener {
                     btnEditarColor.setColorFilter(color)
-                    btnEditarColor.tag = color  // Se almacena el color seleccionado
+                    btnEditarColor.tag = color
                     alertDialog.dismiss()
                 }
             }

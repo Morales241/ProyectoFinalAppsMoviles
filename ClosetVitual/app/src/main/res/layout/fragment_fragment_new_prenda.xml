@@ -2,12 +2,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.NewPrenda.fragment_newPrenda">
+    tools:context=".ui.NewPrenda.fragment_newPrenda"
+    android:background="@color/crema">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:background="@color/mostaza"
+        android:background="@color/purpura"
         android:orientation="horizontal"
         android:gravity="center">
 
@@ -16,7 +17,7 @@
             android:layout_height="wrap_content"
             android:text="Añade una prenda"
             android:fontFamily="sans-serif-medium"
-            android:textColor="#FFFF"
+            android:textColor="@color/crema"
             android:textSize="26sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -45,7 +46,7 @@
                     android:layout_height="wrap_content"
                     android:text="Nombre:"
                     android:textSize="18sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/purpura"
                     android:textStyle="bold"
                     android:layout_marginTop="8dp"/>
 
@@ -63,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:text="Foto:"
                     android:textSize="18sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/purpura"
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"/>
 
@@ -83,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tipo de prenda:"
                     android:textSize="18sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/purpura"
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"/>
 
@@ -100,7 +101,7 @@
                     android:layout_height="wrap_content"
                     android:text="Tags:"
                     android:textSize="18sp"
-                    android:textColor="@color/black"
+                    android:textColor="@color/purpura"
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"/>
 
@@ -172,7 +173,7 @@
                                 android:layout_height="match_parent"
                                 android:id="@+id/radio_si"
                                 android:textColor="@color/black"
-                                android:buttonTint="@color/mostaza"
+                                android:buttonTint="@color/purpuraClaro"
                                 android:text="Sí" />
 
                             <RadioButton
@@ -180,7 +181,7 @@
                                 android:layout_height="match_parent"
                                 android:id="@+id/radio_no"
                                 android:textColor="@color/black"
-                                android:buttonTint="@color/mostaza"
+                                android:buttonTint="@color/purpuraClaro"
                                 android:text="No" />
                         </RadioGroup>
                     </LinearLayout>
@@ -193,9 +194,9 @@
             android:layout_width="match_parent"
             android:layout_marginTop="40dp"
             android:layout_height="60dp"
-            android:background="@color/azulOscuro"
             android:text="Registrar Prenda"
             android:textColor="@android:color/white"
+            android:buttonTint="@color/purpuraClaro"
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginBottom="88dp" />
