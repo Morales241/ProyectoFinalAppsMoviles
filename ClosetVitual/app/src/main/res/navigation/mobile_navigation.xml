@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/fragmento_elegir_ropa_outfit"
-        android:name="morales.jesus.closetvitual.ui.Ropero.Ropero"
+        android:name="morales.jesus.closetvitual.fragmento_elegir_ropa_outfit"
         android:label="fragment_fragmento_elegir_ropa_outfit"
         tools:layout="@layout/fragment_fragmento_elegir_ropa_outfit">
 

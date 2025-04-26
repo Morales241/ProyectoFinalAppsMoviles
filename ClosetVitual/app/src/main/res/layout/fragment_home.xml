@@ -4,83 +4,101 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@color/grisClaro"
     android:orientation="vertical"
-    android:background="@color/crema"
     tools:context=".ui.home.HomeFragment">
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/crema"
+        android:background="@color/grisClaro"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:padding="16dp">
 
         <ImageView
             android:layout_width="60dp"
             android:layout_height="60dp"
+            android:layout_marginEnd="35dp"
+            android:contentDescription="@string/logo"
             android:src="@drawable/logo"
-            android:layout_marginEnd="12dp"
-            android:contentDescription="@string/logo" />
+            android:backgroundTint="@color/grisClaro"/>
 
-        <TextView
-            android:id="@+id/txtNombreUsuario"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-medium"
-            android:text="@string/bienvenidoUsuario"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="26sp" />
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/bienvenidoUsuario"
+                android:textAlignment="center"
+                android:textColor="@color/azulFuerte"
+                android:textSize="23sp" />
+
+            <TextView
+                android:id="@+id/txtNombreUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Nombre usuario"
+                android:textAlignment="center"
+                android:textColor="@color/azulFuerte"
+                android:textSize="23sp" />
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/btnUsuario"
-            android:layout_width="match_parent"
+            android:layout_width="80dp"
             android:layout_height="70dp"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/transparent"
             android:backgroundTint="@color/crema"
-            android:outlineSpotShadowColor="@color/mostaza"
-            android:outlineAmbientShadowColor="@color/mostaza"
+            android:clickable="true"
+            android:stateListAnimator="@null"
             app:icon="@drawable/user"
-            app:iconTint="#324A6C"
-            android:shadowColor="@color/mostaza"/>
+            app:iconTint="#324A6C" />
+
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/crema"
+        android:background="@color/grisClaro"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/txtBuscarPrenda"
-            android:layout_width="279dp"
-            android:layout_height="30dp"
+            android:layout_width="275dp"
+            android:layout_height="35dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="13dp"
             android:layout_marginBottom="27dp"
             android:background="@drawable/bonton_obalado"
             android:hint="\tBusca una prenda"
-            android:textColorHint="@color/black"
             android:importantForAccessibility="no"
             android:textAlignment="viewStart"
-            android:textColor="@color/black"
+            android:textColor="@color/azulFuerte"
+            android:textColorHint="@color/azulFuerte"
+            android:paddingHorizontal="10dp"
             />
 
         <Button
             android:id="@+id/btnFiltro"
-            android:layout_width="70dp"
-            android:layout_height="48dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="10dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@color/crema"
-            android:outlineSpotShadowColor="@color/purpuraClaro"
-            android:outlineAmbientShadowColor="@color/purpuraClaro"
-            android:shadowColor="@color/purpuraClaro"
+            android:backgroundTint="@color/azulFuerte"
+            android:background="@android:color/transparent"
+            android:shadowColor="@color/azulFuerte"
             app:icon="@drawable/filter"
-            app:iconTint="#324A6C" />
+            app:iconTint="@color/azulFuerte" />
 
 
     </LinearLayout>
@@ -89,9 +107,9 @@
         android:id="@+id/ContenedorConjuntos"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:numColumns="1"
         android:layout_marginHorizontal="10dp"
-        android:verticalSpacing="15dp"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="75dp"/>
+        android:layout_marginBottom="75dp"
+        android:numColumns="1"
+        android:verticalSpacing="15dp" />
 </LinearLayout>

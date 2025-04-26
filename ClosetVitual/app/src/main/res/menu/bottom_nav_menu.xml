@@ -5,26 +5,30 @@
         android:id="@+id/navigation_home"
         android:icon="@drawable/baseline_home_24"
         android:title="@string/title_home"
-        android:iconTint="@color/mostaza"/>
+        android:iconTint="@color/azulFuerte"/>
 
     <item
         android:id="@+id/navigation_NuevaPrenda"
         android:icon="@drawable/baseline_add_circle_outline_24"
+        android:iconTint="@color/azulFuerte"
         android:title="@string/title_RegistroPrenda" />
 
     <item
         android:id="@+id/navigation_Ropero"
         android:icon="@drawable/baseline_checkroom_24"
+        android:iconTint="@color/azulFuerte"
         android:title="@string/title_Ropero" />
 
     <item
         android:id="@+id/navigation_Outfits"
         android:icon="@drawable/baseline_assignment_add_24"
+        android:iconTint="@color/azulFuerte"
         android:title="@string/title_Outfits" />
 
     <item
         android:id="@+id/navigation_Calendar"
         android:icon="@drawable/baseline_calendar_today_24"
+        android:iconTint="@color/azulFuerte"
         android:title="@string/title_Calendario" />
 
 </menu>

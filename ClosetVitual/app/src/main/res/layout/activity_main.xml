@@ -23,7 +23,7 @@
         android:id="@+id/separador"
         android:layout_width="365dp"
         android:layout_height="2dp"
-        android:background="@color/white"
+        android:background="@color/azulFuerte"
         app:layout_constraintBottom_toTopOf="@id/nav_view"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
@@ -34,12 +34,12 @@
         android:layout_height="wrap_content"
         android:background="@color/grisClaro"
         app:elevation="0dp"
-        app:itemIconTint="@color/purpuraClaro"
-        app:itemTextColor="@color/purpuraClaro"
+        app:itemIconTint="@color/azulFuerte"
+        app:itemTextColor="@color/transparent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        app:menu="@menu/bottom_nav_menu"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -15,9 +15,10 @@ import morales.jesus.closetvitual.ui.Ropero.RoperoViewModel
 import java.util.*
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.button.MaterialButton
 
 class fragmento_elegir_ropa_outfit(private val prendasSeleccionadas: List<String> = listOf()) : Fragment() {
-    private lateinit var roperoViewModel: RoperoViewModel
+    private lateinit var fermodel: ferModel
     private lateinit var dataList: ArrayList<Prenda>
     private lateinit var adapter: adaptadorPrendas
     private val db = FirebaseFirestore.getInstance()
@@ -28,7 +29,7 @@ class fragmento_elegir_ropa_outfit(private val prendasSeleccionadas: List<String
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        roperoViewModel = ViewModelProvider(this).get(RoperoViewModel::class.java)
+        fermodel = ViewModelProvider(this).get(ferModel::class.java)
         val root = inflater.inflate(R.layout.fragment_fragmento_elegir_ropa_outfit, container, false)
 
         val gridLayoutManager = GridLayoutManager(requireContext(), 1)
@@ -47,6 +48,11 @@ class fragmento_elegir_ropa_outfit(private val prendasSeleccionadas: List<String
             obtenerPrendasDeUsuario(userId)
         } else {
             Toast.makeText(requireContext(), "Usuario no encontrado", Toast.LENGTH_SHORT).show()
+        }
+
+        val botonRegresar: MaterialButton = root.findViewById(R.id.btnRegresarOutfit)
+        botonRegresar.setOnClickListener {
+            findNavController().navigate(R.id.action_elegirRopaOutfit_to_registrarOutfit)
         }
 
         return root

@@ -10,11 +10,13 @@
     <color name="Red">#CE0000</color>
     <color name="azulOscuro">#324A6C</color>
     <color name="mostaza">#4A4E69</color>
+    <color name="azulFuerte">#22223B</color>
     <color name="grisClaro">#DFDFDF</color>
     <color name="grisMasClaro">#F2F2F2</color>
     <color name="chip_background_color">#324A6C</color>
     <color name="transparent">#00000000</color>
     <color name="purpura">#22223B</color>
     <color name="purpuraClaro">#4A4E69</color>
+    <color name="violeta">#59445D</color>
     <color name="crema">#F2E9E4</color>
 </resources>

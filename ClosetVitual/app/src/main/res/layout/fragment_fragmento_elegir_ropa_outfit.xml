@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/grisClaro"
-    tools:context=".ui.Ropero.Ropero">
+    tools:context=".fragmento_elegir_ropa_outfit">
 
     <LinearLayout
         android:id="@+id/layoutTitulo"

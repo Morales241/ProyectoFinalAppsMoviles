@@ -5,7 +5,7 @@
     <string name="title_Ropero">Ropero</string>
     <string name="title_Outfits">Outfits</string>
     <string name="title_Calendario">Calendario</string>
-    <string name="bienvenidoUsuario">¡Bienvenido!\nNombre del usuario</string>
+    <string name="bienvenidoUsuario">¡Bienvenido!</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notificaciones</string>
     <string name="tusOutfits">Tus outfits</string>
@@ -15,6 +15,7 @@
     <string name="estampada_s_no">Estampado:</string>
     <string name="registra_una_prenda">Registra una prenda:</string>
     <string name="nombre">Nombre:</string>
+    <string name="ropero">Tus outfits</string>
     <string name="ingrese_nombre_de_su_prenda">Ingrese nombre de la prenda...</string>
     <string name="foto">Foto:</string>
     <string name="editar_foto">editar foto:</string>

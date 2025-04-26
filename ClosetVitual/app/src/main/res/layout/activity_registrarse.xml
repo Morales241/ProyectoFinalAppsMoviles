@@ -15,13 +15,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
+
     <ImageView
         android:id="@+id/imgRegistro"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srcCompat="@drawable/ellipse_2"
-        tools:layout_editor_absoluteX="39dp"
-        tools:layout_editor_absoluteY="125dp" />
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <EditText
         android:id="@+id/et_nombre"

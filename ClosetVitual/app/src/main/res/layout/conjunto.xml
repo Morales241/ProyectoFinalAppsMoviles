@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:clickable="true"
-    android:background="@color/grisClaro"
+    android:background="@color/crema"
     android:padding="10dp"
     android:layout_marginBottom="10dp">
 
@@ -45,7 +45,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:text="Nombre de la Prenda"
                 android:textAlignment="center"
-                android:textColor="@color/azulOscuro"
+                android:textColor="@color/azulFuerte"
                 android:textSize="16sp" />
 
             <ProgressBar
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="27dp"
                 android:max="100"
-                android:progress="5"
+                android:progress="60"
                 android:progressDrawable="@drawable/barra_de_progreso" />
         </LinearLayout>
 
@@ -66,7 +66,7 @@
             android:fontFamily="sans-serif-medium"
             android:paddingTop="10dp"
             android:text="5"
-            android:textColor="@color/mostaza"
+            android:textColor="@color/azulFuerte"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
