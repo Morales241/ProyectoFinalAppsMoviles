@@ -62,7 +62,7 @@
             android:clickable="true"
             android:stateListAnimator="@null"
             app:icon="@drawable/user"
-            app:iconTint="#324A6C" />
+            app:iconTint="@color/azulFuerte" />
 
 
     </LinearLayout>

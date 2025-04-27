@@ -63,5 +63,10 @@
         android:name="morales.jesus.closetvitual.CalendarioVisuall.calendario_visuall"
         android:label="fragment_calendario_visuall"
         tools:layout="@layout/fragment_calendario_visuall" />
+    <fragment
+        android:id="@+id/registrar_Nuevo_Outfit"
+        android:name="morales.jesus.closetvitual.registrar_Nuevo_Outfit"
+        android:label="fragment_registrar__nuevo__outfit"
+        tools:layout="@layout/fragment_registrar__nuevo__outfit" />
 
 </navigation>

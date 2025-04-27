@@ -168,6 +168,7 @@ class fragment_newPrenda : Fragment() {
         val colores = listOf(
             Color.RED, Color.GREEN, Color.BLUE, Color.YELLOW,
             Color.CYAN, Color.MAGENTA, Color.BLACK, Color.DKGRAY
+
         )
 
         colores.forEach { color ->

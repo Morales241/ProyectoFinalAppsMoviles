@@ -12,7 +12,7 @@
         android:id="@+id/layoutTitulo"
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:background="@color/purpura"
+        android:background="@color/azulFuerte"
         android:orientation="horizontal"
         android:gravity="center_vertical">
 
@@ -21,7 +21,7 @@
             style="@style/Widget.MaterialComponents.Button.Icon"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/purpura"
+            android:backgroundTint="@color/azulFuerte"
             android:icon="@drawable/leftarrow"
             android:text="regresar"
             android:textColor="@color/purpuraClaro"

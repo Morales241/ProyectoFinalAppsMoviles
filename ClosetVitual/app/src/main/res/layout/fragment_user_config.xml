@@ -12,24 +12,25 @@
         android:id="@+id/layoutTitulo"
         android:layout_width="match_parent"
         android:layout_height="95dp"
-        android:background="@color/mostaza"
+        android:background="@color/azulFuerte"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btnRegresarHome"
-            android:layout_width="60dp"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
+            android:layout_marginLeft="-10dp"
             android:importantForAccessibility="no"
-            app:icon="@drawable/leftarrow"
-            app:iconTint="#324A6C" />
+            android:background="@color/transparent"
+            app:icon="@drawable/leftarrow"/>
 
         <TextView
             android:id="@+id/tvTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_marginRight="26dp"
             android:fontFamily="sans-serif-medium"
-            android:padding="16dp"
             android:text="Configuración de la cuenta"
             android:textColor="@color/white"
             android:textSize="26sp" />
