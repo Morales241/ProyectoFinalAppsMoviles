@@ -61,10 +61,11 @@ class fragment_newPrenda : Fragment() {
         radioSi = view.findViewById(R.id.radio_si)
 
         btnEditarColor.setOnClickListener { mostrarSelectorDeColor() }
+
         btnEditarFoto.setOnClickListener { abrirGaleria() }
+
         btnRegistrarPrenda.setOnClickListener {
             registrarPrenda()
-            findNavController().navigate(R.id.navigation_home)
         }
 
         return view
@@ -136,6 +137,10 @@ class fragment_newPrenda : Fragment() {
                 .addOnSuccessListener {
                     Log.d("Firestore", "Prenda guardada exitosamente")
                     Toast.makeText(requireContext(), "Prenda guardada", Toast.LENGTH_SHORT).show()
+
+                    parentFragmentManager.setFragmentResult("prendaGuardada", Bundle())
+
+                    findNavController().navigate(R.id.navigation_home)
                 }
                 .addOnFailureListener { e ->
                     Log.e("Firestore", "Error al guardar la prenda", e)

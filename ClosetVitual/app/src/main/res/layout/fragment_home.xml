@@ -21,13 +21,14 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="35dp"
+            android:backgroundTint="@color/grisClaro"
             android:contentDescription="@string/logo"
-            android:src="@drawable/logo"
-            android:backgroundTint="@color/grisClaro"/>
+            android:src="@drawable/logo" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="170dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="vertical">
 
             <TextView
@@ -42,15 +43,19 @@
 
             <TextView
                 android:id="@+id/txtNombreUsuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="200dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="8dp"
+                android:ellipsize="end"
                 android:fontFamily="sans-serif-medium"
+                android:maxWidth="200dp"
                 android:text="Nombre usuario"
                 android:textAlignment="center"
                 android:textColor="@color/azulFuerte"
-                android:textSize="23sp" />
-        </LinearLayout>
+                android:textSize="23sp"
+                android:layout_height="30dp"/>
 
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnUsuario"
@@ -63,8 +68,8 @@
             app:icon="@drawable/user"
             app:iconTint="@color/azulFuerte" />
 
-
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -81,11 +86,12 @@
             android:background="@drawable/bonton_obalado"
             android:hint="\tBusca una prenda"
             android:importantForAccessibility="no"
+            android:paddingHorizontal="10dp"
             android:textAlignment="viewStart"
             android:textColor="@color/azulFuerte"
             android:textColorHint="@color/azulFuerte"
-            android:paddingHorizontal="10dp"
-            />
+            android:imeOptions="actionSearch"
+            android:inputType="text" />
 
         <Button
             android:id="@+id/btnFiltro"
@@ -93,8 +99,8 @@
             android:layout_height="50dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="20dp"
-            android:backgroundTint="@color/azulFuerte"
             android:background="@android:color/transparent"
+            android:backgroundTint="@color/azulFuerte"
             android:shadowColor="@color/azulFuerte"
             app:icon="@drawable/filter"
             app:iconTint="@color/azulFuerte" />
