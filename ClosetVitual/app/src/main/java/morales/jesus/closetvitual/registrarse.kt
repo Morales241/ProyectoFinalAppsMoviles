@@ -46,9 +46,6 @@ class registrarse : AppCompatActivity() {
                     et_contrasena.text.toString(),
                     et_nombre.text.toString()
                 )
-                val intent = Intent(this, IniciarSesion::class.java)
-                startActivity(intent)
-                finish()
             }
         }
 
@@ -64,39 +61,36 @@ class registrarse : AppCompatActivity() {
     }
 
     fun signUp(email: String, password: String, nombre: String) {
-        Log.d("INFO", "email: ${email}, password: ${password}")
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+                    user?.let {
+                        val usuario = hashMapOf(
+                            "nombre" to nombre,
+                            "email" to email
+                        )
 
-        // Registra al usuario en Firebase Authentication
-        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {
-                val user = auth.currentUser
-                user?.let {
-                    // Una vez que el usuario está registrado, creamos el documento en Firestore
-                    val usuario = hashMapOf(
-                        "nombre" to nombre,
-                        "email" to email
-                    )
+                        db.collection("Usuarios").document(it.uid)
+                            .set(usuario)
+                            .addOnSuccessListener {
+                                Log.d("Firestore", "Usuario registrado exitosamente")
+                                Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show()
 
-                    // Guardamos los datos del usuario en la colección "Usuarios"
-                    db.collection("Usuarios").document(it.uid)
-                        .set(usuario)
-                        .addOnSuccessListener {
-                            Log.d("Firebase Firestore", "Usuario registrado exitosamente")
-                        }
-                        .addOnFailureListener { e ->
-                            Log.w("Firebase Firestore", "Error al registrar usuario", e)
-                        }
+                                // Ahora sí navegas
+                                val intent = Intent(this, IniciarSesion::class.java)
+                                startActivity(intent)
+                                finish()
+                            }
+                            .addOnFailureListener { e ->
+                                Log.e("Firestore", "Error al guardar usuario", e)
+                                Toast.makeText(this, "Fallo al guardar en Firestore", Toast.LENGTH_LONG).show()
+                            }
+                    }
+                } else {
+                    Log.e("Auth", "Fallo en registro: ${task.exception}")
+                    Toast.makeText(this, "Registro falló: ${task.exception?.message}", Toast.LENGTH_LONG).show()
                 }
-            } else {
-                // Si el registro falla, mostramos un mensaje de error
-                Log.w("ERROR", "No se registro el usuario", task.exception)
-                Toast.makeText(
-                    baseContext,
-                    "El registro falló",
-                    Toast.LENGTH_SHORT,
-                ).show()
             }
-        }
     }
-
 }

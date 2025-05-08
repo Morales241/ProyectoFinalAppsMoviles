@@ -148,10 +148,16 @@ class fragment_newPrenda : Fragment() {
     }
 
     private fun initCloudinary() {
-        val config: MutableMap<String, String> = HashMap()
-        config["cloud_name"] = CLOUD_NAME
-        MediaManager.init(requireContext(), config)
+        try {
+            MediaManager.get()
+        } catch (e: IllegalStateException) {
+            val config: MutableMap<String, String> = HashMap()
+            config["cloud_name"] = CLOUD_NAME
+            MediaManager.init(requireContext().applicationContext, config)
+        }
     }
+
+
 
     private fun mostrarSelectorDeColor() {
         val builder = AlertDialog.Builder(requireContext())

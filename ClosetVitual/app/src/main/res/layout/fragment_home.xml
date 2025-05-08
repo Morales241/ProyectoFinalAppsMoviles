@@ -58,7 +58,6 @@
             android:layout_height="70dp"
             android:layout_marginLeft="10dp"
             android:background="@android:color/transparent"
-            android:backgroundTint="@color/crema"
             android:clickable="true"
             android:stateListAnimator="@null"
             app:icon="@drawable/user"

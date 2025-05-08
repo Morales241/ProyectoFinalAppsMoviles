@@ -211,7 +211,7 @@
                         android:id="@+id/txtTags"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:background="@color/crema"
+                        android:background="@color/grisMasClaro"
                         android:fontFamily="sans-serif-medium"
                         android:text="Tags"
                         android:textAlignment="center"
@@ -222,7 +222,7 @@
                         android:id="@+id/listViewTags"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/crema"/>
+                        android:background="@color/grisMasClaro"/>
 
                 </LinearLayout>
 
@@ -237,7 +237,7 @@
                         android:id="@+id/txtCategorias"
                         android:layout_width="match_parent"
                         android:layout_height="30dp"
-                        android:background="@color/crema"
+                        android:background="@color/grisMasClaro"
                         android:fontFamily="sans-serif-medium"
                         android:text="Categorías"
                         android:textAlignment="center"
@@ -248,8 +248,7 @@
                         android:id="@+id/listViewCategorias"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/crema" />
-
+                        android:background="@color/grisMasClaro" />
                 </LinearLayout>
             </LinearLayout>
 

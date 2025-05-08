@@ -40,6 +40,7 @@ android {
 }
 
 dependencies {
+
     implementation ("com.google.android.material:material:1.11.0")
     implementation("com.cloudinary:cloudinary-android:3.0.2")
     implementation("com.github.bumptech.glide:glide:4.16.0")
@@ -47,6 +48,7 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment:2.7.7")
     implementation("androidx.navigation:navigation-ui:2.7.7")
     implementation("com.google.android.material:material:1.6.0")
+    implementation ("com.github.bumptech.glide:glide:4.16.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
@@ -65,4 +67,5 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
 }

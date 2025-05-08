@@ -48,10 +48,7 @@ class Ropero : Fragment() {
         val root = inflater.inflate(R.layout.fragment_ropero, container, false)
         roperoViewModel.text.observe(viewLifecycleOwner, Observer {
         })
-        if (llave) {
-            cargarOutfits()
-            llave = false
-        }
+        cargarOutfits()
         val navController = findNavController()
         adaptador = OutfitAdapter(Outfits, navController)
         val recyclerView: RecyclerView = root.findViewById(R.id.recyclerOutfits)
