@@ -125,10 +125,7 @@ class IniciarSesion : AppCompatActivity() {
                                 Log.d("Firestore", "Usuario registrado exitosamente")
                                 Toast.makeText(this, "Usuario registrado", Toast.LENGTH_SHORT).show()
 
-                                // Ahora sí navegas
-                                val intent = Intent(this, IniciarSesion::class.java)
-                                startActivity(intent)
-                                finish()
+                                login(email, password)
                             }
                             .addOnFailureListener { e ->
                                 Log.e("Firestore", "Error al guardar usuario", e)
