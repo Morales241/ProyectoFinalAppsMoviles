@@ -33,7 +33,7 @@ class registrarse : AppCompatActivity() {
 
         val et_correo: EditText = findViewById(R.id.et_correo)
         val et_nombre: EditText = findViewById(R.id.et_nombre)
-        val et_contrasena: EditText = findViewById(R.id.et_contrasena)
+        val et_contrasena: EditText = findViewById(R.id.et_contrasenaRegister)
         val et_confirmar_contrasena: EditText = findViewById(R.id.et_confirmar_contrasena)
 
 
