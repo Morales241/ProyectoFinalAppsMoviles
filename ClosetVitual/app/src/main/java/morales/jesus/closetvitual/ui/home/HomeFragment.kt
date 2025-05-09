@@ -16,7 +16,6 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.getField
 import morales.jesus.closetvitual.Prenda
 import morales.jesus.closetvitual.R
 
@@ -172,6 +171,7 @@ class HomeFragment : Fragment() {
                 .collection("prendas")
                 .get()
                 .addOnSuccessListener { result ->
+                    Log.d("Ropero", "Documentos de outfits encontrados: ${result.size()} en la coleccion: prendas")
                     Conjuntos.clear()
                     for (document in result) {
                         val prenda = Prenda(
