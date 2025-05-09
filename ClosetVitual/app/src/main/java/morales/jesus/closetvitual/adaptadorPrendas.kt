@@ -16,7 +16,7 @@ import com.google.android.material.chip.Chip
 class adaptadorPrendas(
     private val context: Context,
     private var dataList: List<Prenda>,
-    private val onPrendaSelected: (String) -> Unit
+    private val onPrendaSelected: (Prenda) -> Unit
 ) : RecyclerView.Adapter<adaptadorPrendas.MyViewHolder>() {
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -83,7 +83,7 @@ class adaptadorPrendas(
 
         // Configurar click listener
         holder.recCard.setOnClickListener {
-            prenda.id?.let { id -> onPrendaSelected(id) }
+            onPrendaSelected(prenda)
         }
     }
 

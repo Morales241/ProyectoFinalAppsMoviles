@@ -31,15 +31,17 @@ class fragmento_elegir_ropa_outfit(private val prendasSeleccionadas: List<String
     ): View {
         fermodel = ViewModelProvider(this).get(ferModel::class.java)
         val root = inflater.inflate(R.layout.fragment_fragmento_elegir_ropa_outfit, container, false)
-
+        val categoriaFiltro = arguments?.getString("filtroCategoria")?.lowercase(Locale.ROOT) ?: ""
+        val origen = arguments?.getString("origen") ?: "desconocido"
         val gridLayoutManager = GridLayoutManager(requireContext(), 1)
         val recyclerView: RecyclerView = root.findViewById(R.id.recycleView)
         recyclerView.layoutManager = gridLayoutManager
 
         dataList = ArrayList()
-        adapter = adaptadorPrendas(requireContext(), dataList) { prendaId ->
-            seleccionarPrendaYSalir(prendaId)
+        adapter = adaptadorPrendas(requireContext(), dataList) { prenda ->
+            prenda.id?.let { seleccionarPrendaYSalir(it, prenda.tipo ?: "desconocido") }
         }
+
         recyclerView.adapter = adapter
 
         val user = FirebaseAuth.getInstance().currentUser
@@ -52,26 +54,36 @@ class fragmento_elegir_ropa_outfit(private val prendasSeleccionadas: List<String
 
         val botonRegresar: MaterialButton = root.findViewById(R.id.btnRegresarOutfit)
         botonRegresar.setOnClickListener {
-            findNavController().navigate(R.id.action_elegirRopaOutfit_to_registrarOutfit)
+            when (origen) {
+                "registrarOutfit" -> findNavController().navigate(R.id.action_elegirRopaOutfit_to_registrarOutfit)
+                "registrarOutfitNuevo" -> findNavController().navigate(R.id.action_fragmento_elegir_ropa_outfit_to_RNO)
+                else -> requireActivity().onBackPressedDispatcher.onBackPressed()
+            }
         }
+
 
         return root
     }
 
     private fun obtenerPrendasDeUsuario(userId: String) {
+        val categoriaFiltro = arguments?.getString("filtroCategoria")?.lowercase(Locale.ROOT) ?: ""
+
         db.collection("Usuarios").document(userId).collection("prendas")
             .get()
             .addOnSuccessListener { documents ->
                 dataList.clear()
                 for (document in documents) {
-                    val prenda = Prenda(
-                        id = document.id,
-                        nombre = document.getString("nombre"),
-                        tipo = document.getString("tipoPrenda"),
-                        tags = (document.get("tags") as? List<String> ?: listOf()),
-                        imagenUrl = document.getString("fotoUrl")
-                    )
-                    dataList.add(prenda)
+                    val tipo = document.getString("tipoPrenda") ?: continue
+                    if (tipo.lowercase(Locale.ROOT) == categoriaFiltro) {
+                        val prenda = Prenda(
+                            id = document.id,
+                            nombre = document.getString("nombre"),
+                            tipo = tipo,
+                            tags = (document.get("tags") as? List<String> ?: listOf()),
+                            imagenUrl = document.getString("fotoUrl")
+                        )
+                        dataList.add(prenda)
+                    }
                 }
                 adapter.notifyDataSetChanged()
             }
@@ -80,11 +92,22 @@ class fragmento_elegir_ropa_outfit(private val prendasSeleccionadas: List<String
             }
     }
 
-    private fun seleccionarPrendaYSalir(prendaId: String) {
+
+    private fun seleccionarPrendaYSalir(prendaId: String, tipoPrenda: String) {
+        val origen = arguments?.getString("origen") ?: "desconocido"
         val bundle = Bundle().apply {
             putString("prendaSeleccionadaId", prendaId)
+            putString("tipoPrenda", tipoPrenda)
         }
-        setFragmentResult("resultadoSeleccionPrenda", bundle)
-        requireActivity().onBackPressedDispatcher.onBackPressed()
+        setFragmentResult("resultadoSeleccionPrenda_$origen", bundle)
+
+        when (origen) {
+            "registrarOutfit" -> findNavController().navigate(R.id.action_elegirRopaOutfit_to_registrarOutfit)
+            "registrarOutfitNuevo" -> findNavController().navigate(R.id.action_fragmento_elegir_ropa_outfit_to_RNO)
+            else -> requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
     }
+
+
+
 }

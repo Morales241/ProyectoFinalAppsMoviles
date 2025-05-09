@@ -20,15 +20,17 @@ import com.cloudinary.android.callback.UploadCallback
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import morales.jesus.closetvitual.R
+import java.util.regex.Pattern
+
 
 class fragment_newPrenda : Fragment() {
     private val db = FirebaseFirestore.getInstance()
     private val auth = FirebaseAuth.getInstance()
-
     private val CLOUD_NAME = "dzc2lttq5"
     private val UPLOAD_PRESET = "wearIT"
     private var imageUri: Uri? = null
 
+    private lateinit var editTextTags: EditText
     private lateinit var btnEditarColor: ImageButton
     private lateinit var btnEditarFoto: ImageButton
     private lateinit var editTextNombre: EditText
@@ -55,7 +57,7 @@ class fragment_newPrenda : Fragment() {
         btnEditarColor = view.findViewById(R.id.btn_editar_color)
         btnEditarFoto = view.findViewById(R.id.btn_editar_foto)
         val btnRegistrarPrenda: Button = view.findViewById(R.id.btnRegistarPrenda)
-
+        editTextTags = view.findViewById(R.id.editTextTags)
         editTextNombre = view.findViewById(R.id.editTextNombre)
         spinnerTipoPrenda = view.findViewById(R.id.spinner_tipo_prenda)
         radioSi = view.findViewById(R.id.radio_si)
@@ -112,7 +114,8 @@ class fragment_newPrenda : Fragment() {
         val user = auth.currentUser
         if (user != null) {
             val userId = user.uid
-
+            val tagsTexto = editTextTags.text.toString()
+            val regex = Regex("^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ,\\s]*\$")
             val nombrePrenda = editTextNombre.text.toString().trim()
             val tipoPrenda = spinnerTipoPrenda.selectedItem.toString()
             val colorSeleccionado = btnEditarColor.tag as? Int ?: Color.GRAY
@@ -123,10 +126,19 @@ class fragment_newPrenda : Fragment() {
                 return
             }
 
+            if (!regex.matches(tagsTexto)) {
+                Toast.makeText(requireContext(), "Los tags solo pueden contener letras y comas", Toast.LENGTH_SHORT).show()
+                return
+            }
+
+            val tags = tagsTexto.split(",")
+                .map { it.trim() }
+                .filter { it.isNotEmpty() }
+
             val prenda = hashMapOf(
                 "nombre" to nombrePrenda,
                 "tipoPrenda" to tipoPrenda,
-                "tags" to listOf("moda", "casual"),
+                "tags" to tags,
                 "color" to colorSeleccionado,
                 "estampado" to estampado,
                 "fotoUrl" to urlImagen

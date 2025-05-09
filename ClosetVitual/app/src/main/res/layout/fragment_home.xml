@@ -49,7 +49,7 @@
                 android:ellipsize="end"
                 android:fontFamily="sans-serif-medium"
                 android:maxWidth="200dp"
-                android:text="Nombre usuario"
+                android:text="NU"
                 android:textAlignment="center"
                 android:textColor="@color/azulFuerte"
                 android:textSize="23sp"

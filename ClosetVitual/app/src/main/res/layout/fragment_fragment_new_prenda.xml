@@ -76,7 +76,7 @@
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:contentDescription="Editar foto"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/baseline_add_circle_outline_24" />
+                    android:src="@drawable/_circle_outline_24" />
 
                 <TextView
                     android:id="@+id/textViewTipoPrenda"
@@ -105,11 +105,15 @@
                     android:textStyle="bold"
                     android:layout_marginTop="12dp"/>
 
-                <Spinner
-                    android:id="@+id/spinner_tags"
+
+                <EditText
+                    android:id="@+id/editTextTags"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
-                    android:background="@color/white" />
+                    android:background="@color/white"
+                    android:hint="Ej: casual, verano, favorito"
+                    android:inputType="text"
+                    android:padding="10dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

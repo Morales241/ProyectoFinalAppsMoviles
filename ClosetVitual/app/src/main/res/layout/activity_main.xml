@@ -21,7 +21,7 @@
 
     <View
         android:id="@+id/separador"
-        android:layout_width="365dp"
+        android:layout_width="348dp"
         android:layout_height="2dp"
         android:background="@color/azulFuerte"
         app:layout_constraintBottom_toTopOf="@id/nav_view"

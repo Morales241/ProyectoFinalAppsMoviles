@@ -27,6 +27,7 @@ class HomeFragment : Fragment() {
 
     companion object {
         var Conjuntos = ArrayList<Prenda>()
+        var ConjuntosFiltrados = ArrayList<Prenda>()
         var modoBusqueda = "nombre"
     }
 
@@ -79,19 +80,80 @@ class HomeFragment : Fragment() {
         }
 
 
+
         return root
     }
 
     private fun showPopupMenu(view: View, contexto: Context) {
         val popup = PopupMenu(contexto, view)
         popup.menuInflater.inflate(R.menu.menu_filtros, popup.menu)
+
         popup.setOnMenuItemClickListener { item: MenuItem ->
             when (item.itemId) {
-                R.id.filtro_top,
-                R.id.filtro_bottom,
-                R.id.filtro_bodysuit,
-                R.id.filtro_shoes,
-                R.id.filtro_accessory -> true
+                R.id.filtro_Sombreros -> {
+                    mostrarPorOpcionDeFiltro("Sombreros")
+
+                    true
+                }
+
+                R.id.filtro_Accesorios -> {
+                    mostrarPorOpcionDeFiltro("Accesorios")
+
+                    true
+                }
+
+                R.id.filtro_Camisetassimilares -> {
+                    mostrarPorOpcionDeFiltro("Camisetas y similares")
+
+                    true
+                }
+
+                R.id.filtro_Abrigoschaquetas -> {
+                    mostrarPorOpcionDeFiltro("Abrigos y chaquetas")
+
+                    true
+                }
+
+                R.id.filtro_pantalonesshorts -> {
+                    mostrarPorOpcionDeFiltro("Pantalones y shorts")
+
+
+                    true
+                }
+
+                R.id.filtro_zapatos -> {
+                    mostrarPorOpcionDeFiltro("Zapatos")
+
+                    true
+                }
+
+                R.id.filtro_bodysuits -> {
+                    mostrarPorOpcionDeFiltro("Bodysuits")
+                    true
+                }
+
+                R.id.filtro_tagPersonalizado -> {
+
+                    if (!modoBusqueda.equals("tag")) {
+                        modoBusqueda = "tag"
+
+                        Toast.makeText(
+                            contexto,
+                            "Modo búsqueda por tag activado",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    } else {
+                        modoBusqueda = "nombre"
+                        Toast.makeText(
+                            contexto,
+                            "Modo búsqueda por tag descativado",
+                            Toast.LENGTH_SHORT
+                        )
+                            .show()
+                    }
+                    true
+                }
 
                 else -> false
             }
@@ -118,45 +180,35 @@ class HomeFragment : Fragment() {
                             tipo = document.getString("tipoPrenda"),
                             tags = document.get("tags") as? List<String> ?: listOf(),
                             imagenUrl = document.getString("fotoUrl"),
-                            Color = (document.get("color") as? Long)?.toInt()
+                            Color = when (val rawColor = document.get("color")) {
+                                is Long -> rawColor.toInt()
+                                is String -> rawColor.toIntOrNull()
+                                is Int -> rawColor
+                                else -> null
+                            }
                         )
                         Log.d("prendadesdelabd", prenda.toString())
                         Conjuntos.add(prenda)
                     }
+
+                    ConjuntosFiltrados = ArrayList(Conjuntos)
+
                     adaptador?.notifyDataSetChanged()
                 }
                 .addOnFailureListener { e ->
                     e.printStackTrace()
                 }
         }
-    }
-
-    fun mostrarConisidenciasPorNombre(nombrePrenda: String) {
-
-        if (!nombrePrenda.isEmpty()) {
-
-            val resultado =
-                Conjuntos.filter { it.nombre?.contains(nombrePrenda, ignoreCase = true) == true }
-            adaptador?.let {
-                it.prendas.clear()
-                it.prendas.addAll(resultado)
-                it.notifyDataSetChanged()
-            }
-        } else {
-            cargarConjuntos()
-        }
-    }
-
-    fun mostrarPorOpcionDeFiltro() {
 
     }
 
-    fun mostrarPorTags(tagDeRopa: String) {
+    fun mostrarPorOpcionDeFiltro(tipo: String) {
+        Conjuntos = ArrayList(ConjuntosFiltrados)
+
         val resultado = Conjuntos.filter { prenda ->
-            prenda.tags.any { tag ->
-                tag.contains(tagDeRopa, ignoreCase = true)
-            }
+            prenda.tipo?.equals(tipo, ignoreCase = true) == true
         }
+
         adaptador?.let {
             it.prendas.clear()
             it.prendas.addAll(resultado)
@@ -164,6 +216,43 @@ class HomeFragment : Fragment() {
         }
     }
 
+    fun mostrarConisidenciasPorNombre(nombrePrenda: String) {
+        Conjuntos = ArrayList(ConjuntosFiltrados)
+
+        val resultado = if (nombrePrenda.isBlank()) {
+            ConjuntosFiltrados
+        } else {
+            Conjuntos.filter {
+                it.nombre?.contains(nombrePrenda, ignoreCase = true) == true
+            }
+        }
+
+        adaptador?.let {
+            it.prendas.clear()
+            it.prendas.addAll(resultado)
+            it.notifyDataSetChanged()
+        }
+    }
+
+    fun mostrarPorTags(tagDeRopa: String) {
+        Conjuntos = ArrayList(ConjuntosFiltrados)
+
+        val resultado = if (tagDeRopa.isBlank()) {
+            ConjuntosFiltrados
+        } else {
+            Conjuntos.filter { prenda ->
+                prenda.tags.any { tag ->
+                    tag.contains(tagDeRopa, ignoreCase = true)
+                }
+            }
+        }
+
+        adaptador?.let {
+            it.prendas.clear()
+            it.prendas.addAll(resultado)
+            it.notifyDataSetChanged()
+        }
+    }
 
     fun mostrarNombreUsuario(root: View) {
         val user = FirebaseAuth.getInstance().currentUser
@@ -183,12 +272,10 @@ class HomeFragment : Fragment() {
 
                 }
                 .addOnFailureListener {
-                    // Manejo de error
                     Log.e("Firestore", "Error al obtener nombre de usuario", it)
                 }
         }
     }
-
 
     class AdaptadorConjunto(
         private val contexto: Context,

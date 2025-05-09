@@ -27,13 +27,12 @@
     <string name="registra_tu_outfit">registra tu outfit</string>
     <string name="logo">logo</string>
     <string-array name="tipo_de_prenda_array">
-        <item>Accesorio</item>
-        <item>Pantalón</item>
-        <item>Camisa</item>
-        <item>Camiseta</item>
-        <item>Suéter</item>
-        <item>Chamarra</item>
+        <item>Sombreros</item>
+        <item>Accesorios</item>
+        <item>Camisetas y similares</item>
+        <item>Abrigos y chaquetas</item>
+        <item>Pantalones y shorts</item>
         <item>Zapatos</item>
-        <item>Tenis</item>
+        <item>Bodysuits</item>
     </string-array>
 </resources>

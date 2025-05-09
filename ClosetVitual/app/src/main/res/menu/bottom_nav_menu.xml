@@ -9,7 +9,7 @@
 
     <item
         android:id="@+id/navigation_NuevaPrenda"
-        android:icon="@drawable/baseline_add_circle_outline_24"
+        android:icon="@drawable/_circle_outline_24"
         android:iconTint="@color/azulFuerte"
         android:title="@string/title_RegistroPrenda" />
 

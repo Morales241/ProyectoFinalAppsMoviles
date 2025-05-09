@@ -22,11 +22,35 @@
             android:textStyle="bold" />
     </LinearLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="110dp"
+        android:layout_marginLeft="50dp"
+        android:text="Nombre:"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/azulFuerte"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/txtnombreOutfit"
+        android:importantForAccessibility="no"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="105dp"
+        android:layout_marginLeft="160dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/azulFuerte"
+        android:inputType="text"/>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_marginTop="95dp">
+        android:layout_marginTop="150dp">
 
         <GridLayout
             android:layout_width="wrap_content"
@@ -38,7 +62,7 @@
             android:layout_marginTop="20dp">
 
             <ImageButton
-                android:id="@+id/btnprenda1"
+                android:id="@+id/btnbodysuits"
                 android:layout_width="100dp"
                 android:layout_height="190dp"
                 android:scaleType="fitCenter"
@@ -51,7 +75,7 @@
                 android:layout_gravity="center" />
 
             <ImageButton
-                android:id="@+id/btnprenda2"
+                android:id="@+id/btnsombreros"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:scaleType="fitCenter"
@@ -66,7 +90,7 @@
                 android:layout_gravity="center" />
 
             <ImageButton
-                android:id="@+id/btnprenda3"
+                android:id="@+id/btnCamisetassimilares"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="fitCenter"
@@ -80,7 +104,7 @@
                 android:layout_gravity="center" />
 
             <ImageButton
-                android:id="@+id/btnprenda4"
+                android:id="@+id/btnpantalonesshorts"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="fitCenter"
@@ -94,7 +118,7 @@
                 android:layout_marginLeft="22dp"/>
 
             <ImageButton
-                android:id="@+id/btnprenda5"
+                android:id="@+id/btnzapatos"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:scaleType="fitCenter"
@@ -108,7 +132,7 @@
                 android:layout_marginLeft="20dp"/>
 
             <ImageButton
-                android:id="@+id/btnprenda6"
+                android:id="@+id/btnaccesorios"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:scaleType="fitCenter"
@@ -122,7 +146,7 @@
                 android:layout_marginLeft="16dp"/>
 
             <ImageButton
-                android:id="@+id/btnprenda7"
+                android:id="@+id/btnAbrigoschaquetas"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:scaleType="fitCenter"
@@ -141,18 +165,20 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="-20dp"
             android:layout_marginBottom="16dp">
 
             <Button
-                android:id="@+id/btnElegirOutfit"
-                android:layout_width="200dp"
-                android:layout_height="55dp"
+                android:id="@+id/btnRegistrarOutfit"
+                android:layout_width="220dp"
+                android:layout_height="60dp"
                 android:text="Registrar outfit"
                 android:textColor="@android:color/white"
                 android:textSize="16sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
+
+
 
 </FrameLayout>

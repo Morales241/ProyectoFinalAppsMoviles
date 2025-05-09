@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_elegirRopaOutfit_to_registrarOutfit"
             app:destination="@id/navigation_Outfits" />
+        <action
+            android:id="@+id/action_fragmento_elegir_ropa_outfit_to_RNO"
+            app:destination="@id/registrar_Nuevo_Outfit" />
     </fragment>
 
     <fragment
@@ -67,6 +70,10 @@
         android:id="@+id/registrar_Nuevo_Outfit"
         android:name="morales.jesus.closetvitual.registrar_Nuevo_Outfit"
         android:label="fragment_registrar__nuevo__outfit"
-        tools:layout="@layout/fragment_registrar__nuevo__outfit" />
+        tools:layout="@layout/fragment_registrar__nuevo__outfit" >
+        <action
+            android:id="@+id/action_RNO_to_fragmento_elegir_ropa_outfit"
+            app:destination="@id/fragmento_elegir_ropa_outfit" />
+    </fragment>
 
 </navigation>

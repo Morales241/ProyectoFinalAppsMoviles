@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -12,11 +13,13 @@ import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import morales.jesus.closetvitual.Outfit
@@ -49,8 +52,16 @@ class Ropero : Fragment() {
         roperoViewModel.text.observe(viewLifecycleOwner, Observer {
         })
         cargarOutfits()
+
         val navController = findNavController()
+
+        val btnNewOutfit: FloatingActionButton = root.findViewById(R.id.btnFlotante)
+        btnNewOutfit.setOnClickListener {
+            navController.navigate(R.id.registrar_Nuevo_Outfit)
+        }
+
         adaptador = OutfitAdapter(Outfits, navController)
+
         val recyclerView: RecyclerView = root.findViewById(R.id.recyclerOutfits)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = adaptador
@@ -59,8 +70,56 @@ class Ropero : Fragment() {
     }
 
     private fun cargarOutfits() {
+        val usuarioId = FirebaseAuth.getInstance().currentUser?.uid ?: return
 
+        db.collection("Usuarios")
+            .document(usuarioId)
+            .collection("outfitsRegistrados")
+            .get()
+            .addOnSuccessListener { documentos ->
+                Outfits.clear()
+
+                for (documento in documentos) {
+                    val prendasMap = documento.get("prendas") as? Map<*, *>
+                    if (prendasMap == null) continue
+
+                    val listaPrendas = mutableListOf<Prenda>()
+                    val totalPrendas = prendasMap.size
+                    var prendasCargadas = 0
+
+                    prendasMap.forEach { (_, prendaIdAny) ->
+                        val prendaId = prendaIdAny as? String ?: return@forEach
+
+                        db.collection("Usuarios")
+                            .document(usuarioId)
+                            .collection("prendas")
+                            .document(prendaId)
+                            .get()
+                            .addOnSuccessListener { prendaDoc ->
+                                val prenda = prendaDoc.toObject(Prenda::class.java)
+                                prenda?.let { listaPrendas.add(it) }
+
+                                prendasCargadas++
+                                if (prendasCargadas == totalPrendas) {
+                                    Outfits.add(Outfit(listaPrendas))
+                                    adaptador?.notifyDataSetChanged()
+                                }
+                            }
+                            .addOnFailureListener {
+                                prendasCargadas++
+                                if (prendasCargadas == totalPrendas) {
+                                    Outfits.add(Outfit(listaPrendas))
+                                    adaptador?.notifyDataSetChanged()
+                                }
+                            }
+                    }
+                }
+            }
+            .addOnFailureListener {
+                Toast.makeText(requireContext(), "Error al cargar outfits", Toast.LENGTH_SHORT).show()
+            }
     }
+
 
     class PrendaAdapter(
         val context: Context,
@@ -69,7 +128,8 @@ class Ropero : Fragment() {
     ) : RecyclerView.Adapter<PrendaAdapter.PrendaViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PrendaViewHolder {
-            val view = LayoutInflater.from(context).inflate(R.layout.prenda, parent, false)
+            val view = LayoutInflater.from(context).inflate(R.layout.fragment_ropero, parent, false)
+
             return PrendaViewHolder(view)
         }
 

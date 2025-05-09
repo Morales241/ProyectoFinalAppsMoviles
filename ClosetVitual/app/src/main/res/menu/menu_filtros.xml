@@ -2,36 +2,49 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/filtro_top"
+        android:id="@+id/filtro_Sombreros"
         android:layout_marginEnd="411dp"
         android:layout_marginBottom="731dp"
-        android:title="Top"
+        android:title="Sombreros"
         />
 
     <item
-        android:id="@+id/filtro_bottom"
+        android:id="@+id/filtro_Accesorios"
         android:layout_marginEnd="411dp"
         android:layout_marginBottom="731dp"
-        android:title="Bottom"
+        android:title="Accesorios"
         />
 
     <item
-        android:id="@+id/filtro_bodysuit"
+        android:id="@+id/filtro_Camisetassimilares"
         android:layout_marginEnd="411dp"
-        android:title="Bodysuit"
+        android:title="Camisetas y similares"
         />
 
     <item
-        android:id="@+id/filtro_shoes"
+        android:id="@+id/filtro_Abrigoschaquetas"
         android:layout_marginEnd="411dp"
-        android:title="Shoes"
+        android:title="Abrigos y chaquetas"
         />
 
     <item
-        android:id="@+id/filtro_accessory"
+        android:id="@+id/filtro_pantalonesshorts"
         android:layout_marginEnd="411dp"
-        android:title="Accessory"
+        android:title="Pantalones y shorts"
         />
+
+    <item
+        android:id="@+id/filtro_zapatos"
+        android:layout_marginEnd="411dp"
+        android:title="Zapatos"
+        />
+
+    <item
+        android:id="@+id/filtro_bodysuits"
+        android:layout_marginEnd="411dp"
+        android:title="Bodysuits"
+        />
+
 
     <item
         android:id="@+id/filtro_tagPersonalizado"
