@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.getField
 import morales.jesus.closetvitual.Prenda
 import morales.jesus.closetvitual.R
 
@@ -114,10 +115,12 @@ class HomeFragment : Fragment() {
                         val prenda = Prenda(
                             id = document.id,
                             nombre = document.getString("nombre"),
-                            tipo = document.getString("tipo"),
-                            tag = document.getString("tag"),
-                            imagenUrl = document.getString("imagenUrl")
+                            tipo = document.getString("tipoPrenda"),
+                            tags = document.get("tags") as? List<String> ?: listOf(),
+                            imagenUrl = document.getString("fotoUrl"),
+                            Color = (document.get("color") as? Long)?.toInt()
                         )
+                        Log.d("prendadesdelabd", prenda.toString())
                         Conjuntos.add(prenda)
                     }
                     adaptador?.notifyDataSetChanged()
@@ -131,7 +134,7 @@ class HomeFragment : Fragment() {
     fun mostrarConisidenciasPorNombre(nombrePrenda: String) {
 
         if (!nombrePrenda.isEmpty()) {
-            cargarConjuntos()
+
             val resultado =
                 Conjuntos.filter { it.nombre?.contains(nombrePrenda, ignoreCase = true) == true }
             adaptador?.let {
@@ -149,13 +152,18 @@ class HomeFragment : Fragment() {
     }
 
     fun mostrarPorTags(tagDeRopa: String) {
-        val resultado = Conjuntos.filter { it.tag?.contains(tagDeRopa, ignoreCase = true) == true }
+        val resultado = Conjuntos.filter { prenda ->
+            prenda.tags.any { tag ->
+                tag.contains(tagDeRopa, ignoreCase = true)
+            }
+        }
         adaptador?.let {
             it.prendas.clear()
             it.prendas.addAll(resultado)
             it.notifyDataSetChanged()
         }
     }
+
 
     fun mostrarNombreUsuario(root: View) {
         val user = FirebaseAuth.getInstance().currentUser
@@ -193,6 +201,7 @@ class HomeFragment : Fragment() {
 
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val prenda = prendas[position]
+            Log.d("DetallePrenda", "tipo: ${prenda.tipo}")
             val inflador = LayoutInflater.from(contexto)
             val vista = inflador.inflate(R.layout.conjunto, null)
 
@@ -200,6 +209,8 @@ class HomeFragment : Fragment() {
             val txtNombrePrenda: TextView = vista.findViewById(R.id.txtNombrePrenda)
             val barraDeProgreso: ProgressBar = vista.findViewById(R.id.barraDeProgreso)
             val txtNumeroDeUsos: TextView = vista.findViewById(R.id.txtNumeroDeUsosDePrendaxMes)
+
+            Log.d("DetallePrenda", "Imagen URL: ${prenda.imagenUrl}")
 
             Glide.with(contexto)
                 .load(prenda.imagenUrl)
@@ -221,7 +232,7 @@ class HomeFragment : Fragment() {
 
                 val navController = (contexto as AppCompatActivity)
                     .findNavController(R.id.nav_host_fragment_activity_main)
-                navController.navigate(R.id.detallePrenda)
+                navController.navigate(R.id.detallePrenda, bundle)
             }
 
             return vista

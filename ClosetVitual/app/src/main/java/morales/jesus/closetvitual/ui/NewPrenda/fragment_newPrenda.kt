@@ -115,7 +115,7 @@ class fragment_newPrenda : Fragment() {
 
             val nombrePrenda = editTextNombre.text.toString().trim()
             val tipoPrenda = spinnerTipoPrenda.selectedItem.toString()
-            val colorSeleccionado = btnEditarColor.tag?.toString() ?: "Sin color"
+            val colorSeleccionado = btnEditarColor.tag as? Int ?: Color.GRAY
             val estampado = radioSi.isChecked
 
             if (nombrePrenda.isEmpty()) {

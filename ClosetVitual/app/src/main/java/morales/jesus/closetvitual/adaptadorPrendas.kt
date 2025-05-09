@@ -49,21 +49,8 @@ class adaptadorPrendas(
         // Limpiar tags anteriores
         holder.tagsContainer.removeAllViews()
 
-        // Procesar tags (asumiendo que vienen como lista o string separado por comas)
-        val tags = when {
-            prenda.tag.isNullOrEmpty() -> emptyList()
-            prenda.tag!!.startsWith("[") && prenda.tag.endsWith("]") -> {
-                // Si es una lista en formato string (ej: "[tag1, tag2]")
-                prenda.tag.substring(1, prenda.tag.length - 1)
-                    .split(",")
-                    .map { it.trim() }
-                    .filter { it.isNotEmpty() }
-            }
-            else -> {
-                // Si es un string separado por comas
-                prenda.tag.split(",").map { it.trim() }.filter { it.isNotEmpty() }
-            }
-        }
+        // Usar directamente los tags como lista
+        val tags = prenda.tags ?: emptyList()
 
         // Agregar tags como Chips
         tags.forEach { tagText ->
@@ -84,17 +71,13 @@ class adaptadorPrendas(
                 )
             }
             val marginEnd = context.resources.getDimensionPixelSize(R.dimen.chip_margin_end)
-            (chip.layoutParams as? LinearLayout.LayoutParams)?.let {
-                it.marginEnd = marginEnd
-                chip.layoutParams = it
-            } ?: run {
-                val params = LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-                )
-                params.marginEnd = marginEnd
-                chip.layoutParams = params
-            }
+            val params = LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT
+            )
+            params.marginEnd = marginEnd
+            chip.layoutParams = params
+
             holder.tagsContainer.addView(chip)
         }
 

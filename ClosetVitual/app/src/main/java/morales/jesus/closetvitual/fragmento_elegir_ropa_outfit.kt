@@ -68,7 +68,7 @@ class fragmento_elegir_ropa_outfit(private val prendasSeleccionadas: List<String
                         id = document.id,
                         nombre = document.getString("nombre"),
                         tipo = document.getString("tipoPrenda"),
-                        tag = (document.get("tags") as? List<String> ?: listOf()).toString(),
+                        tags = (document.get("tags") as? List<String> ?: listOf()),
                         imagenUrl = document.getString("fotoUrl")
                     )
                     dataList.add(prenda)

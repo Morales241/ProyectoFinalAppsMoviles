@@ -8,6 +8,8 @@ data class Prenda(
     val id: String? = null,
     val nombre: String? = null,
     val tipo: String? = null,
-    val tag: String? = null,
-    val imagenUrl: String? = null
-):Parcelable
+    val tags: List<String> = emptyList(),
+    val imagenUrl: String? = null,
+    val Color: Int? = null
+) : Parcelable
+

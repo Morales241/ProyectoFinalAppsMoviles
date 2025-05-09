@@ -25,7 +25,7 @@
 
     <fragment
         android:id="@+id/detallePrenda"
-        android:name="morales.jesus.closetvitual.ui.DetallePrenda.DetallePrenda"
+        android:name="morales.jesus.closetvitual.ui.detalleprenda.DetallePrenda"
         android:label="fragment_detalle_prenda"
         tools:layout="@layout/fragment_detalle_prenda" />
 
