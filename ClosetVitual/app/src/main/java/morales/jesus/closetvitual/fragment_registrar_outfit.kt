@@ -90,6 +90,7 @@ class fragment_registrar_outfit : Fragment() {
                 viewModel.limpiar()
                 findNavController().navigate(R.id.navigation_Ropero)
             }
+            //prueba para ver si si va a funcionar
             .addOnFailureListener {
                 Toast.makeText(requireContext(), "Error al registrar outfit", Toast.LENGTH_SHORT).show()
             }
