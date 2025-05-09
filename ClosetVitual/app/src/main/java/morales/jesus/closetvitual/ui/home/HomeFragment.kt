@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import morales.jesus.closetvitual.Prenda
 import morales.jesus.closetvitual.R
+import java.util.Calendar
 
 class HomeFragment : Fragment() {
 
@@ -295,6 +296,7 @@ class HomeFragment : Fragment() {
             val contendor: ConstraintLayout = vista.findViewById(R.id.ContenedorConjuntos)
             val txtNombrePrenda: TextView = vista.findViewById(R.id.txtNombrePrenda)
             val barraDeProgreso: ProgressBar = vista.findViewById(R.id.barraDeProgreso)
+
             val txtNumeroDeUsos: TextView = vista.findViewById(R.id.txtNumeroDeUsosDePrendaxMes)
 
             Log.d("DetallePrenda", "Imagen URL: ${prenda.imagenUrl}")
@@ -313,6 +315,7 @@ class HomeFragment : Fragment() {
                 txtNumeroDeUsos.text = usos.toString()
             }
 
+
             contendor.setOnClickListener {
                 val bundle = Bundle()
                 bundle.putParcelable("prenda", prenda)
@@ -325,20 +328,22 @@ class HomeFragment : Fragment() {
             return vista
         }
 
-        private fun contarUsosDePrenda(nombrePrenda: String, callback: (Int) -> Unit) {
+        private fun contarUsosDePrenda(idPrenda: String, callback: (Int) -> Unit) {
             val user = FirebaseAuth.getInstance().currentUser ?: return callback(0)
             val db = FirebaseFirestore.getInstance()
 
             db.collection("Usuarios")
                 .document(user.uid)
-                .collection("Outfits")
+                .collection("outfitsUsados")
                 .get()
                 .addOnSuccessListener { result ->
                     var contador = 0
                     for (document in result) {
-                        val prendas = document.get("prendas") as? List<*> ?: continue
-                        if (prendas.any { it.toString().equals(nombrePrenda, ignoreCase = true) }) {
-                            contador++
+                        val prendas = document.get("prendas") as? Map<*, *> ?: continue
+                        for ((_, valor) in prendas) {
+                            if (valor == idPrenda) {
+                                contador++
+                            }
                         }
                     }
                     callback(contador)
@@ -347,5 +352,6 @@ class HomeFragment : Fragment() {
                     callback(0)
                 }
         }
+
     }
 }

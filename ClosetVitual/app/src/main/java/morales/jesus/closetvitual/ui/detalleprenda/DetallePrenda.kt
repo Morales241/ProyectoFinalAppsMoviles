@@ -20,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import morales.jesus.closetvitual.Prenda
 import morales.jesus.closetvitual.R
+import java.util.Calendar
 
 class DetallePrenda : Fragment() {
 
@@ -122,42 +123,6 @@ class DetallePrenda : Fragment() {
         return root
     }
 
-    private fun buscarPrendaPorUrlFoto(url: String, callback: (Prenda?) -> Unit) {
-        val user = FirebaseAuth.getInstance().currentUser
-        if (user != null) {
-            val uid = user.uid
-            val db = FirebaseFirestore.getInstance()
-
-            db.collection("Usuarios")
-                .document(uid)
-                .collection("prendas")
-                .whereEqualTo("fotoUrl", url)
-                .get()
-                .addOnSuccessListener { result ->
-                    if (!result.isEmpty) {
-                        val document = result.documents[0]
-                        val prenda = Prenda(
-                            id = document.id,
-                            nombre = document.getString("nombre"),
-                            tipo = document.getString("tipoPrenda"),
-                            tags = document.get("tags") as? List<String> ?: listOf(),
-                            imagenUrl = document.getString("fotoUrl"),
-                            Color = document.getString("color")?.toIntOrNull()
-                        )
-                        callback(prenda)
-                    } else {
-                        callback(null)
-                    }
-                }
-                .addOnFailureListener { exception ->
-                    Log.e("Firestore", "Error al buscar la prenda", exception)
-                    callback(null)
-                }
-        } else {
-            Log.e("FirebaseAuth", "Usuario no autenticado")
-            callback(null)
-        }
-    }
 
 
     private fun contarUsosDePrenda(nombrePrenda: String, callback: (Int) -> Unit) {
@@ -183,23 +148,35 @@ class DetallePrenda : Fragment() {
             }
     }
 
-    private fun contarUsosRecientesDePrenda(nombrePrenda: String, callback: (Int) -> Unit) {
+    private fun contarUsosRecientesDePrenda(idPrenda: String, callback: (Int) -> Unit) {
         val user = FirebaseAuth.getInstance().currentUser ?: return callback(0)
         val db = FirebaseFirestore.getInstance()
 
-        val treintaDiasAtras = System.currentTimeMillis() - (30L * 24 * 60 * 60 * 1000)
+        val treintaDiasAtras = Calendar.getInstance().apply {
+            add(Calendar.DAY_OF_YEAR, -30)
+        }.time
 
         db.collection("Usuarios")
             .document(user.uid)
-            .collection("Outfits")
+            .collection("outfitsUsados")
             .whereGreaterThan("fecha", treintaDiasAtras)
             .get()
             .addOnSuccessListener { result ->
                 var contador = 0
                 for (document in result) {
-                    val prendas = document.get("prendas") as? List<*> ?: continue
-                    if (prendas.any { it.toString().equals(nombrePrenda, ignoreCase = true) }) {
-                        contador++
+                    val prendas = document.get("prendas") as? Map<*, *> ?: continue
+                    for ((_, valor) in prendas) {
+                        when (valor) {
+                            is String -> {
+                                if (valor == idPrenda) contador++
+                            }
+
+                            is List<*> -> {
+                                valor.forEach {
+                                    if (it == idPrenda) contador++
+                                }
+                            }
+                        }
                     }
                 }
                 callback(contador)

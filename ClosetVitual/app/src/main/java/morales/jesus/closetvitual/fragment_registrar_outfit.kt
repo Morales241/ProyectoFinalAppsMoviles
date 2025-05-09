@@ -7,14 +7,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.setFragmentResultListener
+import com.google.firebase.Timestamp
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.type.DateTime
+import java.time.LocalDate
 
 class fragment_registrar_outfit : Fragment() {
 
-    private val selectedPrendas = mutableMapOf<Int, String>()
-    private var currentBtnId: Int = -1
-    private lateinit var buttonIds: List<Int>
+    private val viewModel: RegistrarNuevoOutfitViewModel by activityViewModels()
+    private var categoriaActual: String? = null
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,51 +29,69 @@ class fragment_registrar_outfit : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_registrar_outfit, container, false)
 
-        buttonIds = listOf(
-            R.id.btnprenda1, R.id.btnprenda2, R.id.btnprenda3,
-            R.id.btnprenda4, R.id.btnprenda5, R.id.btnprenda6, R.id.btnprenda7
+        val botonesCategorias = mapOf(
+            R.id.btnsombreros to "Sombreros",
+            R.id.btnaccesorios to "Accesorios",
+            R.id.btnCamisetassimilares to "Camisetas y similares",
+            R.id.btnAbrigoschaquetas to "Abrigos y chaquetas",
+            R.id.btnpantalonesshorts to "Pantalones y shorts",
+            R.id.btnzapatos to "Zapatos",
+            R.id.btnbodysuits to "Bodysuits"
         )
 
-        buttonIds.forEach { id ->
-            val button = view.findViewById<ImageButton>(id)
-            button.setOnClickListener {
-                currentBtnId = id
+        for ((id, categoria) in botonesCategorias) {
+            view.findViewById<ImageButton>(id).setOnClickListener {
+                categoriaActual = categoria
                 val bundle = Bundle().apply {
-                    putInt("btnPrendaId", id)
+                    putString("filtroCategoria", categoria)
+                    putString("origen", "registrarOutfit")
                 }
-                parentFragmentManager.setFragmentResult("solicitudSeleccionPrenda", bundle)
-                findNavController().navigate(R.id.action_registrarOutfit_to_elegirRopaOutfit)
+                findNavController().navigate(R.id.action_registrarOutfit_to_elegirRopaOutfit, bundle)
             }
         }
 
-        parentFragmentManager.setFragmentResultListener("resultadoSeleccionPrenda", this) { _, bundle ->
-            val nombre = bundle.getString("nombrePrenda")
-            val imageResId = bundle.getInt("imagenDrawableRes")
-
-            if (nombre != null) {
-                selectedPrendas[currentBtnId] = nombre
-            }
-
-            buttonIds.forEach { id ->
-                val button = view.findViewById<ImageButton>(id)
-                if (selectedPrendas.containsKey(id)) {
-                    button.setImageResource(R.drawable.logoseleccionado)
-                }
+        setFragmentResultListener("resultadoSeleccionPrenda_registrarOutfit") { _, result ->
+            val prendaId = result.getString("prendaSeleccionadaId")
+            val tipo = result.getString("tipoPrenda")
+            if (prendaId != null && tipo != null) {
+                viewModel.agregarPrenda(tipo, prendaId)
+                Toast.makeText(requireContext(), "Prenda agregada: $prendaId", Toast.LENGTH_SHORT).show()
             }
         }
 
-        val btnRegistrarUso = view.findViewById<Button>(R.id.btnRegistrarUso)
-        btnRegistrarUso.setOnClickListener {
-            if (selectedPrendas.isNotEmpty()) {
-                val resumenDialog = ResumenOutfitDialogFragment()
-                val bundle = Bundle().apply {
-                    putSerializable("prendasSeleccionadas", HashMap(selectedPrendas))
-                }
-                resumenDialog.arguments = bundle
-                resumenDialog.show(parentFragmentManager, "ResumenOutfit")
-            }
+        view.findViewById<Button>(R.id.btnRegistrarUso).setOnClickListener {
+            registrarOutfit()
         }
 
         return view
+    }
+
+    private fun registrarOutfit() {
+        val usuarioId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+
+
+        val prendas = viewModel.obtenerPrendas()
+        if (prendas.isEmpty() || prendas.size < 4) {
+            Toast.makeText(requireContext(), "Debes agregar al menos cuatro prendas", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val datosOutfit = hashMapOf(
+            "prendas" to prendas,
+            "fecha" to Timestamp.now()
+        )
+
+        db.collection("Usuarios")
+            .document(usuarioId)
+            .collection("outfitsUsados")
+            .add(datosOutfit)
+            .addOnSuccessListener {
+                Toast.makeText(requireContext(), "Outfit registrado", Toast.LENGTH_SHORT).show()
+                viewModel.limpiar()
+                findNavController().navigate(R.id.navigation_Ropero)
+            }
+            .addOnFailureListener {
+                Toast.makeText(requireContext(), "Error al registrar outfit", Toast.LENGTH_SHORT).show()
+            }
     }
 }
