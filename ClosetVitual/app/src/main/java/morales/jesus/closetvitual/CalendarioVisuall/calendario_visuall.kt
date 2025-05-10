@@ -1,5 +1,6 @@
 package morales.jesus.closetvitual.CalendarioVisuall
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,74 +8,111 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import morales.jesus.closetvitual.CalendarioVisuall.CalendarioVisuallViewModel
+import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FieldPath
+import com.google.firebase.firestore.FirebaseFirestore
+import morales.jesus.closetvitual.Prenda
 import morales.jesus.closetvitual.R
 import morales.jesus.closetvitual.databinding.FragmentVisualCalendaryBinding
-import morales.jesus.closetvitual.Prenda
-
 
 class calendario_visuall : Fragment() {
 
     private lateinit var binding: FragmentVisualCalendaryBinding
     private lateinit var adapter: PrendaAdapter
     private val prendasMap: MutableMap<Long, List<Prenda>> = mutableMapOf()
+    private val db = FirebaseFirestore.getInstance()
+    private val auth = FirebaseAuth.getInstance()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
         binding = FragmentVisualCalendaryBinding.inflate(inflater, container, false)
 
-        // Configurar RecyclerView
         adapter = PrendaAdapter()
         binding.rvUsedClothes.layoutManager = LinearLayoutManager(requireContext())
         binding.rvUsedClothes.adapter = adapter
 
-        // Mock de datos
-        mockPrendas()
-
-        // Escuchar cambios en la selección del calendario
         binding.calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val fechaSeleccionada = convertirFecha(year, month, dayOfMonth)
-            val prendas = prendasMap[fechaSeleccionada] ?: emptyList()
-            adapter.actualizarLista(prendas)
+            cargarOutfitsPorFecha(fechaSeleccionada)
         }
 
         return binding.root
-    }
-
-    private fun mockPrendas() {
-      //  val prendasDia1 = listOf(
-           // Prenda(R.drawable.camisa_roja),
-            //Prenda(R.drawable.pans_negro)
-       // )
-
-        //val prendasDia2 = listOf(
-          //  Prenda(R.drawable.zapatos_cafes),
-           // Prenda(R.drawable.gorro_rosa)
-       // )
-
-        // Simular prendas por fecha (en formato timestamp)
-       // prendasMap[convertirFecha(2025, 2, 6)] = prendasDia1 // 6 de marzo de 2025
-        //prendasMap[convertirFecha(2025, 2, 7)] = prendasDia2 // 7 de marzo de 2025
     }
 
     private fun convertirFecha(year: Int, month: Int, day: Int): Long {
         return (year * 10000 + (month + 1) * 100 + day).toLong() // Formato YYYYMMDD
     }
 
-    // Adapter dentro del fragmento
+    private fun cargarOutfitsPorFecha(fecha: Long) {
+        val userId = auth.currentUser?.uid ?: return
+        val año = (fecha / 10000).toInt()
+        val mes = ((fecha % 10000) / 100).toInt()
+        val dia = (fecha % 100).toInt()
+
+        db.collection("Usuarios")
+            .document(userId)
+            .collection("outfitsUsados")
+            .get()
+            .addOnSuccessListener { result ->
+                val prendasTotales = mutableListOf<Prenda>()
+
+                val outfitsEnFecha = result.documents.filter { doc ->
+                    val timestamp = doc.getTimestamp("fecha")
+                    val fechaDoc = timestamp?.toDate()
+                    fechaDoc?.let {
+                        val cal = java.util.Calendar.getInstance().apply { time = it }
+                        cal.get(java.util.Calendar.YEAR) == año &&
+                                cal.get(java.util.Calendar.MONTH) + 1 == mes &&
+                                cal.get(java.util.Calendar.DAY_OF_MONTH) == dia
+                    } ?: false
+                }
+
+                if (outfitsEnFecha.isEmpty()) {
+                    adapter.actualizarLista(emptyList())
+                    return@addOnSuccessListener
+                }
+
+                val prendasIds = outfitsEnFecha.flatMap { it.get("prendas") as? List<String> ?: emptyList() }.distinct()
+
+                if (prendasIds.isEmpty()) {
+                    adapter.actualizarLista(emptyList())
+                    return@addOnSuccessListener
+                }
+
+                db.collection("Usuarios")
+                    .document(userId)
+                    .collection("prendas")
+                    .whereIn(FieldPath.documentId(), prendasIds)
+                    .get()
+                    .addOnSuccessListener { prendasSnapshot ->
+                        val listaPrendas = mutableListOf<Prenda>()
+                        for (doc in prendasSnapshot.documents) {
+                            val nombre = doc.getString("nombre")
+                            val tipo = doc.getString("tipoPrenda")
+                            val tags = if (doc.get("tags") != null) doc.get("tags") as List<String> else emptyList<String>()
+                            val imagenUrl = doc.getString("fotoUrl")
+                            val color = if (doc.get("color") != null) (doc.get("color") as Number).toInt() else Color.GRAY
+
+                            listaPrendas.add(Prenda(
+                                id = doc.id,
+                                nombre = nombre,
+                                tipo = tipo,
+                                tags = tags,
+                                imagenUrl = imagenUrl,
+                                Color = color
+                            ))
+                        }
+                        adapter.actualizarLista(listaPrendas)
+                    }
+            }
+    }
+
     inner class PrendaAdapter(private var listaPrendas: List<Prenda> = emptyList()) :
         RecyclerView.Adapter<PrendaAdapter.PrendaViewHolder>() {
-
-        private val nombresPrendas = mapOf(
-            R.drawable.camisa_roja to "Camisa Roja",
-            R.drawable.pans_negro to "Pans Negro",
-            R.drawable.zapatos_cafes to "Zapatos Cafés",
-            R.drawable.gorro_rosa to "Gorro Rosa"
-        )
 
         inner class PrendaViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val imgPrenda: ImageView = view.findViewById(R.id.imgPrenda)
@@ -82,15 +120,23 @@ class calendario_visuall : Fragment() {
         }
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PrendaViewHolder {
-            val view =
-                LayoutInflater.from(parent.context).inflate(R.layout.item_prenda_cv, parent, false)
+            val view = LayoutInflater.from(parent.context)
+                .inflate(R.layout.item_prenda_cv, parent, false)
             return PrendaViewHolder(view)
         }
 
         override fun onBindViewHolder(holder: PrendaViewHolder, position: Int) {
             val prenda = listaPrendas[position]
-          //  holder.imgPrenda.setImageResource(prenda.imagen)
-        //    holder.txtNombrePrenda.text = nombresPrendas[prenda.imagen] ?: "Prenda Desconocida"
+            holder.txtNombrePrenda.text = prenda.nombre ?: "Sin nombre"
+
+            Glide.with(holder.itemView.context)
+                .load(prenda.imagenUrl)
+                .placeholder(R.drawable.placeholder_imagen) // Asegúrate de tener esta imagen
+                .into(holder.imgPrenda)
+
+            prenda.Color?.let {
+                holder.imgPrenda.setBackgroundColor(it)
+            }
         }
 
         override fun getItemCount(): Int = listaPrendas.size
@@ -99,5 +145,5 @@ class calendario_visuall : Fragment() {
             listaPrendas = nuevaLista
             notifyDataSetChanged()
         }
-    } // Fin de la clase PrendaAdapter
-} // Fin de la clase CalendarioVisuallFragment
+    }
+}
