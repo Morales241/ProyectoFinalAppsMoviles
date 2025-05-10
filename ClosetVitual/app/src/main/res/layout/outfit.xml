@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/outfitItem"
     android:layout_width="match_parent"
-    android:background="@color/grisClaro"
-    android:layout_height="160dp">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/fondo_conjunto"
+    android:padding="8dp"
+    android:layout_margin="8dp">
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:id="@+id/textNombreOutfit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre del Outfit"
+        android:textSize="20sp"
+        android:textColor="@color/purpuraClaro"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclePrendas"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/fondo_conjunto"
-        android:backgroundTint="@color/white"
-        android:orientation="vertical"
-        android:padding="8dp">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclePrendas"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:overScrollMode="always"
-            android:scrollbars="horizontal"/>
-    </LinearLayout>
-
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        android:overScrollMode="always"
+        android:layout_marginTop="8dp" />
 </LinearLayout>

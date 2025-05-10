@@ -72,6 +72,7 @@ class fragment_registrar_outfit : Fragment() {
         }
 
         setFragmentResultListener("resultadoSeleccionOutfit") { _, result ->
+            viewModel.limpiar()
             val prendas = result.getParcelableArrayList("listaPrendas", Prenda::class.java)
             prendas?.forEach { prenda ->
                 viewModel.agregarPrenda(prenda.tipo ?: "", prenda.id ?: "")
@@ -107,7 +108,7 @@ class fragment_registrar_outfit : Fragment() {
             .addOnSuccessListener {
                 Toast.makeText(requireContext(), "Outfit registrado", Toast.LENGTH_SHORT).show()
                 viewModel.limpiar()
-                findNavController().navigate(R.id.navigation_Ropero)
+                findNavController().navigate(R.id.navigation_home)
             }
             .addOnFailureListener {
                 Toast.makeText(requireContext(), "Error al registrar outfit", Toast.LENGTH_SHORT).show()

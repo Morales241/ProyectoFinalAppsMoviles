@@ -44,7 +44,7 @@
                 android:layout_height="190dp"
                 android:scaleType="fitCenter"
                 android:padding="8dp"
-                android:src="@drawable/overoll"
+                android:src="@drawable/body"
                 android:contentDescription="Mono"
                 android:background="?attr/selectableItemBackground"
                 android:layout_column="0"
