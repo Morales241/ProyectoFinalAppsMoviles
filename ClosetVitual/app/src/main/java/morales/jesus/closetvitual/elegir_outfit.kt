@@ -3,14 +3,11 @@ package morales.jesus.closetvitual
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.GestureDetector
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.ViewModelProvider
@@ -180,30 +177,21 @@ class elegir_outfit : Fragment() {
 
             Log.d("OutfitAdapter", "Dibujando outfit: ${outfit.nombre} con ${prendas.size} prendas")
 
-            val contenedor: LinearLayout = holder.itemView.findViewById(R.id.contenedorView)
+            holder.itemView.setOnClickListener {
+                val result = Bundle().apply {
+                    putParcelableArrayList("listaPrendas", ArrayList(prendas))
+                }
+
+                fragmentManager.setFragmentResult("resultadoSeleccionOutfit", result)
+                navController.navigate(R.id.action_elegir_outfit_to_navigation_Outfits)
+
+            }
 
             val prendaAdapter = PrendaAdapter(holder.itemView.context, prendas)
             holder.recyclerView.layoutManager =
                 LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
             holder.recyclerView.adapter = prendaAdapter
 
-
-
-            val gestureDetector = GestureDetector(holder.itemView.context, object : GestureDetector.SimpleOnGestureListener() {
-                override fun onSingleTapUp(e: MotionEvent): Boolean {
-                    val result = Bundle().apply {
-                        putParcelableArrayList("listaPrendas", ArrayList(prendas))
-                    }
-                    fragmentManager.setFragmentResult("resultadoSeleccionOutfit", result)
-                    navController.navigate(R.id.action_elegir_outfit_to_navigation_Outfits)
-                    return true
-                }
-            })
-
-
-            contenedor.setOnTouchListener { _, event ->
-                gestureDetector.onTouchEvent(event)
-            }
 
         }
 
