@@ -5,11 +5,15 @@
     android:layout_height="160dp">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/contenedorView"
+        android:importantForAccessibility="no"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/fondo_conjunto"
         android:backgroundTint="@color/white"
         android:orientation="vertical"
+        android:clickable="true"
+        android:focusable="true"
         android:padding="8dp">
 
         <androidx.recyclerview.widget.RecyclerView
