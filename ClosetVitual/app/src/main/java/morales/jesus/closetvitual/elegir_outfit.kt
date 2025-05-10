@@ -17,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -47,6 +48,11 @@ class elegir_outfit : Fragment() {
         recyclerView.adapter = adaptador
 
         cargarPrendasYOutfits()
+
+        val btnRegresar: MaterialButton = root.findViewById(R.id.btnRegresarOutfit)
+        btnRegresar.setOnClickListener {
+            navController.navigate(R.id.action_elegir_outfit_to_navigation_Outfits)
+        }
 
         return root
     }

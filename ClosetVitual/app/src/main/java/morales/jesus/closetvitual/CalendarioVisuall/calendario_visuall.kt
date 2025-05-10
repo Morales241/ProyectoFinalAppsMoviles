@@ -39,7 +39,6 @@ class calendario_visuall : Fragment() {
         binding.rvUsedClothes.layoutManager = LinearLayoutManager(requireContext())
         binding.rvUsedClothes.adapter = adapter
 
-        // Limitar la fecha mínima del calendario
         auth.currentUser?.metadata?.creationTimestamp?.let { timestamp ->
             binding.calendarView.minDate = timestamp
         }
@@ -49,6 +48,15 @@ class calendario_visuall : Fragment() {
             Log.d(TAG, "Fecha seleccionada: $fechaSeleccionada")
             cargarOutfitsPorFecha(fechaSeleccionada)
         }
+
+        val hoy = java.util.Calendar.getInstance()
+        val year = hoy.get(java.util.Calendar.YEAR)
+        val month = hoy.get(java.util.Calendar.MONTH)
+        val day = hoy.get(java.util.Calendar.DAY_OF_MONTH)
+
+        val fecha = convertirFecha(year, month, day)
+
+        cargarOutfitsPorFecha(fecha)
 
         return binding.root
     }
