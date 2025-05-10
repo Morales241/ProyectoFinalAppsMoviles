@@ -15,6 +15,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.button.MaterialButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
@@ -51,18 +52,38 @@ class registrar_Nuevo_Outfit : Fragment() {
                     putString("filtroCategoria", categoria)
                     putString("origen", "registrarOutfitNuevo")
                 }
-                findNavController().navigate(R.id.action_RNO_to_fragmento_elegir_ropa_outfit, bundle)
+                findNavController().navigate(
+                    R.id.action_RNO_to_fragmento_elegir_ropa_outfit,
+                    bundle
+                )
 
+            }
+
+            val botonRegresar: MaterialButton = view.findViewById(R.id.btnRegresarOutfit)
+            botonRegresar.setOnClickListener {
+
+                findNavController().navigate(R.id.navigation_Ropero)
+            }
+
+            setFragmentResultListener("resultadoSeleccionOutfit") { _, result ->
+                val prendaId = result.getString("prendaSeleccionadaId")
+                val tipo = result.getString("tipoPrenda")
+                if (prendaId != null && tipo != null) {
+                    viewModel.agregarPrenda(tipo, prendaId)
+                    Toast.makeText(requireContext(), "Prenda agregada: $prendaId", Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
-        setFragmentResultListener("resultadoSeleccionPrenda_registrarOutfitNuevo") { _, result ->
+        setFragmentResultListener("resultadoSeleccionPrenda_registrarOutfitNuevo")
+        { _, result ->
             val prendaId = result.getString("prendaSeleccionadaId")
             val tipo = result.getString("tipoPrenda")
             if (prendaId != null && tipo != null) {
                 viewModel.agregarPrenda(tipo, prendaId)
                 Log.d("OUTFIT_DEBUG", "prenda agregada: ${prendaId}")
-                Toast.makeText(requireContext(), "Prenda agregada ${prendaId}", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Prenda agregada ${prendaId}", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
@@ -78,13 +99,18 @@ class registrar_Nuevo_Outfit : Fragment() {
         val usuarioId = FirebaseAuth.getInstance().currentUser?.uid ?: return
 
         if (nombre.isBlank()) {
-            Toast.makeText(requireContext(), "Nombre del outfit requerido", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Nombre del outfit requerido", Toast.LENGTH_SHORT)
+                .show()
             return
         }
 
         val prendas = viewModel.obtenerPrendas()
         if (prendas.isEmpty() || prendas.size < 4) {
-            Toast.makeText(requireContext(), "Debes agregar al menos cuatro prendas", Toast.LENGTH_SHORT).show()
+            Toast.makeText(
+                requireContext(),
+                "Debes agregar al menos cuatro prendas",
+                Toast.LENGTH_SHORT
+            ).show()
             return
         }
 
@@ -103,7 +129,8 @@ class registrar_Nuevo_Outfit : Fragment() {
                 findNavController().navigate(R.id.navigation_Ropero)
             }
             .addOnFailureListener {
-                Toast.makeText(requireContext(), "Error al registrar outfit", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "Error al registrar outfit", Toast.LENGTH_SHORT)
+                    .show()
             }
     }
 }

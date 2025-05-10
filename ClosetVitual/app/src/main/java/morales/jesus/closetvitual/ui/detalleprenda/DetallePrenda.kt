@@ -107,13 +107,13 @@ class DetallePrenda : Fragment() {
             }
 
 
-            contarUsosDePrenda(prenda.nombre ?: "") { usosTotales ->
+            contarUsosDePrenda(prenda.id ?: "") { usosTotales ->
                 barraProgresoTotal.max = 100
                 barraProgresoTotal.progress = usosTotales.coerceAtMost(100)
                 txtProgresoTotal.text = usosTotales.toString()
             }
 
-            contarUsosRecientesDePrenda(prenda.nombre ?: "") { usosMes ->
+            contarUsosRecientesDePrenda(prenda.id ?: "") { usosMes ->
                 barraProgresoMes.max = 30
                 barraProgresoMes.progress = usosMes.coerceAtMost(30)
                 txtProgresoMes.text = usosMes.toString()
@@ -125,25 +125,49 @@ class DetallePrenda : Fragment() {
 
 
 
-    private fun contarUsosDePrenda(nombrePrenda: String, callback: (Int) -> Unit) {
+    private fun contarUsosDePrenda(idPrenda: String, callback: (Int) -> Unit) {
         val user = FirebaseAuth.getInstance().currentUser ?: return callback(0)
         val db = FirebaseFirestore.getInstance()
 
         db.collection("Usuarios")
             .document(user.uid)
-            .collection("Outfits")
+            .collection("outfitsUsados")
             .get()
             .addOnSuccessListener { result ->
+                Log.d("Ropero", "Documentos de outfits encontrados: ${result.size()}")
                 var contador = 0
+
                 for (document in result) {
-                    val prendas = document.get("prendas") as? List<*> ?: continue
-                    if (prendas.any { it.toString().equals(nombrePrenda, ignoreCase = true) }) {
-                        contador++
+                    val prendas = document.get("prendas") as? Map<*, *> ?: continue
+
+                    for ((categoria, valor) in prendas) {
+                        when (valor) {
+                            is String -> {
+                                if (valor == idPrenda) {
+                                    contador++
+                                    Log.d("Ropero", "  [+] hallado en categoría '$categoria' (string)")
+                                }
+                            }
+                            is List<*> -> {
+                                valor.filterIsInstance<String>().forEach { prendaIdEnLista ->
+                                    if (prendaIdEnLista == idPrenda) {
+                                        contador++
+                                        Log.d("Ropero", "  [+] hallado en lista de '$categoria'")
+                                    }
+                                }
+                            }
+                            else -> {
+                                Log.w("Ropero", "  campo inesperado en '$categoria': $valor")
+                            }
+                        }
                     }
                 }
+
+                Log.d("Ropero", "Total de veces que aparece '$idPrenda': $contador")
                 callback(contador)
             }
             .addOnFailureListener {
+                Log.e("Ropero", "Error leyendo outfits", it)
                 callback(0)
             }
     }
@@ -151,7 +175,6 @@ class DetallePrenda : Fragment() {
     private fun contarUsosRecientesDePrenda(idPrenda: String, callback: (Int) -> Unit) {
         val user = FirebaseAuth.getInstance().currentUser ?: return callback(0)
         val db = FirebaseFirestore.getInstance()
-
         val treintaDiasAtras = Calendar.getInstance().apply {
             add(Calendar.DAY_OF_YEAR, -30)
         }.time
@@ -162,28 +185,41 @@ class DetallePrenda : Fragment() {
             .whereGreaterThan("fecha", treintaDiasAtras)
             .get()
             .addOnSuccessListener { result ->
+                Log.d("Ropero", "Documentos de outfits encontrados: ${result.size()}")
                 var contador = 0
+
                 for (document in result) {
                     val prendas = document.get("prendas") as? Map<*, *> ?: continue
-                    for ((_, valor) in prendas) {
+
+                    for ((categoria, valor) in prendas) {
                         when (valor) {
                             is String -> {
-                                if (valor == idPrenda) contador++
-                            }
-
-                            is List<*> -> {
-                                valor.forEach {
-                                    if (it == idPrenda) contador++
+                                if (valor == idPrenda) {
+                                    contador++
+                                    Log.d("Ropero", "  [+] hallado en categoría '$categoria' (string)")
                                 }
+                            }
+                            is List<*> -> {
+                                valor.filterIsInstance<String>().forEach { prendaIdEnLista ->
+                                    if (prendaIdEnLista == idPrenda) {
+                                        contador++
+                                        Log.d("Ropero", "  [+] hallado en lista de '$categoria'")
+                                    }
+                                }
+                            }
+                            else -> {
+                                Log.w("Ropero", "  campo inesperado en '$categoria': $valor")
                             }
                         }
                     }
                 }
+
+                Log.d("Ropero", "Total de veces que aparece '$idPrenda': $contador")
                 callback(contador)
             }
             .addOnFailureListener {
+                Log.e("Ropero", "Error leyendo outfits", it)
                 callback(0)
             }
     }
-
 }

@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_registrarOutfit_to_elegirRopaOutfit"
             app:destination="@id/fragmento_elegir_ropa_outfit" />
+        <action
+            android:id="@+id/action_navigation_Outfits_to_elegir_outfit"
+            app:destination="@id/elegir_outfit" />
     </fragment>
 
     <fragment
@@ -74,6 +77,15 @@
         <action
             android:id="@+id/action_RNO_to_fragmento_elegir_ropa_outfit"
             app:destination="@id/fragmento_elegir_ropa_outfit" />
+    </fragment>
+    <fragment
+        android:id="@+id/elegir_outfit"
+        android:name="morales.jesus.closetvitual.elegir_outfit"
+        android:label="fragment_elegir_outfit"
+        tools:layout="@layout/fragment_elegir_outfit" >
+        <action
+            android:id="@+id/action_elegir_outfit_to_navigation_Outfits"
+            app:destination="@id/navigation_Outfits" />
     </fragment>
 
 </navigation>

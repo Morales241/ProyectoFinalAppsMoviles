@@ -1,6 +1,8 @@
 package morales.jesus.closetvitual
 
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.fragment.app.setFragmentResultListener
@@ -23,6 +26,7 @@ class fragment_registrar_outfit : Fragment() {
     private var categoriaActual: String? = null
     private val db = FirebaseFirestore.getInstance()
 
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -63,6 +67,21 @@ class fragment_registrar_outfit : Fragment() {
             registrarOutfit()
         }
 
+        view.findViewById<Button>(R.id.btnElegirOutfit).setOnClickListener {
+            findNavController().navigate(R.id.action_navigation_Outfits_to_elegir_outfit)
+        }
+
+        setFragmentResultListener("resultadoSeleccionOutfit") { _, result ->
+            val prendas = result.getParcelableArrayList("listaPrendas", Prenda::class.java)
+            prendas?.forEach { prenda ->
+                viewModel.agregarPrenda(prenda.tipo ?: "", prenda.id ?: "")
+                Log.d("OUTFIT_DEBUG", "Agregada prenda desde outfit: ${prenda.id}")
+            }
+        }
+
+
+
+
         return view
     }
 
@@ -90,7 +109,6 @@ class fragment_registrar_outfit : Fragment() {
                 viewModel.limpiar()
                 findNavController().navigate(R.id.navigation_Ropero)
             }
-            //prueba para ver si si va a funcionar
             .addOnFailureListener {
                 Toast.makeText(requireContext(), "Error al registrar outfit", Toast.LENGTH_SHORT).show()
             }

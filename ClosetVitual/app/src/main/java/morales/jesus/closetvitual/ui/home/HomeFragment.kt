@@ -310,7 +310,7 @@ class HomeFragment : Fragment() {
             barraDeProgreso.progress = 0
             txtNumeroDeUsos.text = "..."
 
-            contarUsosDePrenda(prenda.nombre ?: "") { usos ->
+            contarUsosDePrenda(prenda.id ?: "") { usos ->
                 barraDeProgreso.progress = usos.coerceAtMost(100)
                 txtNumeroDeUsos.text = usos.toString()
             }
@@ -337,21 +337,42 @@ class HomeFragment : Fragment() {
                 .collection("outfitsUsados")
                 .get()
                 .addOnSuccessListener { result ->
+                    Log.d("Ropero", "Documentos de outfits encontrados: ${result.size()}")
                     var contador = 0
+
                     for (document in result) {
                         val prendas = document.get("prendas") as? Map<*, *> ?: continue
-                        for ((_, valor) in prendas) {
-                            if (valor == idPrenda) {
-                                contador++
+
+                        for ((categoria, valor) in prendas) {
+                            when (valor) {
+                                is String -> {
+                                    if (valor == idPrenda) {
+                                        contador++
+                                        Log.d("Ropero", "  [+] hallado en categoría '$categoria' (string)")
+                                    }
+                                }
+                                is List<*> -> {
+                                    valor.filterIsInstance<String>().forEach { prendaIdEnLista ->
+                                        if (prendaIdEnLista == idPrenda) {
+                                            contador++
+                                            Log.d("Ropero", "  [+] hallado en lista de '$categoria'")
+                                        }
+                                    }
+                                }
+                                else -> {
+                                    Log.w("Ropero", "  campo inesperado en '$categoria': $valor")
+                                }
                             }
                         }
                     }
+
+                    Log.d("Ropero", "Total de veces que aparece '$idPrenda': $contador")
                     callback(contador)
                 }
                 .addOnFailureListener {
+                    Log.e("Ropero", "Error leyendo outfits", it)
                     callback(0)
                 }
         }
-
     }
 }

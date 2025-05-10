@@ -19,13 +19,13 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnRegresarOutfit"
             style="@style/Widget.MaterialComponents.Button.Icon"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
-            android:backgroundTint="@color/azulFuerte"
-            android:icon="@drawable/leftarrow"
-            android:text="regresar"
+            android:background="@color/transparent"
+            android:importantForAccessibility="no"
             android:textColor="@color/purpuraClaro"
             android:textSize="20dp"
+            app:icon="@drawable/leftarrow"
             app:iconGravity="textStart"
             app:iconPadding="0dp" />
 
@@ -33,17 +33,17 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:fontFamily="sans-serif-medium"
             android:padding="16dp"
             android:textStyle="bold"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="70dp"
             android:text="Tus prendas"
             android:textColor="@color/white"
             android:textSize="24sp" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:importantForAccessibility="no"
         android:id="@+id/recycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
