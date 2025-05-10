@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import morales.jesus.closetvitual.Outfit
 import morales.jesus.closetvitual.Prenda
 import morales.jesus.closetvitual.R
+import android.widget.TextView
 
 class Ropero : Fragment() {
 
@@ -189,7 +190,7 @@ class Ropero : Fragment() {
             val outfit = outfits[position]
             val prendas = outfitPrendasMap[outfit.id] ?: emptyList()
 
-            Log.d("OutfitAdapter", "Dibujando outfit: ${outfit.nombre} con ${prendas.size} prendas")
+            holder.nombreOutfit.text = outfit.nombre // ✅ Aquí usamos el TextView ya importado correctamente
 
             val prendaAdapter = PrendaAdapter(holder.itemView.context, prendas)
             holder.recyclerView.layoutManager = LinearLayoutManager(holder.itemView.context, LinearLayoutManager.HORIZONTAL, false)
@@ -200,6 +201,8 @@ class Ropero : Fragment() {
 
         class OutfitViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val recyclerView: RecyclerView = view.findViewById(R.id.recyclePrendas)
+            val nombreOutfit: TextView = view.findViewById(R.id.textNombreOutfit)
         }
     }
+
 }
